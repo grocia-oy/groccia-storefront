@@ -545,6 +545,11 @@
   dependencies:
     client-only "^0.0.1"
 
+"@heroicons/react@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@heroicons/react/-/react-2.1.1.tgz"
+  integrity sha512-JyyN9Lo66kirbCMuMMRPtJxtKJoIsXKS569ebHGGRKbl8s4CtUfLnyKJxteA+vIKySocO4s1SkTkGS4xtG/yEA==
+
 "@hookform/error-message@^2.0.0":
   version "2.0.1"
   resolved "https://registry.npmjs.org/@hookform/error-message/-/error-message-2.0.1.tgz"
@@ -3449,6 +3454,14 @@ crypto-random-string@^2.0.0:
   resolved "https://registry.npmjs.org/crypto-random-string/-/crypto-random-string-2.0.0.tgz"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
+css-selector-tokenizer@^0.8:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/css-selector-tokenizer/-/css-selector-tokenizer-0.8.0.tgz"
+  integrity sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==
+  dependencies:
+    cssesc "^3.0.0"
+    fastparse "^1.1.2"
+
 cssesc@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz"
@@ -3458,6 +3471,11 @@ csstype@^3.0.2:
   version "3.1.2"
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.2.tgz"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
+
+culori@^3:
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/culori/-/culori-3.3.0.tgz"
+  integrity sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==
 
 cypress@^9.5.2:
   version "9.7.0"
@@ -3506,6 +3524,16 @@ cypress@^9.5.2:
     tmp "~0.2.1"
     untildify "^4.0.0"
     yauzl "^2.10.0"
+
+daisyui@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.npmjs.org/daisyui/-/daisyui-4.6.0.tgz"
+  integrity sha512-B5ZB/sczXpp4LMdo/SZrtYY/U2hq+Vr9I15QawuWZ0VwgtSAbuZpAZUftKVryEsPuv3BM0yVlBED0nAmtis/dw==
+  dependencies:
+    css-selector-tokenizer "^0.8"
+    culori "^3"
+    picocolors "^1"
+    postcss-js "^4"
 
 damerau-levenshtein@^1.0.8:
   version "1.0.8"
@@ -3726,6 +3754,24 @@ electron-to-chromium@^1.4.477:
   version "1.4.523"
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.523.tgz"
   integrity sha512-9AreocSUWnzNtvLcbpng6N+GkXnCcBR80IQkxRC9Dfdyg4gaWNUPBujAHUpKkiUkoSoR9UlhA4zD/IgBklmhzg==
+
+embla-carousel-react@^8.0.0-rc20:
+  version "8.0.0-rc20"
+  resolved "https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-8.0.0-rc20.tgz"
+  integrity sha512-02xhtl/qd5VQtzRbG3jQKVXy/YzP4J3nxQcJhz7cIY73nK3aPwxoZL+Fjk0VdS5eUIWowRBH5qIv3nVNsqeYZQ==
+  dependencies:
+    embla-carousel "8.0.0-rc20"
+    embla-carousel-reactive-utils "8.0.0-rc20"
+
+embla-carousel-reactive-utils@8.0.0-rc20:
+  version "8.0.0-rc20"
+  resolved "https://registry.npmjs.org/embla-carousel-reactive-utils/-/embla-carousel-reactive-utils-8.0.0-rc20.tgz"
+  integrity sha512-fE7IeSS8HqwDnTDMP8eo0i4pcYQAemmJq53zCLXnp3Yj/p5+IpB1nC7aKQjd2ug1dGOSwwNRFaPI3shlAVVW/A==
+
+embla-carousel@8.0.0-rc20:
+  version "8.0.0-rc20"
+  resolved "https://registry.npmjs.org/embla-carousel/-/embla-carousel-8.0.0-rc20.tgz"
+  integrity sha512-fhzhbIAcsjSpUsg5jWsg0+zVyJhY5x2SPXtuS4MPAWQWoVQpvkcbX9r0FvPBn6emTbgNFRtAcWczstJy2msdUw==
 
 emittery@^0.12.1:
   version "0.12.1"
@@ -4301,6 +4347,11 @@ fast-levenshtein@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
+
+fastparse@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/fastparse/-/fastparse-1.1.2.tgz"
+  integrity sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==
 
 fastq@^1.6.0:
   version "1.15.0"
@@ -6596,7 +6647,7 @@ pgpass@1.x:
   dependencies:
     split2 "^4.1.0"
 
-picocolors@^1.0.0:
+picocolors@^1, picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz"
   integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
@@ -6637,7 +6688,7 @@ postcss-import@^15.1.0:
     read-cache "^1.0.0"
     resolve "^1.1.7"
 
-postcss-js@^4.0.1:
+postcss-js@^4, postcss-js@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/postcss-js/-/postcss-js-4.0.1.tgz"
   integrity sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==
@@ -6961,7 +7012,7 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
-"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16 || ^17 || ^18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18.0.0", "react@^16.x || ^17.x || ^18.x", react@^18.0.0, react@^18.2.0, "react@>= 16.8.0 < 19", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.0.0, react@>=16.3.0, react@>=16.8.0:
+"react@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16 || ^17 || ^18", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.8.0 || ^17.0.1 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18.0.0", "react@^16.x || ^17.x || ^18.x", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0 < 19", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.0.0, react@>=16.3.0, react@>=16.8.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
