@@ -12,6 +12,8 @@ const SearchBar: React.FC = () => {
     <form onSubmit={handleSearch} className="w-full flex items-center relative">
       <input
         type="search"
+        data-ms-editor
+        spellCheck={false}
         placeholder="Search products..."
         className="w-full px-4 py-3 border rounded-2xl bg-gray-100"
         value={searchTerm}
