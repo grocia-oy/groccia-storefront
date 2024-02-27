@@ -30,6 +30,24 @@ const roboto = localFont({
   variable: "--font-roboto",
 })
 
+const poppins = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Poppins/Poppins300.ttf",
+      weight: "300",
+    },
+    {
+      path: "../../public/fonts/Poppins/Poppins400.ttf",
+      weight: "400",
+    },
+    {
+      path: "../../public/fonts/Poppins/Poppins600.ttf",
+      weight: "600",
+    },
+  ],
+  variable: "--font-poppins",
+})
+
 const gotag = localFont({
   src: [{ path: "../../public/fonts/Gotag/Gotag.ttf", weight: "400" }],
   variable: "--font-gotag",
@@ -43,11 +61,11 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      data-mode="light"
-      className={`${raleway.variable} ${roboto.variable} ${gotag.variable}`}
+      data-theme="grocciaLight"
+      className={`${raleway.variable} ${poppins.variable} ${gotag.variable}`}
     >
       <body>
-        <main className="relative font-roboto">{props.children}</main>
+        <main className="relative font-poppins">{props.children}</main>
       </body>
     </html>
   )

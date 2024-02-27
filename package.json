@@ -46,6 +46,7 @@
     "react-instantsearch-hooks-web": "^6.29.0",
     "react-intersection-observer": "^9.3.4",
     "tailwindcss-radix": "^2.8.0",
+    "theme-change": "^2.5.0",
     "webpack": "^5"
   },
   "devDependencies": {

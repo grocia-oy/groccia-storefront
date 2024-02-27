@@ -8,8 +8,6 @@ type Props = {
 
 export default function AnnouncementBar({ announcements }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  console.log(announcements)
-  console.log(currentIndex)
 
   useEffect(() => {
     if (announcements) {
@@ -17,7 +15,7 @@ export default function AnnouncementBar({ announcements }: Props) {
         setCurrentIndex(
           (currentIndex) => (currentIndex + 1) % announcements?.length
         )
-      }, 10000) // Change announcement every 5 seconds
+      }, 10000)
 
       return () => clearInterval(interval)
     }
