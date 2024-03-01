@@ -4,16 +4,16 @@ import { StrapiMediaComponent } from "types/strapi"
 import { getStrapiURL } from "@lib/data/content"
 
 interface HeroProps {
-  carousel: {
+  carousel?: {
     title: string
     description: string
     buttons: {
       id: number
       url: string
-      openInNewTab: boolean
+      target: string
       text: string
       type: "primary" | "secondary"
-    }
+    }[]
     image: StrapiMediaComponent
   }[]
 }
