@@ -1,29 +1,25 @@
 // Base type for all Strapi API type
-export interface StrapiBaseType<T> {
-  data: {
-    id: number
-    attributes: T & {
-      createdAt: string
-      updatedAt: string
-      publishedAt?: string
-      locale?: string
-    }
-  }
+export interface StrapiBaseType {
+  id: number
+  createdAt: string
+  updatedAt: string
+  publishedAt?: string
+  locale?: string
   meta?: Record<string, string>
 }
 type StrapiMediaFormat = {
-  ext: string;
-  url: string;
-  hash: string;
-  mime: string;
-  name: string;
-  path: string;
-  size: number;
-  width: number;
-  height: number;
-};
+  ext: string
+  url: string
+  hash: string
+  mime: string
+  name: string
+  path: string
+  size: number
+  width: number
+  height: number
+}
 
-export type StrapiMediaComponent = StrapiBaseType<{
+export type StrapiMediaComponent = StrapiBaseType & {
   name: string
   alternativeText: string
   caption: string
@@ -41,4 +37,4 @@ export type StrapiMediaComponent = StrapiBaseType<{
   previewUrl: string
   provider: string
   provider_metadata: null
-}>
+}
