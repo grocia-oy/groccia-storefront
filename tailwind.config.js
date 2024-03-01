@@ -22,13 +22,14 @@ module.exports = {
         raleway: ["var(--font-raleway)", ...defaultTheme.fontFamily.serif],
         roboto: ["var(--font-roboto)", ...defaultTheme.fontFamily.serif],
         gotag: ["var(--font-gotag)", ...defaultTheme.fontFamily.sans],
+        poppins: ["var(--font-poppins)", ...defaultTheme.fontFamily.serif],
       },
       colors: {
-        primary: "#000000",
-        secondary: "#ffffff",
-        accent: "",
-        neutral: "",
-        "base-100": "",
+        primary: "#00524B",
+        secondary: "#C5C2AA",
+        accent: "#785469",
+        neutral: "#F1F1F1",
+        "input-placeholder": "#555555",
         info: "",
         success: "",
         warning: "",
@@ -54,7 +55,16 @@ module.exports = {
     },
   },
   daisyui: {
-    themes: {},
+    themes: [
+      {
+        grocciaLight: {
+          primary: "#00524B",
+          secondary: "#C5C2AA",
+          accent: "#785469",
+          neutral: "#F1F1F1",
+        },
+      },
+    ],
   },
   plugins: [require("tailwindcss-radix")(), require("daisyui")],
 }
