@@ -3,6 +3,7 @@ import { Suspense, useRef } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import SearchBar from "@modules/search/components/searchbar"
 import { ShoppingBagIcon } from "@heroicons/react/24/outline"
+import PostcodeButtonModal from "@modules/layout/components/postcode-button-modal"
 
 export default function Nav() {
   const postalCodeModalRef = useRef<HTMLDialogElement>(null)
@@ -24,6 +25,7 @@ export default function Nav() {
           </div>
           <div className="flex flex-1 basis-0 justify-end">
             <div className="flex items-center space-x-5 font-poppins">
+              <PostcodeButtonModal modalRef={postalCodeModalRef} />
               <button>Login / Sign up</button>
               <Suspense>
                 <button>
