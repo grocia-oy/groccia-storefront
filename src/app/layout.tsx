@@ -19,17 +19,6 @@ const raleway = localFont({
   variable: "--font-raleway",
 })
 
-const roboto = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Roboto/Roboto400.ttf",
-      weight: "400",
-    },
-    { path: "../../public/fonts/Roboto/Roboto500.ttf", weight: "500" },
-  ],
-  variable: "--font-roboto",
-})
-
 const poppins = localFont({
   src: [
     {
