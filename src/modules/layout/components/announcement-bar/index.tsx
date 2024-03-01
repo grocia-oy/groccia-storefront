@@ -1,39 +1,31 @@
 "use client"
 import React, { Fragment, useEffect, useState } from "react"
 import Link from "next/link"
+import { getGlobal } from "@lib/data/content"
+import { useParams } from "next/navigation"
 
-type Props = {
-  announcements: { url: string; text: string; openInNewTab: boolean }[]
-}
+type Props = {}
 
-export default function AnnouncementBar({ announcements }: Props) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export default function AnnouncementBar({}: Props) {
+  const params = useParams<{ countryCode: string }>()
+  const [announcementBar, setAnnouncementBar] = useState<any>()
 
   useEffect(() => {
-    if (announcements) {
-      const interval = setInterval(() => {
-        setCurrentIndex(
-          (currentIndex) => (currentIndex + 1) % announcements?.length
-        )
-      }, 10000)
+    getGlobal(params.countryCode, ["announcement_bar"]).then((content) =>
+      setAnnouncementBar(content?.data?.announcement_bar)
+    )
+  }, [params.countryCode])
 
-      return () => clearInterval(interval)
-    }
-  }, [announcements, announcements?.length])
-
-  if (!announcements || announcements.length === 0) {
+  if (!announcementBar) {
     return <Fragment />
   }
 
   return (
     <div className="flex items-center justify-center w-full bg-primary h-9">
       <div className="container inline-flex justify-center">
-        <Link
-          href={announcements[currentIndex].url || "/"}
-          target={announcements[currentIndex].openInNewTab ? "_blank" : ""}
-        >
-          <h3 className="font-medium text-white font-roboto text-lg">
-            {announcements[currentIndex].text}
+        <Link href={announcementBar.url || "/"} target={announcementBar.target}>
+          <h3 className="font-medium text-white font-poppins">
+            {announcementBar.text}
           </h3>
         </Link>
       </div>
