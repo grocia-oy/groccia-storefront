@@ -33,6 +33,10 @@ export const paymentInfoMap: Record<
   // Add more payment providers here
 }
 
+export const LocalStorageKey = {
+  POSTCODE: "postcode",
+} as const
+
 // Add currencies that don't need to be divided by 100
 export const noDivisionCurrencies = [
   "krw",
