@@ -59,32 +59,31 @@ async function fetchStrapiAPI(
   }
 }
 
-async function getGlobal(locale: string) {
+async function getGlobal(
+  locale: string,
+  populate: string[] = ["favicon", "announcement_bar"]
+) {
   const accessToken = getAPIAccessToken()
 
   // Prepare options for the API Request
   const options = { headers: generateBaseHeaders(accessToken) }
   const urlQsParams = {
-    populate: [
-      "favicon",
-      "navbar.logo.img",
-      "announcement_bar",
-      "footer.socialLinks",
-      "footer.legalLinks",
-      "footer.logo.img",
-    ],
+    populate,
     locale,
   }
 
   return await fetchStrapiAPI(STRAPI_ENDPOINTS.GLOBAL, urlQsParams, options)
 }
 
-async function getHomePage(locale: string) {
+async function getHomePage(
+  locale: string,
+  populate: string[] = ["hero_carousel.image", "hero_carousel.buttons", "seo"]
+) {
   const accessToken = getAPIAccessToken()
 
   const options = { headers: generateBaseHeaders(accessToken) }
   const urlQsParams = {
-    populate: ["hero_carousel.image", "hero_carousel.buttons"],
+    populate,
     locale,
   }
   return await fetchStrapiAPI(STRAPI_ENDPOINTS.HOMEPAGE, urlQsParams, options)
