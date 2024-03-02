@@ -1,19 +1,19 @@
-import React from "react"
-import AnnouncementBar from "@modules/layout/components/announcement-bar"
-import Footer from "@modules/layout/templates/footer"
-import Nav from "@modules/layout/templates/nav"
+import React from 'react';
+import AnnouncementBar from '@modules/layout/components/announcement-bar';
+import Footer from '@modules/layout/templates/footer';
+import Nav from '@modules/layout/templates/nav';
 
 const Layout: React.FC<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }> = (props) => {
   return (
     <div>
-      <AnnouncementBar/>
+      <AnnouncementBar />
       <Nav />
       <main className="relative">{props.children}</main>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
