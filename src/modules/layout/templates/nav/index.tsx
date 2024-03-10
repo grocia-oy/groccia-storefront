@@ -44,7 +44,7 @@ export default function Nav({}: Props) {
                 <span className="mr-1">
                   <User className="w-5 h-5" />
                 </span>
-                <div className="hidden lg:block"> Login</div>
+                <div className="hidden lg:block">Login</div>
               </button>
               <Suspense>
                 <button>

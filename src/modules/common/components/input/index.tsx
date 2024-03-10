@@ -24,7 +24,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputRef = React.useRef<HTMLInputElement>(null);
     const [showPassword, setShowPassword] = useState(false);
     const [inputType, setInputType] = useState(type);
-    console.log(showPassword);
 
     useEffect(() => {
       if (type === 'password' && showPassword) {
