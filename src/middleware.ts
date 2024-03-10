@@ -1,72 +1,107 @@
-import { Region } from "@medusajs/medusa"
-import { NextRequest, NextResponse } from "next/server"
+import { Region } from '@medusajs/medusa';
+import { NextRequest, NextResponse } from 'next/server';
+import Negotiator from 'negotiator';
+import { match as matchLocale } from '@formatjs/intl-localematcher';
+import { i18n } from '../i18-config';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
-const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
+const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL;
+const DEFAULT_LOCALE_ISO3 =
+  process.env.NEXT_PUBLIC_DEFAULT_LOCALE_ISO3 || 'fin';
+const DEFAULT_LOCALE_ISO2 = process.env.NEXT_PUBLIC_DEFAULT_LOCALE_ISO3 || 'fi';
 
-/**
- * Fetches regions from Medusa and sets the region cookie.
- * @param request
- * @param response
- */
-async function getCountryCode(
+type CountryISO3 = string;
+type AvailableLocalesMap = Map<CountryISO3, { iso_2: string }>;
+
+function findBestLocales(
   request: NextRequest,
-  regionMap: Map<string, Region>
+  availableLocales: AvailableLocalesMap
 ) {
   try {
-    let countryCode
+    let locale: string = DEFAULT_LOCALE_ISO3;
 
-    const vercelCountryCode = request.headers
-      .get("x-vercel-ip-country")
-      ?.toLowerCase()
+    const vercelDetectedLocale = request.headers
+      .get('x-vercel-ip-country')
+      ?.toLowerCase();
+    const availableLocalesArray = Array.from(
+      availableLocales,
+      ([name, value]) => ({ name, value })
+    );
+    const vercelDetectedLocaleISO3 = availableLocalesArray.find(
+      (element) => element.value.iso_2 === vercelDetectedLocale
+    )?.name;
 
-    const urlCountryCode = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
+    const splittedPathname = request.nextUrl.pathname.split('/');
+    const localeFromPathname = splittedPathname[2];
 
-    if (urlCountryCode && regionMap.has(urlCountryCode)) {
-      countryCode = urlCountryCode
-    } else if (vercelCountryCode && regionMap.has(vercelCountryCode)) {
-      countryCode = vercelCountryCode
-    } else if (regionMap.has(DEFAULT_REGION)) {
-      countryCode = DEFAULT_REGION
-    } else if (regionMap.keys().next().value) {
-      countryCode = regionMap.keys().next().value
+    if (localeFromPathname && availableLocales.has(localeFromPathname)) {
+      locale = localeFromPathname;
+    } else if (vercelDetectedLocale && vercelDetectedLocaleISO3) {
+      locale = vercelDetectedLocaleISO3;
+    } else if (availableLocales.has(DEFAULT_LOCALE_ISO2)) {
+      locale = DEFAULT_LOCALE_ISO3;
+    } else if (availableLocales.keys().next().value) {
+      locale = availableLocales.keys().next().value;
     }
 
-    return countryCode
+    return locale;
   } catch (error) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === 'development') {
       console.error(
-        "Middleware.ts: Error getting the country code. Did you set up regions in your Medusa Admin and define a NEXT_PUBLIC_MEDUSA_BACKEND_URL environment variable?"
-      )
+        'Middleware.ts: Error getting the locale, check the NEXT_PUBLIC_MEDUSA_BACKEND_URL'
+      );
     }
   }
 }
 
-async function listCountries() {
+function findBestLang(request: NextRequest) {
+  const { availableLanguages, defaultLanguage } = i18n;
+
+  const negotiatorHeaders: Record<string, string> = {};
+  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+
+  const langFromPathname = request.nextUrl.pathname.split('/')[1];
+  if (availableLanguages.includes(langFromPathname)) {
+    return langFromPathname;
+  }
+
+  let languages: string[] = new Negotiator({
+    headers: negotiatorHeaders,
+  }).languages();
+
+  console.log(languages);
+
+  const matchedLocale = matchLocale(
+    languages,
+    availableLanguages,
+    defaultLanguage
+  );
+  console.log(matchedLocale);
+
+  return matchedLocale;
+}
+
+async function getAvailableLocales() {
   try {
-    // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
     const { regions } = await fetch(`${BACKEND_URL}/store/regions`, {
       next: {
         revalidate: 3600,
-        tags: ["regions"],
+        tags: ['regions'],
       },
-    }).then((res) => res.json())
-
-    // Create a map of country codes to regions.
-    const regionMap = new Map<string, Region>()
+    }).then((res) => res.json());
+    const localeMap: AvailableLocalesMap = new Map();
 
     regions.forEach((region: Region) => {
-      region.countries.forEach((c) => {
-        regionMap.set(c.iso_2, region)
-      })
-    })
+      region.countries.forEach((country) => {
+        localeMap.set(country.iso_3, { iso_2: country.iso_2 });
+      });
+    });
 
-    return regionMap
+    return localeMap;
   } catch (error) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === 'development') {
       console.error(
-        "Middleware.ts: Error fetching regions. Did you set up regions in your Medusa Admin and define a NEXT_PUBLIC_MEDUSA_BACKEND_URL environment variable?"
-      )
+        'Middleware.ts: Error fetching regions and locales. Did you set up regions in your Medusa Admin and define a NEXT_PUBLIC_MEDUSA_BACKEND_URL environment variable?'
+      );
     }
   }
 }
@@ -75,43 +110,52 @@ async function listCountries() {
  * Middleware to handle region selection and onboarding status.
  */
 export async function middleware(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-  const isOnboarding = searchParams.get("onboarding") === "true"
-  const onboardingCookie = request.cookies.get("_medusa_onboarding")
+  const splittedPathname = request.nextUrl.pathname.split('/');
+  const availableLocales = await getAvailableLocales();
 
-  const regionMap = await listCountries()
+  const locale = availableLocales && findBestLocales(request, availableLocales);
 
-  const countryCode = regionMap && (await getCountryCode(request, regionMap))
+  const urlHasLocale = splittedPathname[2]
+    ? locale && splittedPathname[2].includes(locale)
+    : false;
 
-  const urlHasCountryCode =
-    countryCode && request.nextUrl.pathname.split("/")[1].includes(countryCode)
+  const lang = findBestLang(request);
+  const urlHasLang = lang && splittedPathname[1].includes(lang);
 
-  // check if one of the country codes is in the url
-  if (urlHasCountryCode && (!isOnboarding || onboardingCookie)) {
-    return NextResponse.next()
+  if (urlHasLang && urlHasLocale) {
+    return NextResponse.next();
   }
 
-  let response = NextResponse.redirect(request.nextUrl, 307)
+  console.log(urlHasLang, urlHasLocale);
 
-  // If no country code is set, we redirect to the relevant region.
-  if (!urlHasCountryCode && countryCode) {
+  let response = NextResponse.error();
+
+  if (urlHasLang && !urlHasLocale && locale) {
+    const redirectPath = request.nextUrl.pathname.replace(
+      `/${lang}`,
+      `${lang}/${locale}`
+    );
+
+    console.log(redirectPath);
+    response = NextResponse.redirect(
+      `${request.nextUrl.origin}/${redirectPath}`
+    );
+  }
+
+  if (!urlHasLang && lang && !urlHasLocale && locale) {
     const redirectPath =
-      request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname
+      request.nextUrl.pathname === '/'
+        ? `${lang}/${locale}`
+        : `${lang}/${locale}/${request.nextUrl.pathname}`;
 
     response = NextResponse.redirect(
-      `${request.nextUrl.origin}/${countryCode}${redirectPath}`,
-      307
-    )
+      `${request.nextUrl.origin}/${redirectPath}`
+    );
   }
 
-  // Set a cookie to indicate that we're onboarding. This is used to show the onboarding flow.
-  if (isOnboarding) {
-    response.cookies.set("_medusa_onboarding", "true", { maxAge: 60 * 60 * 24 })
-  }
-
-  return response
+  return response;
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|favicon.ico|images).*)"],
-}
+  matcher: ['/((?!api|_next/static|favicon.ico|images).*)'],
+};
