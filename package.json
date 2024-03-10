@@ -21,6 +21,7 @@
     "@types/react": "17.0.40"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.4",
     "@headlessui/react": "^1.6.1",
     "@heroicons/react": "^2.1.1",
     "@hookform/error-message": "^2.0.0",
@@ -40,6 +41,7 @@
     "framer-motion": "^11.0.8",
     "lodash": "^4.17.21",
     "medusa-react": "^9.0.0",
+    "negotiator": "^0.6.3",
     "next": "^14.0.0",
     "qs": "^6.11.2",
     "react": "^18.2.0",
@@ -58,6 +60,7 @@
     "@medusajs/medusa": "^1.18.0",
     "@medusajs/ui-preset": "^1.0.2",
     "@types/lodash": "^4.14.195",
+    "@types/negotiator": "^0.6.3",
     "@types/node": "17.0.21",
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.18",
