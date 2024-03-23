@@ -63,11 +63,10 @@ export const PrevButton: React.FC<PropType> = (props) => {
 
   return (
     <button
-      className="flex items-center justify-center w-16 h-16 cursor-pointer z-1"
       type="button"
       {...restProps}
     >
-      <ChevronLeftIcon className="w-6 h-6 text-white" />
+      <ChevronLeftIcon className="w-6 h-6" />
       {children}
     </button>
   )
@@ -78,11 +77,10 @@ export const NextButton: React.FC<PropType> = (props) => {
 
   return (
     <button
-      className="flex items-center justify-center w-16 h-16 cursor-pointer z-1"
       type="button"
       {...restProps}
     >
-      <ChevronRightIcon className="w-6 h-6 text-white" />
+      <ChevronRightIcon className="w-6 h-6" />
       {children}
     </button>
   )
