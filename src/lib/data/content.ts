@@ -14,7 +14,11 @@ export async function getHomepageSeo(lang: string) {
 
 export async function getHomePageFull(lang: string) {
   return cmsClient
-    .getHomepage(lang, ['hero_carousel.image', 'hero_carousel.buttons'])
+    .getHomepage(lang, [
+      'hero_carousel.image',
+      'hero_carousel.buttons',
+      'product_rails',
+    ])
     .catch(() => {
       console.error('Cannot get homepage contents');
     });
