@@ -1,4 +1,4 @@
-import { getProductsListWithSort } from "@lib/data"
+import { getProductsListWithSort } from "@lib/data/ecommerce"
 import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
