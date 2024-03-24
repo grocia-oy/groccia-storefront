@@ -20,7 +20,7 @@ const SearchBar: React.FC = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <div className="absolute right-0 h-full">
-        <button type='submit' className="h-full px-3 bg-primary-700 text-sm text-white rounded-2xl">
+        <button type='submit' className="h-full px-5 bg-primary-600 text-sm font-bold text-white rounded-2xl">
           Search
         </button>
       </div>

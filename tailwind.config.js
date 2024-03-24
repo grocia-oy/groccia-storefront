@@ -1,4 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   presets: [require('@medusajs/ui-preset')],
   content: [
@@ -29,7 +32,7 @@ module.exports = {
           default: '#00524B',
           500: '#00524B',
           600: '#003D36',
-          700: '#002924'
+          700: '#002924',
         },
         secondary: '#C5C2AA',
         accent: '#785469',
@@ -39,6 +42,8 @@ module.exports = {
         success: '',
         warning: '',
         error: '',
+        'price-default': '#21221F',
+        'price-sale': '#EE4266',
       },
       borderRadius: {
         none: '0px',
@@ -56,6 +61,10 @@ module.exports = {
       },
       flex: {
         carousel: '0 0 100%',
+        'carousel-slide': '0 0 50%',
+        'carousel-slide-sm': '0 0 calc(100%/3)',
+        'carousel-slide-lg': '0 0 calc(100%/5)',
+        'carousel-slide-xl': '0 0 calc(100%/6)',
       },
     },
   },
@@ -71,5 +80,24 @@ module.exports = {
       },
     ],
   },
-  plugins: [require('tailwindcss-radix')(), require('daisyui')],
+  plugins: [
+    require('tailwindcss-radix')(),
+    require('daisyui'),
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        '.backface-visible': {
+          'backface-visibility': 'visible',
+          '-moz-backface-visibility': 'visible',
+          '-webkit-backface-visibility': 'visible',
+          '-ms-backface-visibility': 'visible',
+        },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+          '-moz-backface-visibility': 'hidden',
+          '-webkit-backface-visibility': 'hidden',
+          '-ms-backface-visibility': 'hidden',
+        },
+      });
+    }),
+  ],
 };

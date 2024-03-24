@@ -6,7 +6,7 @@ import {
   createPaymentSessions,
   getCustomer,
   listShippingMethods,
-} from "@lib/data"
+} from "@lib/data/ecommerce"
 import { cookies } from "next/headers"
 import { CartWithCheckoutStep } from "types/global"
 import { getCheckoutStep } from "@lib/util/get-checkout-step"

@@ -1,17 +1,17 @@
 "use server"
 
 import { revalidateTag } from "next/cache"
-import { cookies, headers } from "next/headers"
+import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
-import { listRegions, updateCart } from "@lib/data"
+import { listRegions, updateCart } from "@lib/data/ecommerce"
 
 import { Region } from "@medusajs/medusa"
 
 /**
  * Retrieves the region based on the countryCode path param
  */
-export async function getRegion(countryCode: string) {
+export async function getRegion(iso3Locale: string) {
   try {
     const regions = await listRegions()
 
@@ -23,13 +23,13 @@ export async function getRegion(countryCode: string) {
 
     regions.forEach((region) => {
       region.countries.forEach((c) => {
-        regionMap.set(c.iso_2, region)
+        regionMap.set(c.iso_3, region)
       })
     })
 
-    const region = countryCode
-      ? regionMap.get(countryCode)
-      : regionMap.get("us")
+    const region = iso3Locale
+      ? regionMap.get(iso3Locale)
+      : regionMap.get('fin');
 
     return region
   } catch (e: any) {
