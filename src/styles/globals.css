@@ -19,7 +19,7 @@
 
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
-    @apply -translate-y-2 text-xsmall-regular;
+    @apply -translate-y-2 text-xxs-normal;
   }
 
   input:focus ~ label {
@@ -41,6 +41,11 @@
     transition: background-color 5000s ease-in-out 0s;
   }
 
+  input[type=password]::-ms-reveal,
+  input[type=password]::-ms-clear {
+    display: none;
+  }
+
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-results-button,
@@ -54,59 +59,27 @@
     @apply max-w-[1440px] w-full mx-auto lg:px-12 xl:px-16 md:px-8 px-4;
   }
 
-  .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+  .text-xxs-normal {
+    @apply text-[0.7rem] leading-5 font-normal;
   }
 
-  .text-xsmall-regular {
-    @apply text-[10px] leading-4 font-normal;
-  }
-
-  .text-small-regular {
+  .text-xs-normal {
     @apply text-xs leading-5 font-normal;
   }
 
-  .text-small-semi {
-    @apply text-xs leading-5 font-semibold;
+  .text-small-medium {
+    @apply text-sm leading-5 font-medium
   }
 
-  .text-base-regular {
-    @apply text-sm leading-6 font-normal;
+  .text-small-normal {
+    @apply text-sm leading-5 font-normal
   }
 
-  .text-base-semi {
-    @apply text-sm leading-6 font-semibold;
-  }
-
-  .text-large-regular {
+  .text-base-normal {
     @apply text-base leading-6 font-normal;
   }
 
-  .text-large-semi {
-    @apply text-base leading-6 font-semibold;
-  }
-
-  .text-xl-regular {
-    @apply text-2xl leading-[36px] font-normal;
-  }
-
-  .text-xl-semi {
-    @apply text-2xl leading-[36px] font-semibold;
-  }
-
-  .text-2xl-regular {
-    @apply text-[30px] leading-[48px] font-normal;
-  }
-
-  .text-2xl-semi {
-    @apply text-[30px] leading-[48px] font-semibold;
-  }
-
-  .text-3xl-regular {
-    @apply text-[32px] leading-[44px] font-normal;
-  }
-
-  .text-3xl-semi {
-    @apply text-[32px] leading-[44px] font-semibold;
+  .text-base-medium {
+    @apply text-base leading-6 font-medium;
   }
 }

@@ -9,9 +9,7 @@ export const metadata: Metadata = {
 
 export default async function PageLayout(props: {
   children: React.ReactNode
-  params: { countryCode: string }
 }) {
-
   return (
     <>
       <Layout>{props.children}</Layout>

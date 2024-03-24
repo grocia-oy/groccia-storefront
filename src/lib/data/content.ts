@@ -1,93 +1,21 @@
-import qs from "qs"
+import { cmsClient } from '@lib/config';
 
-const STRAPI_ENDPOINTS = {
-  GLOBAL: "/global",
-  HOMEPAGE: "/homepage",
+export async function getGlobalAnnouncementBar(lang: string) {
+  return cmsClient.getGlobal(lang, ['announcement_bar']).catch(() => {
+    console.error('Cannot get global announcement_bar content');
+  });
 }
 
-export function getStrapiURL(path = "") {
-  return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${path}`
+export async function getHomepageSeo(lang: string) {
+  return cmsClient.getHomepage(lang, ['seo']).catch(() => {
+    console.error('Cannot get homepage SEO content');
+  });
 }
 
-function getAPIAccessToken() {
-  const accessToken = process.env.NEXT_PUBLIC_STRAPI_ACCESS_TOKEN
-
-  if (!accessToken) {
-    throw new Error("Cannot find Strapi Access Token in environment variables")
-  }
-
-  return accessToken
+export async function getHomePageFull(lang: string) {
+  return cmsClient
+    .getHomepage(lang, ['hero_carousel.image', 'hero_carousel.buttons'])
+    .catch(() => {
+      console.error('Cannot get homepage contents');
+    });
 }
-
-function generateBaseHeaders(
-  accessToken: string,
-  additionalHeaders?: Record<string, any>
-) {
-  return {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${accessToken}`,
-    ...additionalHeaders,
-  }
-}
-
-async function fetchStrapiAPI(
-  path: string,
-  urlParamsObject = {},
-  options = {}
-) {
-  try {
-    // Merge default and user options
-    const mergedOptions = {
-      next: { revalidate: 60 },
-      ...options,
-    }
-
-    // Build request URL
-    const queryString = qs.stringify(urlParamsObject)
-    const requestUrl = `${getStrapiURL(
-      `/api${path}${queryString ? `?${queryString}` : ""}`
-    )}`
-
-    // Trigger API call
-    const response = await fetch(requestUrl, mergedOptions)
-
-    const data = await response.json()
-
-    return data
-  } catch (error) {
-    throw new Error(`Cannot making request to the server: ${error}`)
-  }
-}
-
-async function getGlobal(locale: string) {
-  const accessToken = getAPIAccessToken()
-
-  // Prepare options for the API Request
-  const options = { headers: generateBaseHeaders(accessToken) }
-  const urlQsParams = {
-    populate: [
-      "favicon",
-      "navbar.logo.img",
-      "announcement_bar",
-      "footer.socialLinks",
-      "footer.legalLinks",
-      "footer.logo.img",
-    ],
-    locale,
-  }
-
-  return await fetchStrapiAPI(STRAPI_ENDPOINTS.GLOBAL, urlQsParams, options)
-}
-
-async function getHomePage(locale: string) {
-  const accessToken = getAPIAccessToken()
-
-  const options = { headers: generateBaseHeaders(accessToken) }
-  const urlQsParams = {
-    populate: ["hero_carousel.image", "hero_carousel.buttons"],
-    locale,
-  }
-  return await fetchStrapiAPI(STRAPI_ENDPOINTS.HOMEPAGE, urlQsParams, options)
-}
-
-export { getGlobal, getHomePage }
