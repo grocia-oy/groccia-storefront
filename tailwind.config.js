@@ -35,6 +35,7 @@ module.exports = {
           700: '#002924',
         },
         secondary: '#C5C2AA',
+        footer: '#e0decc',
         accent: '#785469',
         neutral: '#F1F1F1',
         'input-placeholder': '#555555',

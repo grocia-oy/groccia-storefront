@@ -14,7 +14,7 @@ export default async function Footer({ lang, locale }: Props) {
 
   return (
     <>
-      <footer className="mt-5 w-full footer p-10 bg-secondary">
+      <footer className="mt-5 w-full footer p-10 bg-footer">
         <nav>
           <h6 className="mb-2 font-bold uppercase text-primary-default">
             {dict?.layout.footer.headings.aboutCompany}
@@ -76,7 +76,7 @@ export default async function Footer({ lang, locale }: Props) {
             )}
         </nav>
       </footer>
-      <footer className="footer px-10 py-4 border-t-2 border-primary-600 bg-secondary">
+      <footer className="footer px-10 py-4 border-t-2 border-primary-600 bg-footer">
         <aside className="items-center grid-flow-col">
           <p>
             <span className="font-gotag text-2xl text-primary-default">
