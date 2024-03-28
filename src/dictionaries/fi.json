@@ -1,0 +1,11 @@
+{
+  "layout": {
+    "footer": {
+      "headings": {
+        "aboutCompany": "About",
+        "storeList": "Shop by store",
+        "policyLinks": "Policy"
+      }
+    }
+  }
+}

@@ -8,11 +8,14 @@ export const metadata: Metadata = {
 }
 
 export default async function PageLayout(props: {
-  children: React.ReactNode
+  children: React.ReactNode;
+  params: { lang: string; locale: string };
 }) {
   return (
     <>
-      <Layout>{props.children}</Layout>
+      <Layout lang={props.params.lang} locale={props.params.locale}>
+        {props.children}
+      </Layout>
     </>
-  )
+  );
 }

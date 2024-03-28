@@ -1,0 +1,11 @@
+{
+  "layout": {
+    "footer": {
+      "headings": {
+        "aboutCompany": "Về chúng tôi",
+        "storeList": "Chọn cửa hàng cụ thể",
+        "policyLinks": "Chính sách"
+      }
+    }
+  }
+}
