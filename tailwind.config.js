@@ -46,6 +46,15 @@ module.exports = {
         'price-default': '#21221F',
         'price-sale': '#EE4266',
       },
+      screens: {
+        '2xsmall': '320px',
+        xsmall: '512px',
+        small: '1024px',
+        medium: '1280px',
+        large: '1440px',
+        xlarge: '1680px',
+        '2xlarge': '1920px',
+      },
       borderRadius: {
         none: '0px',
         soft: '2px',
