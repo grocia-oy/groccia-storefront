@@ -10,6 +10,7 @@ import { notFound } from 'next/navigation';
 import ProductActionsWrapper from './product-actions-wrapper';
 import ProductTags from '../components/product-tags';
 import { Container } from '@medusajs/ui';
+import ProductDisplayWrapper from './Product-display-wrapper';
 
 type ProductTemplateProps = {
   product: PricedProduct;
@@ -30,20 +31,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
     <>
       <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative">
         <div className="block w-3/5 relative">
-          <div className="flex relative justify-end">
-            <ImageGallery images={product?.images || []} />
-            <Container className="p-0 w-auto overflow-hidden">
-              {product?.images && (
-                <Image
-                  src={product.images[0].url}
-                  className="relative bg-ui-bg-subtle"
-                  width={342}
-                  height={342}
-                  alt="Image"
-                />
-              )}
-            </Container>
-          </div>
+          <ProductDisplayWrapper product={product} />
         </div>
         <div className="w-2/5 flex flex-col relative mx-4">
           <div className="flex flex-col">
