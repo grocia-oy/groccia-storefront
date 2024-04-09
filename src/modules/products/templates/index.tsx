@@ -13,10 +13,10 @@ import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
 
 type ProductTemplateProps = {
-  product: PricedProduct
-  region: Region
-  countryCode: string
-}
+  product: PricedProduct;
+  region: Region;
+  countryCode: string;
+};
 
 const ProductTemplate: React.FC<ProductTemplateProps> = ({
   product,
@@ -24,7 +24,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   countryCode,
 }) => {
   if (!product || !product.id) {
-    return notFound()
+    return notFound();
   }
 
   return (
@@ -52,7 +52,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         </Suspense>
       </div>
     </>
-  )
-}
-
-export default ProductTemplate
+  );
+};
+export default ProductTemplate;
