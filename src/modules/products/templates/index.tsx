@@ -1,15 +1,12 @@
 import { Region } from '@medusajs/medusa';
 import { PricedProduct } from '@medusajs/medusa/dist/types/pricing';
 import React, { Suspense } from 'react';
-import Image from 'next/image';
 
-import ImageGallery from '@modules/products/components/image-gallery';
 import ProductActions from '@modules/products/components/product-actions';
 import ProductInfo from '@modules/products/templates/product-info';
 import { notFound } from 'next/navigation';
 import ProductActionsWrapper from './product-actions-wrapper';
 import ProductTags from '../components/product-tags';
-import { Container } from '@medusajs/ui';
 import ProductDisplayWrapper from './Product-display-wrapper';
 
 type ProductTemplateProps = {
