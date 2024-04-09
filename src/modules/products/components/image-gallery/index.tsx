@@ -13,12 +13,12 @@ const ImageGallery = ({
   setDisplayedImageIndex,
 }: ImageGalleryProps) => {
   return (
-    <div className="mr-2 flex flex-col gap-y-4 lg:mx-4">
+    <div className="mr-2 flex flex-col gap-y-2 lg:mx-4 lg:gap-y-4">
       {images.map((image, index) => {
         return (
           <Container
             key={image.id}
-            className="relative h-4 w-4 overflow-hidden border-2 border-transparent p-8 hover:border-2 hover:border-primary-500"
+            className="relative overflow-hidden border-2 border-transparent p-6 hover:border-2 hover:border-primary-500 lg:p-8"
             id={image.id}
             onMouseEnter={() => setDisplayedImageIndex(index)}
           >
