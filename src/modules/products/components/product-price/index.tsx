@@ -25,14 +25,14 @@ export default function ProductPrice({
   const selectedPrice = variant ? variantPrice : cheapestPrice;
 
   if (!selectedPrice) {
-    return <div className="block w-32 h-9 bg-gray-100 animate-pulse" />;
+    return <div className="block h-9 w-32 animate-pulse bg-gray-100" />;
   }
 
   return (
     <div className="flex flex-col text-ui-fg-base">
       <span
         className={clx('text-poppins', {
-          'text-ui-fg-interactive': selectedPrice.price_type === 'sale',
+          'text-poppins text-red-500': selectedPrice.price_type === 'sale',
         })}
       >
         {!variant && 'From '}
@@ -44,7 +44,7 @@ export default function ProductPrice({
             <span className="text-ui-fg-subtle">Original: </span>
             <span className="line-through">{selectedPrice.original_price}</span>
           </p>
-          <span className="text-ui-fg-interactive">
+          <span className="text-poppins text-red-500">
             -{selectedPrice.percentage_diff}%
           </span>
         </>
