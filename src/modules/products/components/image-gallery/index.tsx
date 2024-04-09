@@ -1,10 +1,10 @@
-import { Image as MedusaImage } from "@medusajs/medusa"
-import { Container } from "@medusajs/ui"
-import Image from "next/image"
+import { Image as MedusaImage } from '@medusajs/medusa';
+import { Container } from '@medusajs/ui';
+import Image from 'next/image';
 
 type ImageGalleryProps = {
-  images: MedusaImage[]
-}
+  images: MedusaImage[];
+};
 
 const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
@@ -25,15 +25,14 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
                 fill
                 sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
                 style={{
-                  objectFit: "cover",
+                objectFit: 'cover',
                 }}
               />
             </Container>
-          )
+        );
         })}
       </div>
-    </div>
-  )
-}
+  );
+};
 
-export default ImageGallery
+export default ImageGallery;

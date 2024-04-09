@@ -1,31 +1,31 @@
 import {
   PricedProduct,
   PricedVariant,
-} from "@medusajs/medusa/dist/types/pricing"
-import { clx } from "@medusajs/ui"
+} from '@medusajs/medusa/dist/types/pricing';
+import { clx } from '@medusajs/ui';
 
-import { getProductPrice } from "@lib/util/get-product-price"
-import { RegionInfo } from "types/global"
+import { getProductPrice } from '@lib/util/get-product-price';
+import { RegionInfo } from 'types/global';
 
 export default function ProductPrice({
   product,
   variant,
   region,
 }: {
-  product: PricedProduct
-  variant?: PricedVariant
-  region: RegionInfo
+  product: PricedProduct;
+  variant?: PricedVariant;
+  region: RegionInfo;
 }) {
   const { cheapestPrice, variantPrice } = getProductPrice({
     product,
     variantId: variant?.id,
     region,
-  })
+  });
 
-  const selectedPrice = variant ? variantPrice : cheapestPrice
+  const selectedPrice = variant ? variantPrice : cheapestPrice;
 
   if (!selectedPrice) {
-    return <div className="block w-32 h-9 bg-gray-100 animate-pulse" />
+    return <div className="block w-32 h-9 bg-gray-100 animate-pulse" />;
   }
 
   return (
@@ -35,10 +35,10 @@ export default function ProductPrice({
           "text-ui-fg-interactive": selectedPrice.price_type === "sale",
         })}
       >
-        {!variant && "From "}
+        {!variant && 'From '}
         {selectedPrice.calculated_price}
       </span>
-      {selectedPrice.price_type === "sale" && (
+      {selectedPrice.price_type === 'sale' && (
         <>
           <p>
             <span className="text-ui-fg-subtle">Original: </span>
@@ -50,5 +50,5 @@ export default function ProductPrice({
         </>
       )}
     </div>
-  )
+  );
 }
