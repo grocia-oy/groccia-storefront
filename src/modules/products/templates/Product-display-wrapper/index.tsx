@@ -19,7 +19,7 @@ const ProductDisplayWrapper = ({ product }: ProductDisplayWrapperProps) => {
   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
 
   return (
-    <div className="relative flex w-full 2xsmall:mb-2 small:mb-0 small:h-96 small:w-3/5">
+    <div className="relative mb-2 flex w-full lg:mb-0 lg:h-96 lg:w-3/5">
       <ImageGallery
         images={product?.images || []}
         setDisplayedImageIndex={setDisplayedImageIndex}

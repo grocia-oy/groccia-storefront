@@ -13,7 +13,7 @@ const ImageGallery = ({
   setDisplayedImageIndex,
 }: ImageGalleryProps) => {
   return (
-    <div className="flex flex-col gap-y-4 2xsmall:mr-2 small:mx-4">
+    <div className="mr-2 flex flex-col gap-y-4 lg:mx-4">
       {images.map((image, index) => {
         return (
           <Container
