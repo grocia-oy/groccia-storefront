@@ -4,6 +4,7 @@ import { PricedProduct } from '@medusajs/medusa/dist/types/pricing';
 import { Container } from '@medusajs/ui';
 import ImageGallery from '@modules/products/components/image-gallery';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { useState } from 'react';
 
 type ProductDisplayWrapperProps = {
@@ -11,6 +12,10 @@ type ProductDisplayWrapperProps = {
 };
 
 const ProductDisplayWrapper = ({ product }: ProductDisplayWrapperProps) => {
+  if (product.images?.length === 0) {
+    return notFound();
+  }
+
   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
 
   return (
