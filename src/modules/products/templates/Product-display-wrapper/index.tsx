@@ -14,12 +14,12 @@ const ProductDisplayWrapper = ({ product }: ProductDisplayWrapperProps) => {
   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
 
   return (
-    <div className="flex relative justify-end">
+    <div className="relative flex w-full 2xsmall:mb-2 small:mb-0 small:h-96 small:w-3/5">
       <ImageGallery
         images={product?.images || []}
         setDisplayedImageIndex={setDisplayedImageIndex}
       />
-      <Container className="p-0 w-[342px] h-[342px] overflow-hidden relative">
+      <Container className="relative overflow-hidden">
         {product?.images && (
           <Image
             src={product.images[displayedImageIndex].url}
