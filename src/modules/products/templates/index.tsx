@@ -28,12 +28,10 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
   }
 
   return (
-    <>
-      <div className="content-container flex flex-col small:flex-row small:items-start py-6 relative">
-        <div className="block w-3/5 relative">
-          <ProductDisplayWrapper product={product} />
-        </div>
-        <div className="w-2/5 flex flex-col relative mx-4">
+    <div>
+      <div className="content-container relative flex flex-col py-6 small:flex-row">
+        <ProductDisplayWrapper product={product} />
+        <div className="relative flex flex-col small:mx-4 small:w-2/5 ">
           <div className="flex flex-col">
             <ProductInfo product={product} />
           </div>
@@ -47,7 +45,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           <ProductTags product={product} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default ProductTemplate;
