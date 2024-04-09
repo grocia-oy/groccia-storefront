@@ -26,11 +26,8 @@ const ImageGallery = ({
               src={image.url}
               priority={index <= 2 ? true : false}
               alt={`Product image ${index + 1}`}
+              className="object-contain"
               fill
-              sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-              style={{
-                objectFit: 'contain',
-              }}
             />
           </Container>
         );

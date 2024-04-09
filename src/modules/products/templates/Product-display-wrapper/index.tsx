@@ -27,12 +27,9 @@ const ProductDisplayWrapper = ({ product }: ProductDisplayWrapperProps) => {
                 product.images[displayedImageIndex]?.url ||
                 '/images/fallback.png'
               }
-              className="relative bg-ui-bg-subtle"
+              className="relative bg-ui-bg-subtle object-contain"
               fill
-              alt="Image"
-              style={{
-                objectFit: 'contain',
-              }}
+              alt="Fallback image"
             />
           )}
         </Container>
