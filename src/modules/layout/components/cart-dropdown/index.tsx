@@ -113,11 +113,11 @@ const CartDropdown = ({
                       >
                         <div className="grid grid-cols-[72px_1fr] hover:bg-gray-200 rounded-md shadow-md">
                           <Thumbnail thumbnail={item.thumbnail} size="square" />
-                          <div className="flex flex-row overflow-ellipsis whitespace-nowrap items-center text-md mx-2">
-                            <div className="flex-grow overflow-hidden text-ellipsis">
-                              {item.title} | {item.variant.title}
+                          <div className="flex flex-row whitespace-nowrap items-center text-md mx-2 justify-between">
+                            <div className="max-w-[240px] overflow-hidden text-ellipsis">
+                              {item.title}
                             </div>
-                            <div className="justify-self-end ml-auto">
+                            <div className="max-w-[45px] overflow-hidden text-ellipsis">
                               x{item.quantity}
                             </div>
                           </div>
