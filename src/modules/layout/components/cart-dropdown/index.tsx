@@ -108,12 +108,10 @@ const CartDropdown = ({
                     })
                     .map((item) => (
                       <LocalizedClientLink
+                        key={item.id}
                         href={`/products/${item.variant.product.handle}`}
                       >
-                        <div
-                          className="grid grid-cols-[72px_1fr] hover:bg-gray-200 rounded-md shadow-md"
-                          key={item.id}
-                        >
+                        <div className="grid grid-cols-[72px_1fr] hover:bg-gray-200 rounded-md shadow-md">
                           <Thumbnail thumbnail={item.thumbnail} size="square" />
                           <div className="flex flex-row overflow-ellipsis whitespace-nowrap items-center text-md mx-2">
                             <div className="flex-grow overflow-hidden text-ellipsis">
