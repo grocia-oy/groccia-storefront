@@ -98,11 +98,15 @@ export default async function Home({
   return (
     <>
       <Hero carousel={homepage?.data?.hero_carousel} />
-      {collectionHandles.map((handle)=>{
+      {collectionHandles.map((handle) => {
         const collection = collectionsMap.get(handle);
         return (
           <li className="list-none" key={collection.id}>
-            <ProductRail collection={collection} region={region} />
+            <ProductRail
+              collection={collection}
+              region={region}
+              countryCode={locale}
+            />
           </li>
         );
       })}

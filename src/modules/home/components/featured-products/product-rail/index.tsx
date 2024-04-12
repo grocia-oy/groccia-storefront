@@ -8,9 +8,11 @@ import { ProductCollectionWithPreviews } from 'types/global';
 export default function ProductRail({
   collection,
   region,
+  countryCode,
 }: {
   collection: ProductCollectionWithPreviews;
   region: Region;
+  countryCode: string;
 }) {
   const { products } = collection;
 
@@ -21,7 +23,9 @@ export default function ProductRail({
   return (
     <div className="content-container mt-6">
       <div className="flex justify-between mb-4 ">
-        <h2 className="font-raleway font-bold text-xl text-primary-default">{collection.title}</h2>
+        <h2 className="font-raleway font-bold text-xl text-primary-default">
+          {collection.title}
+        </h2>
         <InteractiveLink href={`/collections/${collection.handle}`}>
           View all
         </InteractiveLink>
@@ -38,6 +42,7 @@ export default function ProductRail({
                 productPreview={product}
                 region={region}
                 isFeatured
+                countryCode={countryCode}
               />
             </div>
           ))}
