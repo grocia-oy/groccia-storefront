@@ -11,7 +11,6 @@ type Props = {
 
 async function FlyoutNav({ lang, locale }: Props) {
   const content = (await getFlyoutNav(lang))?.data?.flyout_nav;
-  console.log(JSON.stringify(content, null, 2));
 
   return (
     <header className="hidden md:block">
