@@ -3,7 +3,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import { Cart } from '@medusajs/medusa';
 import { Button } from '@medusajs/ui';
-import { useParams, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Fragment, useEffect, useRef, useState } from 'react';
 
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
@@ -19,8 +19,6 @@ const CartDropdown = ({
     undefined
   );
   const [cartDropdownOpen, setCartDropdownOpen] = useState(false);
-
-  const { countryCode } = useParams();
 
   const open = () => setCartDropdownOpen(true);
   const close = () => setCartDropdownOpen(false);
