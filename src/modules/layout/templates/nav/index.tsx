@@ -14,7 +14,7 @@ export default function Nav({}: Props) {
   const [sideBarOpen, setSideBarOpen] = useState<boolean>(false);
 
   return (
-    <header className="relative h-20 bg-white border-b">
+    <header className="relative h-20 bg-white">
       <nav className="content-container flex items-center justify-between h-full space-x-6">
         <div className="flex-1 lg:hidden">
           <button

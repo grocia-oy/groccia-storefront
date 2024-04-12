@@ -14,21 +14,21 @@ async function FlyoutNav({ lang, locale }: Props) {
 
   return (
     <header className="hidden md:block">
-      <nav className="content-container bg-white">
+      <nav className="content-container bg-white border-b-2 border-primary-default">
         <div className="">
-          <ul className="flex items-center font-poppins space-x-4">
+          <ul className="flex items-center font-raleway space-x-4">
             {content &&
               content.map((menu: StrapiNestedLinkComponent) => (
                 <li>
                   {menu?.child && menu.child?.length > 0 ? (
                     <details className="dropdown dropdown-hover">
                       <summary className="btn border-none shadow-none">
-                        <span>{menu.title}</span>
+                        <span className='text-lg'>{menu.title}</span>
                         <ChevronDown />
                       </summary>
-                      <ul className="dropdown-content z-20 rounded-b-md p-2 bg-white w-36">
+                      <ul className="dropdown-content z-20 rounded-b-md px-2 bg-white w-36">
                         {menu.child.map((item) => (
-                          <li className="px-2 mt-2">
+                          <li className="px-2 py-3 mt-2">
                             <LocalizedServerLink
                               linkProps={{
                                 href: item.url,
@@ -45,7 +45,7 @@ async function FlyoutNav({ lang, locale }: Props) {
                   ) : (
                     <LocalizedServerLink
                       linkProps={{
-                        className: 'btn border-none shadow-none',
+                        className: 'btn border-none shadow-none text-lg',
                         href: menu.url,
                       }}
                       locale={locale}
