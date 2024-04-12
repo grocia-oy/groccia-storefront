@@ -1,6 +1,6 @@
 "use client"
 import useEmblaCarousel from "embla-carousel-react"
-import { EmblaOptionsType, EmblaCarouselType } from "embla-carousel"
+import { EmblaOptionsType } from "embla-carousel"
 import { NextButton, PrevButton, usePrevNextButtons } from "./carousel-arrow"
 import { CarouselDot, useDotButton } from "./carousel-dot"
 import { conditionalClassNames } from "@lib/util/conditional-classname"
@@ -29,8 +29,8 @@ export default function Carousel({ options, children }: Props) {
 
       {/* Chevron buttons */}
       <div className="absolute flex justify-between w-full px-2 -translate-y-1/2 top-1/2">
-        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+        <PrevButton className="text-white" onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+        <NextButton className="text-white" onClick={onNextButtonClick} disabled={nextBtnDisabled} />
       </div>
 
       {/* Dot navigation */}

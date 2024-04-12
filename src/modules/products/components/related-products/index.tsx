@@ -1,21 +1,21 @@
 import { StoreGetProductsParams } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
-import { getProductsList } from "@lib/data"
+import { getProductsList } from "@lib/data/ecommerce"
 
 import { getRegion } from "app/actions"
 import ProductPreview from "../product-preview"
 
 type RelatedProductsProps = {
   product: PricedProduct
-  countryCode: string
+  locale: string
 }
 
 export default async function RelatedProducts({
   product,
-  countryCode,
+  locale,
 }: RelatedProductsProps) {
-  const region = await getRegion(countryCode)
+  const region = await getRegion(locale)
 
   if (!region) {
     return null
@@ -50,7 +50,7 @@ export default async function RelatedProducts({
 
   const productPreviews = await getProductsList({
     queryParams,
-    countryCode,
+    locale,
   }).then(({ response }) =>
     response.products.filter(
       (productPreview) => productPreview.id !== product.id

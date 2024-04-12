@@ -13,7 +13,7 @@ import {
   removeItem,
   updateCart,
   updateItem,
-} from "@lib/data"
+} from "@lib/data/ecommerce"
 import { getRegion } from "app/actions"
 
 /**

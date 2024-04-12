@@ -5,13 +5,15 @@ import Nav from '@modules/layout/templates/nav';
 
 const Layout: React.FC<{
   children: React.ReactNode;
+  lang: string;
+  locale: string;
 }> = (props) => {
   return (
     <div>
       <AnnouncementBar />
       <Nav />
       <main className="relative">{props.children}</main>
-      <Footer />
+      <Footer lang={props.lang} locale={props.locale} />
     </div>
   );
 };

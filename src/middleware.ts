@@ -68,14 +68,11 @@ function findBestLang(request: NextRequest) {
     headers: negotiatorHeaders,
   }).languages();
 
-  console.log(languages);
-
   const matchedLocale = matchLocale(
     languages,
     availableLanguages,
     defaultLanguage
   );
-  console.log(matchedLocale);
 
   return matchedLocale;
 }
@@ -126,8 +123,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  console.log(urlHasLang, urlHasLocale);
-
   let response = NextResponse.error();
 
   if (urlHasLang && !urlHasLocale && locale) {
@@ -136,7 +131,6 @@ export async function middleware(request: NextRequest) {
       `${lang}/${locale}`
     );
 
-    console.log(redirectPath);
     response = NextResponse.redirect(
       `${request.nextUrl.origin}/${redirectPath}`
     );
