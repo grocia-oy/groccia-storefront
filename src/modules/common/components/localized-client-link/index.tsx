@@ -20,10 +20,13 @@ const LocalizedClientLink = ({
   passHref?: true
   [x: string]: any
 }) => {
-  const { locale, lang } = useParams()
+  const { locale, lang } = useParams();
+  const correctedHref = href?.startsWith('http')
+    ? href
+    : `/${lang}/${locale}${href}`;
 
   return (
-    <Link href={`/${lang}/${locale}${href}`} {...props}>
+    <Link href={correctedHref} {...props}>
       {children}
     </Link>
   )

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 /**
  * Use this component to create a Next.js `<Link />` that persists the current country code in the url,
@@ -12,7 +12,7 @@ const LocalizedServerLink = ({
 }: {
   lang: string;
   locale: string;
-  children: string;
+  children: ReactNode;
   linkProps: React.DetailedHTMLProps<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
