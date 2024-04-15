@@ -190,5 +190,19 @@ export async function enrichLineItems(
     }
   }) as LineItem[]
 
-  return enrichedItems
+  return enrichedItems;
+}
+
+export async function fetchCart(): Promise<Omit<
+  Cart,
+  'refundable_amount' | 'refunded_total'
+> | null> {
+  const cart = await retrieveCart();
+
+  if (cart?.items.length) {
+    const enrichedItems = await enrichLineItems(cart?.items, cart?.region_id);
+    cart.items = enrichedItems as LineItem[];
+  }
+
+  return cart;
 }
