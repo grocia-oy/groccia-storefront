@@ -1,29 +1,31 @@
-"use client"
+'use client';
 
-import { Button } from "@medusajs/ui"
-import React from "react"
-import { useFormStatus } from "react-dom"
+import { clx } from '@medusajs/ui';
+import React from 'react';
+import { useFormStatus } from 'react-dom';
 
 export function SubmitButton({
   children,
-  variant = "primary",
   className,
 }: {
-  children: React.ReactNode
-  variant?: "primary" | "secondary" | "transparent" | "danger" | null
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }) {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
-    <Button
-      size="large"
-      className={className}
+    <button
+      className={clx(
+        'bg-primary-500 text-white px-3 rounded-lg h-12 font-bold',
+        className
+      )}
       type="submit"
-      isLoading={pending}
-      variant={variant}
     >
-      {children}
-    </Button>
-  )
+      {pending ? (
+        <span className="loading loading-dots loading-sm" />
+      ) : (
+        children
+      )}
+    </button>
+  );
 }
