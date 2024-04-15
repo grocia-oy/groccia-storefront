@@ -1,5 +1,14 @@
 {
   "layout": {
+    "nav": {
+      "cart": {
+        "title": "Giỏ hàng",
+        "goToCart": "Xem giỏ hàng",
+        "cartEmpty": "Giỏ hàng đang trống",
+        "goToProductPage": "Tới trang sản phẩm",
+        "exploreMore": "Khám phá thêm sản phẩm"
+      }
+    },
     "footer": {
       "headings": {
         "aboutCompany": "Về chúng tôi",

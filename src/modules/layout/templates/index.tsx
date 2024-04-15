@@ -11,7 +11,7 @@ const Layout: React.FC<{
   return (
     <div>
       <AnnouncementBar />
-      <Nav />
+      <Nav lang={props.lang} />
       <main className="relative">{props.children}</main>
       <Footer lang={props.lang} locale={props.locale} />
     </div>

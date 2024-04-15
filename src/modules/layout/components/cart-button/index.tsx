@@ -3,6 +3,7 @@ import { LineItem } from "@medusajs/medusa"
 import { enrichLineItems, retrieveCart } from "@modules/cart/actions"
 
 import CartDropdown from "../cart-dropdown"
+import { getDictionary } from 'app/[lang]/dictionaries';
 
 const fetchCart = async () => {
   const cart = await retrieveCart()
@@ -15,8 +16,9 @@ const fetchCart = async () => {
   return cart
 }
 
-export default async function CartButton() {
-  const cart = await fetchCart()
+export default async function CartButton({ lang }: { lang: string }) {
+  const cart = await fetchCart();
+  const dict = await getDictionary(lang).catch(() => {});
 
-  return <CartDropdown cart={cart} />
+  return <CartDropdown cart={cart} dict={dict} />;
 }

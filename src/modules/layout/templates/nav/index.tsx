@@ -6,9 +6,12 @@ import User from '@modules/common/icons/user';
 import CartButton from '@modules/layout/components/cart-button';
 import AnimatedHamburgerWrapper from '@modules/common/components/animated-hamburget-xmark-wrapper';
 
-type Props = {};
+type Props = {
+  lang: string;
+};
 
-export default function Nav({}: Props) {
+export default function Nav({ lang }: Props) {
+
   return (
     <div className="sticky top-0 inset-x-0 z-50">
       <header className="relative h-20 bg-white border-b">
@@ -42,7 +45,7 @@ export default function Nav({}: Props) {
                   ></LocalizedClientLink>
                 }
               >
-                <CartButton />
+                <CartButton lang={lang} />
               </Suspense>
             </div>
           </div>
