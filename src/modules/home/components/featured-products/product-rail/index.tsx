@@ -14,6 +14,10 @@ export default function ProductRail({
   region: Region;
   countryCode: string;
 }) {
+  if (!collection) {
+    return null;
+  }
+
   const { products } = collection;
 
   if (!products) {

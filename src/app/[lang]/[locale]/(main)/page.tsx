@@ -101,12 +101,8 @@ export default async function Home({
       {collectionHandles.map((handle) => {
         const collection = collectionsMap.get(handle);
         return (
-          <li className="list-none" key={collection.id}>
-            <ProductRail
-              collection={collection}
-              region={region}
-              countryCode={locale}
-            />
+          <li className="list-none" key={collection?.id}>
+            <ProductRail collection={collection} region={region} />
           </li>
         );
       })}

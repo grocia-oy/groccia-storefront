@@ -22,6 +22,14 @@ export async function getFooter(lang: string) {
     });
 }
 
+export async function getFlyoutNav(lang: string) {
+  return cmsClient
+    .getGlobal(lang, ['flyout_nav', 'flyout_nav.child'])
+    .catch(() => {
+      console.error('Cannot get global flyout_nav content');
+    });
+}
+
 export async function getHomepageSeo(lang: string) {
   return cmsClient.getHomepage(lang, ['seo']).catch(() => {
     console.error('Cannot get homepage SEO content');
