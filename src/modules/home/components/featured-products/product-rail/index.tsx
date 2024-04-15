@@ -12,6 +12,10 @@ export default function ProductRail({
   collection: ProductCollectionWithPreviews;
   region: Region;
 }) {
+  if (!collection) {
+    return null;
+  }
+
   const { products } = collection;
 
   if (!products) {

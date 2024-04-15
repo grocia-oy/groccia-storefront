@@ -14,47 +14,45 @@ export default function Nav({}: Props) {
   const [sideBarOpen, setSideBarOpen] = useState<boolean>(false);
 
   return (
-    <div className="sticky top-0 inset-x-0 z-50">
-      <header className="relative h-20 bg-white border-b">
-        <nav className="content-container flex items-center justify-between h-full space-x-6">
-          <div className="flex-1 lg:hidden">
-            <button
-              onClick={() => {
-                setSideBarOpen((previousState) => !previousState);
-              }}
-            >
-              <AnimatedHamburgerXmark opened={sideBarOpen} />
+    <header className="relative h-20 bg-white">
+      <nav className="content-container flex items-center justify-between h-full space-x-6">
+        <div className="flex-1 lg:hidden">
+          <button
+            onClick={() => {
+              setSideBarOpen((previousState) => !previousState);
+            }}
+          >
+            <AnimatedHamburgerXmark opened={sideBarOpen} />
+          </button>
+        </div>
+        <div className="lg:flex-1 basis-0 h-full flex items-center">
+          <LocalizedClientLink
+            href="/"
+            className="uppercase text-3xl font-gotag font-semibold text-primary-default"
+          >
+            Groccia
+          </LocalizedClientLink>
+        </div>
+        <div className="hidden lg:flex items-center h-full flex-grow font-raleway">
+          <SearchBar />
+        </div>
+        <div className="flex flex-1 basis-0 justify-end">
+          <div className="flex items-center space-x-10 font-raleway">
+            <PostcodeButtonModal modalRef={postalCodeModalRef} />
+            <button className="flex cursor-pointer items-center">
+              <span className="mr-1">
+                <User className="w-5 h-5" />
+              </span>
+              <div className="hidden lg:block">Login</div>
             </button>
-          </div>
-          <div className="lg:flex-1 basis-0 h-full flex items-center">
-            <LocalizedClientLink
-              href="/"
-              className="uppercase text-3xl font-gotag font-semibold text-primary-default"
-            >
-              Groccia
-            </LocalizedClientLink>
-          </div>
-          <div className="hidden lg:flex items-center h-full flex-grow font-raleway">
-            <SearchBar />
-          </div>
-          <div className="flex flex-1 basis-0 justify-end">
-            <div className="flex items-center space-x-10 font-raleway">
-              <PostcodeButtonModal modalRef={postalCodeModalRef} />
-              <button className="flex cursor-pointer items-center">
-                <span className="mr-1">
-                  <User className="w-5 h-5" />
-                </span>
-                <div className="hidden lg:block">Login</div>
+            <Suspense>
+              <button>
+                <ShoppingCartIcon className="w-6 h-6" />
               </button>
-              <Suspense>
-                <button>
-                  <ShoppingCartIcon className="w-6 h-6" />
-                </button>
-              </Suspense>
-            </div>
+            </Suspense>
           </div>
-        </nav>
-      </header>
-    </div>
+        </div>
+      </nav>
+    </header>
   );
 }
