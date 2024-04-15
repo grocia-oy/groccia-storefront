@@ -1,46 +1,56 @@
-"use client"
+'use client';
 
-import { useFormState } from "react-dom"
+import { useFormState } from 'react-dom';
 
-import Input from "@modules/common/components/input"
-import { LOGIN_VIEW } from "@modules/account/templates/login-template"
-import { signUp } from "@modules/account/actions"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import Input from '@modules/common/components/input';
+import { LOGIN_VIEW } from '@modules/account/templates/login-template';
+import { signUp } from '@modules/account/actions';
+import ErrorMessage from '@modules/checkout/components/error-message';
+import { SubmitButton } from '@modules/checkout/components/submit-button';
+import LocalizedClientLink from '@modules/common/components/localized-client-link';
+import { useDictionary } from '@lib/context/dictionary-context';
+import { SocialLoginButton, SocialPlatform } from '../social-login-button';
 
 type Props = {
-  setCurrentView: (view: LOGIN_VIEW) => void
-}
+  setCurrentView: (view: LOGIN_VIEW) => void;
+};
 
 const Register = ({ setCurrentView }: Props) => {
-  const [message, formAction] = useFormState(signUp, null)
+  const [message, formAction] = useFormState(signUp, null);
+  const dictionary = useDictionary();
 
   return (
-    <div className="max-w-sm flex flex-col items-center">
-      <h1 className="text-large-semi uppercase mb-6">
-        Become a Medusa Store Member
-      </h1>
-      <p className="text-center text-base-regular text-ui-fg-base mb-4">
-        Create your Medusa Store Member profile, and get access to an enhanced
-        shopping experience.
-      </p>
-      <form className="w-full flex flex-col" action={formAction}>
-        <div className="flex flex-col w-full gap-y-2">
+    <div className="">
+      <div className="mb-8 flex w-full justify-between">
+        <h2 className="font-raleway font-bold text-xl">
+          {dictionary.account.loginModal.registerHeading}
+        </h2>
+        <p>
+          {dictionary.account.loginModal.switchToLoginDescription}{' '}
+          <button
+            className="underline"
+            onClick={() => setCurrentView(LOGIN_VIEW.LOGIN)}
+          >
+            {dictionary.common.login}
+          </button>
+        </p>
+      </div>
+      <form className="w-full" action={formAction}>
+        <div className="flex flex-col w-full gap-y-4">
           <Input
-            label="First name"
+            label={dictionary.common.firstName}
             name="first_name"
             required
             autoComplete="given-name"
           />
           <Input
-            label="Last name"
+            label={dictionary.common.lastName}
             name="last_name"
             required
             autoComplete="family-name"
           />
           <Input
-            label="Email"
+            label={dictionary.common.email}
             name="email"
             required
             type="email"
@@ -48,7 +58,7 @@ const Register = ({ setCurrentView }: Props) => {
           />
           <Input label="Phone" name="phone" type="tel" autoComplete="tel" />
           <Input
-            label="Password"
+            label={dictionary.common.password}
             name="password"
             required
             type="password"
@@ -56,37 +66,42 @@ const Register = ({ setCurrentView }: Props) => {
           />
         </div>
         <ErrorMessage error={message} />
-        <span className="text-center text-ui-fg-base text-small-regular mt-6">
-          By creating an account, you agree to Medusa Store&apos;s{" "}
-          <LocalizedClientLink
-            href="/content/privacy-policy"
-            className="underline"
-          >
-            Privacy Policy
-          </LocalizedClientLink>{" "}
-          and{" "}
-          <LocalizedClientLink
-            href="/content/terms-of-use"
-            className="underline"
-          >
-            Terms of Use
-          </LocalizedClientLink>
-          .
-        </span>
-        <SubmitButton className="w-full mt-6">Join</SubmitButton>
+        <div className="mt-4">
+          <span className="text-sm">
+            {dictionary.account.loginModal.registerConsentStarts}{' '}
+            <LocalizedClientLink
+              href="/content/privacy-policy"
+              className="underline"
+            >
+              {dictionary.common.privacyPolicy}
+            </LocalizedClientLink>{' '}
+            {dictionary.common.and.toLowerCase()}{' '}
+            <LocalizedClientLink
+              href="/content/terms-of-use"
+              className="underline"
+            >
+              {dictionary.common.termsOfUse}
+            </LocalizedClientLink>
+            .
+          </span>
+        </div>
+        <SubmitButton className="w-full mt-6">
+          {dictionary.account.loginModal.registerButton}
+        </SubmitButton>
       </form>
-      <span className="text-center text-ui-fg-base text-small-regular mt-6">
-        Already a member?{" "}
-        <button
-          onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
-          className="underline"
-        >
-          Sign in
-        </button>
-        .
-      </span>
+      <div className="divider divider-neutral my-8">
+        {dictionary.account.loginModal.socialLoginDivider.toLowerCase()}
+      </div>
+      <div className="space-y-4">
+        <div>
+          <SocialLoginButton platform={SocialPlatform.GOOGLE} />
+        </div>
+        <div>
+          <SocialLoginButton platform={SocialPlatform.FACEBOOK} />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
