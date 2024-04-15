@@ -1,14 +1,12 @@
 'use client';
+
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import { LocalStorageKey } from '@lib/constants';
 import Input from '@modules/common/components/input';
-import { FormEventHandler, RefObject, useEffect, useState } from 'react';
+import { FormEventHandler, useEffect, useState, useRef } from 'react';
 
-type Props = {
-  modalRef: RefObject<HTMLDialogElement>;
-};
-
-export default function PostcodeButtonModal({ modalRef }: Props) {
+export default function PostcodeButtonModal() {
+  const postalCodeModalRef = useRef<HTMLDialogElement>(null);
   const [displayPostcode, setDisplayPostcode] = useState<string | null>();
   const [inputErrorMessage, setInputErrorMessage] = useState<string | null>(
     null
@@ -27,7 +25,7 @@ export default function PostcodeButtonModal({ modalRef }: Props) {
     setDisplayPostcode(inputPostcode);
     setInputErrorMessage(null);
     localStorage.setItem(LocalStorageKey.POSTCODE, inputPostcode);
-    modalRef?.current?.close();
+    postalCodeModalRef?.current?.close();
   };
 
   useEffect(() => {
@@ -38,9 +36,9 @@ export default function PostcodeButtonModal({ modalRef }: Props) {
     <div>
       <button
         className="hidden lg:flex cursor-pointer items-center"
-        onClick={() => modalRef?.current?.showModal()}
+        onClick={() => postalCodeModalRef?.current?.showModal()}
       >
-        <span className='mr-1'>
+        <span className="mr-1">
           <MapPinIcon className="w-5 h-5" />
         </span>
         {displayPostcode || 'Postcode'}
@@ -48,7 +46,7 @@ export default function PostcodeButtonModal({ modalRef }: Props) {
       <dialog
         id="postalCodeModal"
         className="modal modal-bottom sm:modal-middle"
-        ref={modalRef}
+        ref={postalCodeModalRef}
       >
         <div className="modal-box">
           <div className="flex justify-center items-center">

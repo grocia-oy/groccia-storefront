@@ -1,5 +1,14 @@
 {
   "layout": {
+    "nav": {
+      "cart": {
+        "title": "Cart",
+        "goToCart": "Go to Cart",
+        "cartEmpty": "Your shopping bag is empty.",
+        "goToProductPage": "Go to all products page",
+        "exploreMore": "Explore products"
+      }
+    },
     "footer": {
       "headings": {
         "aboutCompany": "About",

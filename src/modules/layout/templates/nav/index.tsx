@@ -1,17 +1,16 @@
-'use client';
-import { Suspense, useRef, useState } from 'react';
+import { Suspense } from 'react';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
 import SearchBar from '@modules/search/components/searchbar';
-import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import PostcodeButtonModal from '@modules/layout/components/postcode-button-modal';
-import AnimatedHamburgerXmark from '@modules/common/components/animated-hamburger-xmark';
 import User from '@modules/common/icons/user';
+import CartButton from '@modules/layout/components/cart-button';
+import AnimatedHamburgerWrapper from '@modules/common/components/animated-hamburget-xmark-wrapper';
 
-type Props = {};
+type Props = {
+  lang: string;
+};
 
-export default function Nav({}: Props) {
-  const postalCodeModalRef = useRef<HTMLDialogElement>(null);
-  const [sideBarOpen, setSideBarOpen] = useState<boolean>(false);
+export default function Nav({ lang }: Props) {
 
   return (
     <header className="relative h-20 bg-white">

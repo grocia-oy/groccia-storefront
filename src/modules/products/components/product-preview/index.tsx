@@ -12,10 +12,12 @@ export default async function ProductPreview({
   productPreview,
   isFeatured,
   region,
+  countryCode,
 }: {
   productPreview: ProductPreviewType;
   isFeatured?: boolean;
   region: Region;
+  countryCode: string;
 }) {
   const pricedProduct = await retrievePricedProductById({
     id: productPreview.id,
@@ -51,8 +53,11 @@ export default async function ProductPreview({
         <AddToCartButton
           buttonProps={{
             className:
-              'absolute top-2 right-2 rounded-full text-primary-default hover:text-primary-700 z-20',
+              'absolute top-2 right-2 rounded-full text-primary-default hover:text-primary-700 p-0',
           }}
+          product={pricedProduct}
+          region={region}
+          countryCode={countryCode}
         />
       </div>
     </LocalizedClientLink>
