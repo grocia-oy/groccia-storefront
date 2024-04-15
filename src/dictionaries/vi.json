@@ -1,11 +1,46 @@
 {
+  "common": {
+    "email": "Email",
+    "password": "Mật khẩu",
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "login": "Đăng nhập",
+    "register": "Đăng kí",
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfUse": "Điều khoản sử dụng",
+    "and": "Và"
+  },
   "layout": {
+    "navBar": {
+      "loginButtonTitle": "Đăng nhập",
+      "postcodeModal": {
+        "showModalButton": "Giao hàng tới",
+        "h3": "Chọn mã bưu chính",
+        "h4": "Tìm hiểu khu vực xung quanh của bạn có những gì",
+        "submitButton": "Khám phá",
+        "submitButtonLabel": "Mã bưu chính (ví dụ: 00120)"
+      }
+    },
     "footer": {
       "headings": {
         "aboutCompany": "Về chúng tôi",
         "storeList": "Chọn cửa hàng cụ thể",
         "policyLinks": "Chính sách"
       }
+    }
+  },
+  "account": {
+    "loginModal": {
+      "loginHeading": "Đăng nhập",
+      "registerHeading": "Tạo tài khoản",
+      "loginButton": "Đăng nhập",
+      "registerButton": "Tham gia",
+      "switchToRegisterDescription": "Thành viên mới? ",
+      "switchToLoginDescription": "Đã có tài khoản?",
+      "troubleLoggingIn": "Lỗi khi đăng nhập?",
+      "socialLoginDivider": "Hoặc tiếp tục với",
+      "socialLoginWithStatement": "Tiếp tục với",
+      "registerConsentStarts": "Bằng cách tạo tài khoản, bạn đồng ý với"
     }
   }
 }
