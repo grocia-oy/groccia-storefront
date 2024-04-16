@@ -49,5 +49,8 @@
       "socialLoginWithStatement": "Tiếp tục với",
       "registerConsentStarts": "Bằng cách tạo tài khoản, bạn đồng ý với"
     }
+  },
+  "productRail": {
+    "viewAll": "Xem tất cả"
   }
 }

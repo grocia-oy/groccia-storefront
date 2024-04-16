@@ -49,5 +49,8 @@
       "socialLoginWithStatement": "Continue with",
       "registerConsentStarts": "By creating an account, you agree to Groccia's"
     }
+  },
+  "productRail": {
+    "viewAll": "View all"
   }
 }

@@ -3,6 +3,7 @@ import CarouselSlide from '@modules/common/components/carousel/carousel-slide';
 
 import InteractiveLink from '@modules/common/components/interactive-link';
 import ProductPreview from '@modules/products/components/product-preview';
+import { getDictionary } from 'app/[lang]/dictionaries';
 import { ProductCollectionWithPreviews } from 'types/global';
 
 export default async function ProductRail({
@@ -23,6 +24,7 @@ export default async function ProductRail({
   }
 
   const { products } = collection;
+  const dictionary = await getDictionary(lang);
 
   if (!products) {
     return null;
@@ -35,7 +37,7 @@ export default async function ProductRail({
           {title}
         </h2>
         <InteractiveLink href={`/collections/${collection.handle}`}>
-          View all
+          {dictionary.productRail.viewAll}
         </InteractiveLink>
       </div>
 
