@@ -7,18 +7,23 @@ import LocalizedClientLink from '@modules/common/components/localized-client-lin
 import Thumbnail from '../thumbnail';
 import PreviewPrice from './price';
 import AddToCartButton from '../add-to-cart-button';
+import { getDictionary } from 'app/[lang]/dictionaries';
 
 export default async function ProductPreview({
   productPreview,
   isFeatured,
   region,
   locale,
+  lang,
 }: {
   productPreview: ProductPreviewType;
   isFeatured?: boolean;
   region: Region;
   locale: string;
+  lang: string;
 }) {
+  const dictionary = await getDictionary(lang).catch(() => {});
+
   const pricedProduct = await retrievePricedProductById({
     id: productPreview.id,
     regionId: region.id,
@@ -37,21 +42,26 @@ export default async function ProductPreview({
   });
 
   return (
-    <LocalizedClientLink
-      href={`/products/${productPreview.handle}`}
-      className="group"
-    >
+    <>
       <div className="rounded-lg relative z-10">
-        <Thumbnail
-          thumbnail={productPreview.thumbnail}
-          size="square"
-          isFeatured={isFeatured}
-        />
+        <LocalizedClientLink
+          href={`/products/${productPreview.handle}`}
+          className="group"
+        >
+          <Thumbnail
+            thumbnail={productPreview.thumbnail}
+            size="square"
+            isFeatured={isFeatured}
+          />
+        </LocalizedClientLink>
         <div className="mt-4 flex flex-col justify-between">
           <h3 className="text-base font-raleway">{productPreview.title}</h3>
           <div className="flex items-center gap-x-3 mt-1">
             {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
           </div>
+          <h3 className="text-price-sale">
+            {!variant || !inStock ? dictionary.product.outOfStock : null}
+          </h3>
         </div>
         <AddToCartButton
           variant={variant}
@@ -59,6 +69,6 @@ export default async function ProductPreview({
           inStock={inStock}
         />
       </div>
-    </LocalizedClientLink>
+    </>
   );
 }

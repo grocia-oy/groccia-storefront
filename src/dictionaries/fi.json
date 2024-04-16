@@ -55,6 +55,7 @@
   },
   "product": {
     "addToCart": "Add to cart",
-    "outOfStock": "Out of stock"
+    "outOfStock": "Out of stock",
+    "viewAll": "View all"
   }
 }

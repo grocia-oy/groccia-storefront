@@ -55,6 +55,7 @@
   },
   "product": {
     "addToCart": "Thêm vào giỏ hàng",
-    "outOfStock": "Hết hàng"
+    "outOfStock": "Hết hàng",
+    "viewAll": "Xem thêm"
   }
 }
