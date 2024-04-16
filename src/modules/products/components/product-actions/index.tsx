@@ -14,6 +14,8 @@ import OptionSelect from '@modules/products/components/option-select';
 
 import MobileActions from '../mobile-actions';
 import ProductPrice from '../product-price';
+import { getDictionary } from 'app/[lang]/dictionaries';
+import { useDictionary } from '@lib/context/dictionary-context';
 
 type ProductActionsProps = {
   product: PricedProduct;
@@ -31,6 +33,8 @@ export default function ProductActions({
   product,
   region,
 }: ProductActionsProps): JSX.Element {
+  const dictionary = useDictionary();
+
   const [options, setOptions] = useState<Record<string, string>>({});
   const [isAdding, setIsAdding] = useState(false);
 
@@ -152,11 +156,9 @@ export default function ProductActions({
           className="w-full h-10 bg-primary-default hover:bg-primary-600"
           isLoading={isAdding}
         >
-          {!variant
-            ? 'Select variant'
-            : !inStock
-            ? 'Out of stock'
-            : 'Add to cart'}
+          {!variant || !inStock
+            ? dictionary.product.outOfStock
+            : dictionary.product.addToCart}
         </Button>
         <MobileActions
           product={product}
