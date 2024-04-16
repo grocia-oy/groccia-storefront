@@ -1,6 +1,6 @@
 import { useFormState } from 'react-dom';
 
-import { LOGIN_VIEW } from '@modules/account/templates/login-template';
+import { LOGIN_VIEW } from '@modules/account/components/login-modal';
 import Input from '@modules/common/components/input';
 import { logCustomerIn } from '@modules/account/actions';
 import ErrorMessage from '@modules/checkout/components/error-message';
