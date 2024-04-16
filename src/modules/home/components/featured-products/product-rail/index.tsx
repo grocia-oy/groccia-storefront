@@ -5,12 +5,14 @@ import InteractiveLink from '@modules/common/components/interactive-link';
 import ProductPreview from '@modules/products/components/product-preview';
 import { ProductCollectionWithPreviews } from 'types/global';
 
-export default function ProductRail({
+export default async function ProductRail({
+  title,
   collection,
   region,
   lang,
   locale,
 }: {
+  title: string;
   collection: ProductCollectionWithPreviews;
   region: Region;
   lang: string;
@@ -30,7 +32,7 @@ export default function ProductRail({
     <div className="content-container mt-6">
       <div className="flex justify-between mb-4 ">
         <h2 className="font-raleway font-bold text-xl text-primary-default">
-          {collection.title}
+          {title}
         </h2>
         <InteractiveLink href={`/collections/${collection.handle}`}>
           View all
