@@ -7,27 +7,22 @@ import LocalizedClientLink from '@modules/common/components/localized-client-lin
 import Thumbnail from '../thumbnail';
 import PreviewPrice from './price';
 import AddToCartButton from '../add-to-cart-button';
-import { getDictionary } from 'app/[lang]/dictionaries';
 
 export default async function ProductPreview({
   productPreview,
   isFeatured,
   region,
-  countryCode,
-  lang,
+  locale,
 }: {
   productPreview: ProductPreviewType;
   isFeatured?: boolean;
   region: Region;
-  countryCode: string;
-  lang: string;
+  locale: string;
 }) {
   const pricedProduct = await retrievePricedProductById({
     id: productPreview.id,
     regionId: region.id,
   }).then((product) => product);
-
-  const dictionary = await getDictionary(lang).catch(() => {});
 
   if (!pricedProduct) {
     return null;
@@ -65,8 +60,7 @@ export default async function ProductPreview({
         </div>
         <AddToCartButton
           variant={variant}
-          region={region}
-          countryCode={countryCode}
+          countryCode={locale}
           inStock={inStock}
         />
       </div>

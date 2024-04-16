@@ -7,23 +7,24 @@ import { getDictionary } from 'app/[lang]/dictionaries';
 import { ProductCollectionWithPreviews } from 'types/global';
 
 export default async function ProductRail({
+  title,
   collection,
   region,
-  countryCode,
   lang,
+  locale,
 }: {
+  title: string;
   collection: ProductCollectionWithPreviews;
   region: Region;
-  countryCode: string;
   lang: string;
+  locale: string;
 }) {
   if (!collection) {
     return null;
   }
 
-  const dictionary = await getDictionary(lang).catch(() => {});
-
   const { products } = collection;
+  const dictionary = await getDictionary(lang);
 
   if (!products) {
     return null;
@@ -33,10 +34,10 @@ export default async function ProductRail({
     <div className="content-container mt-6">
       <div className="flex justify-between mb-4 ">
         <h2 className="font-raleway font-bold text-xl text-primary-default">
-          {collection.title}
+          {title}
         </h2>
         <InteractiveLink href={`/collections/${collection.handle}`}>
-          {dictionary?.product.viewAll}
+          {dictionary.productRail.viewAll}
         </InteractiveLink>
       </div>
 
@@ -51,8 +52,7 @@ export default async function ProductRail({
                 productPreview={product}
                 region={region}
                 isFeatured
-                countryCode={countryCode}
-                lang={lang}
+                locale={locale}
               />
             </div>
           ))}

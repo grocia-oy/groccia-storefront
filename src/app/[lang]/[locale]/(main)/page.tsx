@@ -30,8 +30,14 @@ export async function generateMetadata({
 }
 
 const getHomePageCollectionWithProducts = cache(
-  async (collectionHandles: string[], locale: string) => {
-    const collections = await getManyCollectionsByHandle(collectionHandles);
+  async (
+    collectionHandles: { collection_handle: string; title: string }[],
+    locale: string
+  ) => {
+    const handleList = collectionHandles.map(
+      ({ collection_handle }) => collection_handle
+    );
+    const collections = await getManyCollectionsByHandle(handleList);
 
     if (!collections) {
       return null;
@@ -77,9 +83,8 @@ export default async function Home({
   const homepage = await getHomePageFull(lang);
 
   // TODO: collection handles might be null
-  const collectionHandles: string[] = homepage?.data?.product_rails.map(
-    ({ collection_handle }: { collection_handle: string }) => collection_handle
-  ) || ['best-seller'];
+  const collectionHandles: { collection_handle: string; title: string }[] =
+    homepage.data?.product_rails || [];
 
   const collections = await getHomePageCollectionWithProducts(
     collectionHandles,
@@ -98,14 +103,15 @@ export default async function Home({
   return (
     <>
       <Hero carousel={homepage?.data?.hero_carousel} />
-      {collectionHandles.map((handle) => {
-        const collection = collectionsMap.get(handle);
+      {collectionHandles.map((item) => {
+        const collection = collectionsMap.get(item.collection_handle);
         return (
-          <li className="list-none" key={collection.id}>
+          <li className="list-none" key={collection?.id}>
             <ProductRail
+              title={item.title}
               collection={collection}
               region={region}
-              countryCode={locale}
+              locale={locale}
               lang={lang}
             />
           </li>
