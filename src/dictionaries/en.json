@@ -50,6 +50,9 @@
       "registerConsentStarts": "By creating an account, you agree to Groccia's"
     }
   },
+  "productRail": {
+    "viewAll": "View all"
+  },
   "product": {
     "addToCart": "Add to cart",
     "outOfStock": "Out of stock"

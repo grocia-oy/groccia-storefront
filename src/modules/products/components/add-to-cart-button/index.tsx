@@ -2,19 +2,17 @@
 
 import React from 'react';
 import { PricedVariant } from '@medusajs/medusa/dist/types/pricing';
-import { Region } from '@medusajs/medusa';
 import { addToCart } from '@modules/cart/actions';
 import { IconButton } from '@medusajs/ui';
 import { Plus } from '@medusajs/icons';
 
 interface Props {
   variant: PricedVariant;
-  region: Region;
   countryCode: string;
   inStock: boolean | undefined;
 }
 
-function AddToCartButton({ variant, region, countryCode, inStock }: Props) {
+function AddToCartButton({ variant, countryCode, inStock }: Props) {
   const [isAdding, setIsAdding] = React.useState(false);
 
   const handleAddToCart = async (event: any) => {
