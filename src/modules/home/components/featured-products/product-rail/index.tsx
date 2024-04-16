@@ -9,10 +9,12 @@ export default function ProductRail({
   collection,
   region,
   countryCode,
+  lang,
 }: {
   collection: ProductCollectionWithPreviews;
   region: Region;
   countryCode: string;
+  lang: string;
 }) {
   if (!collection) {
     return null;
@@ -47,6 +49,7 @@ export default function ProductRail({
                 region={region}
                 isFeatured
                 countryCode={countryCode}
+                lang={lang}
               />
             </div>
           ))}

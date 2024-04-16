@@ -13,7 +13,7 @@ const Layout: React.FC<{
     <div>
       <div className="sticky top-0 inset-x-0 z-10">
         <AnnouncementBar />
-        <Nav />
+        <Nav lang={props.lang} />
         <FlyoutNav lang={props.lang} locale={props.locale} />
       </div>
       <main className="relative">{props.children}</main>
