@@ -45,7 +45,7 @@ export default function PostcodeButtonModal({ modalRef }: Props) {
         <span className="mr-1">
           <MapPinIcon className="w-5 h-5" />
         </span>
-        {displayPostcode || dictionary.layout.navBar.postcodeModal.showModalButton}
+        {displayPostcode || dictionary.layout.nav.postcodeModal.showModalButton}
       </button>
       <dialog
         id="postalCodeModal"
@@ -57,10 +57,10 @@ export default function PostcodeButtonModal({ modalRef }: Props) {
             <div>
               <div>
                 <h3 className="font-semibold text-xl text-primary/80">
-                  {dictionary.layout.navBar.postcodeModal.h3}
+                  {dictionary.layout.nav.postcodeModal.h3}
                 </h3>
                 <h4 className="text-sm">
-                  {dictionary.layout.navBar.postcodeModal.h4}
+                  {dictionary.layout.nav.postcodeModal.h4}
                 </h4>
               </div>
               <div className="mt-5">
@@ -71,7 +71,7 @@ export default function PostcodeButtonModal({ modalRef }: Props) {
                 >
                   <div className="w-[250px]">
                     <Input
-                      label={dictionary.layout.navBar.postcodeModal.submitButtonLabel}
+                      label={dictionary.layout.nav.postcodeModal.submitButtonLabel}
                       type="text"
                       name="postcode"
                       required
@@ -81,7 +81,7 @@ export default function PostcodeButtonModal({ modalRef }: Props) {
                     type="submit"
                     className="btn btn-primary text-xs text-white px-2"
                   >
-                    {dictionary.layout.navBar.postcodeModal.submitButton}
+                    {dictionary.layout.nav.postcodeModal.submitButton}
                   </button>
                 </form>
                 <div className="text-rose-800 text-xs mt-1 h-3">

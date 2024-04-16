@@ -19,7 +19,7 @@ export default function LoginButtonModal() {
         onClick={onLoginButtonClick}
         className="flex cursor-pointer items-center"
       >
-        <div className="">{dictionary.layout.navBar.loginButtonTitle}</div>
+        <div className="">{dictionary.layout.nav.loginButtonTitle}</div>
       </button>
       <LoginModal modalRef={loginModalRef} />
     </div>
