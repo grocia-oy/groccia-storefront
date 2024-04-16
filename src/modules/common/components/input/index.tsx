@@ -58,7 +58,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <label
             htmlFor={name}
             onClick={() => inputRef.current?.focus()}
-            className="flex items-center justify-center mx-3 px-1 transition-all absolute duration-200 top-3 -z-1 origin-0 text-primary-700"
+            className="flex items-center justify-center mx-3 px-1 transition-all absolute duration-200 top-3 -z-1 origin-0 text-primary-600"
           >
             {label}
             {required && <span className="text-rose-700">*</span>}

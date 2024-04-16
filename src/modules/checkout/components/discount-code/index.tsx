@@ -9,7 +9,7 @@ import { useFormState } from "react-dom"
 import Input from "@modules/common/components/input"
 import Trash from "@modules/common/icons/trash"
 import ErrorMessage from "@modules/checkout/components/error-message"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
+import { SubmitButton } from "@modules/common/components/submit-button"
 import {
   removeDiscount,
   removeGiftCard,

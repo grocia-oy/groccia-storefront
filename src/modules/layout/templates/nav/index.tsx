@@ -2,9 +2,10 @@ import { Suspense } from 'react';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
 import SearchBar from '@modules/search/components/searchbar';
 import PostcodeButtonModal from '@modules/layout/components/postcode-button-modal';
-import User from '@modules/common/icons/user';
+
 import CartButton from '@modules/layout/components/cart-button';
 import AnimatedHamburgerWrapper from '@modules/common/components/animated-hamburget-xmark-wrapper';
+import LoginButtonModal from '@modules/layout/components/login-button-modal';
 
 type Props = {
   lang: string;
@@ -30,12 +31,7 @@ export default function Nav({ lang }: Props) {
           <div className="flex flex-1 basis-0 justify-end">
             <div className="flex items-center space-x-10 font-raleway">
               <PostcodeButtonModal />
-              <button className="flex cursor-pointer items-center">
-                <span className="mr-1">
-                  <User className="w-5 h-5" />
-                </span>
-                <div className="hidden lg:block">Login</div>
-              </button>
+              <LoginButtonModal />
               <Suspense
                 fallback={
                   <LocalizedClientLink
