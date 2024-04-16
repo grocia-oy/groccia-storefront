@@ -60,8 +60,7 @@ export default async function ProductPreview({
         </div>
         <AddToCartButton
           variant={variant}
-          region={region}
-          countryCode={countryCode}
+          countryCode={locale}
           inStock={inStock}
         />
       </div>
