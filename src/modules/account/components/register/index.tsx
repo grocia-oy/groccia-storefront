@@ -6,7 +6,7 @@ import Input from '@modules/common/components/input';
 import { LOGIN_VIEW } from '@modules/account/components/login-modal';
 import { signUp } from '@modules/account/actions';
 import ErrorMessage from '@modules/checkout/components/error-message';
-import { SubmitButton } from '@modules/checkout/components/submit-button';
+import { SubmitButton } from '@modules/common/components/submit-button';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
 import { useDictionary } from '@lib/context/dictionary-context';
 import { SocialLoginButton, SocialPlatform } from '../social-login-button';
