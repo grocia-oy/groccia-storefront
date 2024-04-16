@@ -27,7 +27,7 @@ export default function LoginModal({ modalRef }: Props) {
           </button>
         </form>
         <div className="mt-12 px-4 py-2">
-          {currentView === 'login' ? (
+          {currentView === LOGIN_VIEW.LOGIN ? (
             <Login setCurrentView={setCurrentView} />
           ) : (
             <Register setCurrentView={setCurrentView} />
