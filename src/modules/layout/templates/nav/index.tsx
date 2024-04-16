@@ -4,8 +4,8 @@ import SearchBar from '@modules/search/components/searchbar';
 import PostcodeButtonModal from '@modules/layout/components/postcode-button-modal';
 
 import CartButton from '@modules/layout/components/cart-button';
-import AnimatedHamburgerWrapper from '@modules/common/components/animated-hamburget-xmark-wrapper';
 import LoginButtonModal from '@modules/layout/components/login-button-modal';
+import Sidebar from '../sidebar';
 
 type Props = {
   lang: string;
@@ -16,7 +16,9 @@ export default function Nav({ lang }: Props) {
     <div className="sticky top-0 inset-x-0 z-50">
       <header className="relative h-20 bg-white border-b">
         <nav className="content-container flex items-center justify-between h-full space-x-6">
-          <AnimatedHamburgerWrapper />
+          <div className="flex-1 lg:hidden">
+            <Sidebar />
+          </div>
           <div className="lg:flex-1 basis-0 h-full flex items-center">
             <LocalizedClientLink
               href="/"
