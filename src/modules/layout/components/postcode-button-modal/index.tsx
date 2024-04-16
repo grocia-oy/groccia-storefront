@@ -2,6 +2,7 @@
 
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import { LocalStorageKey } from '@lib/constants';
+import { useDictionary } from '@lib/context/dictionary-context';
 import Input from '@modules/common/components/input';
 import { FormEventHandler, useEffect, useState, useRef } from 'react';
 
@@ -11,6 +12,7 @@ export default function PostcodeButtonModal() {
   const [inputErrorMessage, setInputErrorMessage] = useState<string | null>(
     null
   );
+  const dictionary = useDictionary();
 
   const onPostcodeSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -41,7 +43,7 @@ export default function PostcodeButtonModal() {
         <span className="mr-1">
           <MapPinIcon className="w-5 h-5" />
         </span>
-        {displayPostcode || 'Postcode'}
+        {displayPostcode || dictionary.layout.nav.postcodeModal.showModalButton}
       </button>
       <dialog
         id="postalCodeModal"
@@ -53,9 +55,11 @@ export default function PostcodeButtonModal() {
             <div>
               <div>
                 <h3 className="font-semibold text-xl text-primary/80">
-                  Choose your postcode for delivery
+                  {dictionary.layout.nav.postcodeModal.h3}
                 </h3>
-                <h4 className="text-sm">See what available in your area</h4>
+                <h4 className="text-sm">
+                  {dictionary.layout.nav.postcodeModal.h4}
+                </h4>
               </div>
               <div className="mt-5">
                 <form
@@ -65,7 +69,7 @@ export default function PostcodeButtonModal() {
                 >
                   <div className="w-[250px]">
                     <Input
-                      label="Postcode (example: 00120)"
+                      label={dictionary.layout.nav.postcodeModal.submitButtonLabel}
                       type="text"
                       name="postcode"
                       required
@@ -75,7 +79,7 @@ export default function PostcodeButtonModal() {
                     type="submit"
                     className="btn btn-primary text-xs text-white px-2"
                   >
-                    Let's shop
+                    {dictionary.layout.nav.postcodeModal.submitButton}
                   </button>
                 </form>
                 <div className="text-rose-800 text-xs mt-1 h-3">

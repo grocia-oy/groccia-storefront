@@ -3,16 +3,28 @@ import CarouselSlide from '@modules/common/components/carousel/carousel-slide';
 
 import InteractiveLink from '@modules/common/components/interactive-link';
 import ProductPreview from '@modules/products/components/product-preview';
+import { getDictionary } from 'app/[lang]/dictionaries';
 import { ProductCollectionWithPreviews } from 'types/global';
 
-export default function ProductRail({
+export default async function ProductRail({
+  title,
   collection,
   region,
+  lang,
+  locale,
 }: {
+  title: string;
   collection: ProductCollectionWithPreviews;
   region: Region;
+  lang: string;
+  locale: string;
 }) {
+  if (!collection) {
+    return null;
+  }
+
   const { products } = collection;
+  const dictionary = await getDictionary(lang);
 
   if (!products) {
     return null;
@@ -21,9 +33,11 @@ export default function ProductRail({
   return (
     <div className="content-container mt-6">
       <div className="flex justify-between mb-4 ">
-        <h2 className="font-raleway font-bold text-xl text-primary-default">{collection.title}</h2>
+        <h2 className="font-raleway font-bold text-xl text-primary-default">
+          {title}
+        </h2>
         <InteractiveLink href={`/collections/${collection.handle}`}>
-          View all
+          {dictionary.productRail.viewAll}
         </InteractiveLink>
       </div>
 
@@ -38,6 +52,8 @@ export default function ProductRail({
                 productPreview={product}
                 region={region}
                 isFeatured
+                locale={locale}
+                lang={lang}
               />
             </div>
           ))}

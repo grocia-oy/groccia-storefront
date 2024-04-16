@@ -1,5 +1,33 @@
 {
+  "common": {
+    "email": "Email",
+    "password": "Password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "login": "Login",
+    "register": "Register",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "and": "And"
+  },
   "layout": {
+    "nav": {
+      "loginButtonTitle": "Login",
+      "postcodeModal": {
+        "showModalButton": "Delivery to",
+        "h3": "Choose your postcode for delivery",
+        "h4": "See what available in your area",
+        "submitButton": "Let's shop",
+        "submitButtonLabel": "Postcode (example: 00120)"
+      },
+      "cart": {
+        "title": "Cart",
+        "goToCart": "Go to Cart",
+        "cartEmpty": "Your shopping bag is empty.",
+        "goToProductPage": "Go to all products page",
+        "exploreMore": "Explore products"
+      }
+    },
     "footer": {
       "headings": {
         "aboutCompany": "About",
@@ -7,5 +35,27 @@
         "policyLinks": "Policy"
       }
     }
+  },
+  "account": {
+    "loginModal": {
+      "loginHeading": "Login",
+      "registerHeading": "Register",
+      "loginButton": "Login",
+      "registerButton": "Join us",
+      "switchToRegisterDescription": "First time to Groccia?",
+      "switchToLoginDescription": "Already has account?",
+      "troubleLoggingIn": "Trouble logging in?",
+      "socialLoginDivider": "Or continue with",
+      "socialLoginWithStatement": "Continue with",
+      "registerConsentStarts": "By creating an account, you agree to Groccia's"
+    }
+  },
+  "productRail": {
+    "viewAll": "View all"
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock",
+    "viewAll": "View all"
   }
 }

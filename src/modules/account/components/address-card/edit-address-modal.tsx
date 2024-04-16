@@ -15,7 +15,7 @@ import {
 } from "@modules/account/actions"
 import Spinner from "@modules/common/icons/spinner"
 import { useFormState } from "react-dom"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
+import { SubmitButton } from "@modules/common/components/submit-button"
 
 type EditAddressProps = {
   region: Region

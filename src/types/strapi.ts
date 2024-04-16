@@ -46,3 +46,10 @@ export type StrapiLinkComponent = {
   title: string;
   target?: HTMLAttributeAnchorTarget;
 };
+
+export type StrapiNestedLinkComponent = {
+  url: string;
+  title: string;
+  target?: HTMLAttributeAnchorTarget;
+  child?: StrapiLinkComponent[];
+};

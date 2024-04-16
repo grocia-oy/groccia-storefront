@@ -3,7 +3,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import { Cart } from '@medusajs/medusa';
 import { Button } from '@medusajs/ui';
-import { useParams, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Fragment, useEffect, useRef, useState } from 'react';
 
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
@@ -12,15 +12,15 @@ import ShoppingCartIcon from '@heroicons/react/24/outline/ShoppingCartIcon';
 
 const CartDropdown = ({
   cart: cartState,
+  dict,
 }: {
   cart?: Omit<Cart, 'beforeInsert' | 'afterLoad'> | null;
+  dict: any;
 }) => {
   const [activeTimer, setActiveTimer] = useState<NodeJS.Timer | undefined>(
     undefined
   );
   const [cartDropdownOpen, setCartDropdownOpen] = useState(false);
-
-  const { countryCode } = useParams();
 
   const open = () => setCartDropdownOpen(true);
   const close = () => setCartDropdownOpen(false);
@@ -94,10 +94,12 @@ const CartDropdown = ({
         >
           <Popover.Panel
             static
-            className="block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] text-ui-fg-base rounded-xl font-poppins shadow-2xl"
+            className="block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] rounded-xl font-poppins shadow-xl"
           >
             <div className="p-4 flex items-center justify-center">
-              <h3 className="text-lg font-bold">Cart</h3>
+              <h3 className="text-lg font-bold text-primary-500">
+                {dict?.layout.nav.cart.title}
+              </h3>
             </div>
             {cartState && cartState.items?.length ? (
               <>
@@ -111,9 +113,9 @@ const CartDropdown = ({
                         key={item.id}
                         href={`/products/${item.variant.product.handle}`}
                       >
-                        <div className="grid grid-cols-[72px_1fr] hover:bg-gray-200 rounded-md shadow-md">
+                        <div className="grid grid-cols-[72px_1fr] rounded-md">
                           <Thumbnail thumbnail={item.thumbnail} size="square" />
-                          <div className="flex flex-row whitespace-nowrap items-center text-md mx-2 justify-between">
+                          <div className="flex flex-row whitespace-nowrap items-center text-md mx-2 justify-between text-primary-500 hover:text-primary-700">
                             <div className="max-w-[240px] overflow-hidden text-ellipsis">
                               {item.title}
                             </div>
@@ -131,7 +133,7 @@ const CartDropdown = ({
                       className="w-full bg-primary-500 hover:bg-primary-600"
                       size="large"
                     >
-                      Go to cart
+                      {dict?.layout.nav.cart.goToCart}
                     </Button>
                   </LocalizedClientLink>
                 </div>
@@ -139,15 +141,24 @@ const CartDropdown = ({
             ) : (
               <div>
                 <div className="flex py-16 flex-col gap-y-4 items-center justify-center">
-                  <div className="bg-gray-900 text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
+                  <div className="bg-primary-500 text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
                     <span>0</span>
                   </div>
-                  <span>Your shopping bag is empty.</span>
+                  <span className="text-primary-500">
+                    {dict?.layout.nav.cart.cartEmpty}
+                  </span>
                   <div>
-                    <LocalizedClientLink href="store">
+                    <LocalizedClientLink href="/">
                       <>
-                        <span className="sr-only">Go to all products page</span>
-                        <Button onClick={close}>Explore products</Button>
+                        <span className="sr-only text-primary-500">
+                          {dict?.layout.nav.cart.goToProductPage}
+                        </span>
+                        <Button
+                          onClick={close}
+                          className="bg-primary-500 hover:bg-primary-600"
+                        >
+                          {dict?.layout.nav.cart.exploreMore}
+                        </Button>
                       </>
                     </LocalizedClientLink>
                   </div>

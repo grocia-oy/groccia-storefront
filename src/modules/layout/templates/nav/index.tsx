@@ -2,18 +2,23 @@ import { Suspense } from 'react';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
 import SearchBar from '@modules/search/components/searchbar';
 import PostcodeButtonModal from '@modules/layout/components/postcode-button-modal';
-import User from '@modules/common/icons/user';
+
 import CartButton from '@modules/layout/components/cart-button';
-import AnimatedHamburgerWrapper from '@modules/common/components/animated-hamburget-xmark-wrapper';
+import LoginButtonModal from '@modules/layout/components/login-button-modal';
+import Sidebar from '../sidebar';
 
-type Props = {};
+type Props = {
+  lang: string;
+};
 
-export default function Nav({}: Props) {
+export default function Nav({ lang }: Props) {
   return (
     <div className="sticky top-0 inset-x-0 z-50">
       <header className="relative h-20 bg-white border-b">
         <nav className="content-container flex items-center justify-between h-full space-x-6">
-          <AnimatedHamburgerWrapper />
+          <div className="flex-1 lg:hidden">
+            <Sidebar />
+          </div>
           <div className="lg:flex-1 basis-0 h-full flex items-center">
             <LocalizedClientLink
               href="/"
@@ -28,12 +33,7 @@ export default function Nav({}: Props) {
           <div className="flex flex-1 basis-0 justify-end">
             <div className="flex items-center space-x-10 font-raleway">
               <PostcodeButtonModal />
-              <button className="flex cursor-pointer items-center">
-                <span className="mr-1">
-                  <User className="w-5 h-5" />
-                </span>
-                <div className="hidden lg:block">Login</div>
-              </button>
+              <LoginButtonModal />
               <Suspense
                 fallback={
                   <LocalizedClientLink
@@ -42,7 +42,7 @@ export default function Nav({}: Props) {
                   ></LocalizedClientLink>
                 }
               >
-                <CartButton />
+                <CartButton lang={lang} />
               </Suspense>
             </div>
           </div>
