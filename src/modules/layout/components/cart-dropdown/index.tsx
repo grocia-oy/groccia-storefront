@@ -94,7 +94,7 @@ const CartDropdown = ({
         >
           <Popover.Panel
             static
-            className="block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] text-ui-fg-base rounded-xl font-poppins shadow-2xl"
+            className="block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] rounded-xl font-poppins shadow-xl"
           >
             <div className="p-4 flex items-center justify-center">
               <h3 className="text-lg font-bold text-primary-500">
@@ -113,9 +113,9 @@ const CartDropdown = ({
                         key={item.id}
                         href={`/products/${item.variant.product.handle}`}
                       >
-                        <div className="grid grid-cols-[72px_1fr] hover:bg-gray-200 rounded-md shadow-md">
+                        <div className="grid grid-cols-[72px_1fr] rounded-md">
                           <Thumbnail thumbnail={item.thumbnail} size="square" />
-                          <div className="flex flex-row whitespace-nowrap items-center text-md mx-2 justify-between text-primary-500">
+                          <div className="flex flex-row whitespace-nowrap items-center text-md mx-2 justify-between text-primary-500 hover:text-primary-700">
                             <div className="max-w-[240px] overflow-hidden text-ellipsis">
                               {item.title}
                             </div>
