@@ -11,7 +11,7 @@
     "and": "Và"
   },
   "layout": {
-    "navBar": {
+    "nav": {
       "loginButtonTitle": "Đăng nhập",
       "postcodeModal": {
         "showModalButton": "Giao hàng tới",

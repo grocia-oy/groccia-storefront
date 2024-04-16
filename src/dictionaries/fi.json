@@ -11,7 +11,7 @@
     "and": "And"
   },
   "layout": {
-    "navBar": {
+    "nav": {
       "loginButtonTitle": "Login",
       "postcodeModal": {
         "showModalButton": "Delivery to",
