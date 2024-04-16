@@ -49,5 +49,9 @@
       "socialLoginWithStatement": "Continue with",
       "registerConsentStarts": "By creating an account, you agree to Groccia's"
     }
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock"
   }
 }
