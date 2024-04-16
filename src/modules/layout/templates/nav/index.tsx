@@ -5,7 +5,7 @@ import SearchBar from '@modules/search/components/searchbar';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import PostcodeButtonModal from '@modules/layout/components/postcode-button-modal';
 import AnimatedHamburgerXmark from '@modules/common/components/animated-hamburger-xmark';
-import User from '@modules/common/icons/user';
+import LoginButtonModal from '@modules/layout/components/login-button-modal';
 
 type Props = {};
 
@@ -40,12 +40,7 @@ export default function Nav({}: Props) {
           <div className="flex flex-1 basis-0 justify-end">
             <div className="flex items-center space-x-10 font-raleway">
               <PostcodeButtonModal modalRef={postalCodeModalRef} />
-              <button className="flex cursor-pointer items-center">
-                <span className="mr-1">
-                  <User className="w-5 h-5" />
-                </span>
-                <div className="hidden lg:block">Login</div>
-              </button>
+              <LoginButtonModal />
               <Suspense>
                 <button>
                   <ShoppingCartIcon className="w-6 h-6" />

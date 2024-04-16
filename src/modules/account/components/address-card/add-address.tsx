@@ -10,7 +10,7 @@ import useToggleState from "@lib/hooks/use-toggle-state"
 import CountrySelect from "@modules/checkout/components/country-select"
 import Input from "@modules/common/components/input"
 import Modal from "@modules/common/components/modal"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
+import { SubmitButton } from "@modules/common/components/submit-button"
 import { addCustomerShippingAddress } from "@modules/account/actions"
 
 const AddAddress = ({ region }: { region: Region }) => {

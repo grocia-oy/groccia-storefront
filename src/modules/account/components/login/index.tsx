@@ -1,28 +1,41 @@
-import { useFormState } from "react-dom"
+import { useFormState } from 'react-dom';
 
-import { LOGIN_VIEW } from "@modules/account/templates/login-template"
-import Input from "@modules/common/components/input"
-import { logCustomerIn } from "@modules/account/actions"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import { SubmitButton } from "@modules/checkout/components/submit-button"
+import { LOGIN_VIEW } from '@modules/account/components/login-modal';
+import Input from '@modules/common/components/input';
+import { logCustomerIn } from '@modules/account/actions';
+import ErrorMessage from '@modules/checkout/components/error-message';
+import { SubmitButton } from '@modules/common/components/submit-button';
+import { useDictionary } from '@lib/context/dictionary-context';
+import { SocialLoginButton, SocialPlatform } from '../social-login-button';
 
 type Props = {
-  setCurrentView: (view: LOGIN_VIEW) => void
-}
+  setCurrentView: (view: LOGIN_VIEW) => void;
+};
 
 const Login = ({ setCurrentView }: Props) => {
-  const [message, formAction] = useFormState(logCustomerIn, null)
+  const [message, formAction] = useFormState(logCustomerIn, null);
+  const dictionary = useDictionary();
 
   return (
-    <div className="max-w-sm w-full flex flex-col items-center">
-      <h1 className="text-large-semi uppercase mb-6">Welcome back</h1>
-      <p className="text-center text-base-regular text-ui-fg-base mb-8">
-        Sign in to access an enhanced shopping experience.
-      </p>
+    <div className="">
+      <div className="mb-8 flex w-full justify-between">
+        <h2 className="font-raleway font-bold text-xl">
+          {dictionary.account.loginModal.loginHeading}
+        </h2>
+        <p>
+          {dictionary.account.loginModal.switchToRegisterDescription}{' '}
+          <button
+            className="underline"
+            onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
+          >
+            {dictionary.common.register}
+          </button>
+        </p>
+      </div>
       <form className="w-full" action={formAction}>
-        <div className="flex flex-col w-full gap-y-2">
+        <div className="flex flex-col w-full gap-y-4">
           <Input
-            label="Email"
+            label={dictionary.common.email}
             name="email"
             type="email"
             title="Enter a valid email address."
@@ -30,7 +43,7 @@ const Login = ({ setCurrentView }: Props) => {
             required
           />
           <Input
-            label="Password"
+            label={dictionary.common.password}
             name="password"
             type="password"
             autoComplete="current-password"
@@ -38,20 +51,33 @@ const Login = ({ setCurrentView }: Props) => {
           />
         </div>
         <ErrorMessage error={message} />
-        <SubmitButton className="w-full mt-6">Sign in</SubmitButton>
+        <div className="text-right">
+          <button
+            onClick={(event) => {
+              event.preventDefault();
+            }}
+            className="text-sm underline"
+          >
+            {dictionary.account.loginModal.troubleLoggingIn}
+          </button>
+        </div>
+        <SubmitButton className="w-full mt-6 font-semibold font-raleway bg-primary-default hover:bg-primary-600">
+          {dictionary.account.loginModal.loginButton}
+        </SubmitButton>
       </form>
-      <span className="text-center text-ui-fg-base text-small-regular mt-6">
-        Not a member?{" "}
-        <button
-          onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
-          className="underline"
-        >
-          Join us
-        </button>
-        .
-      </span>
+      <div className="divider divider-neutral my-8">
+        {dictionary.account.loginModal.socialLoginDivider.toLowerCase()}
+      </div>
+      <div className="space-y-4">
+        <div>
+          <SocialLoginButton platform={SocialPlatform.GOOGLE} />
+        </div>
+        <div>
+          <SocialLoginButton platform={SocialPlatform.FACEBOOK} />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
