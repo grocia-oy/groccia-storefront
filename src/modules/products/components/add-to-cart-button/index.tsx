@@ -1,31 +1,27 @@
 'use client';
 
-import PlusCircle from '@modules/common/icons/plus-circle';
 import React from 'react';
-import { PricedProduct } from '@medusajs/medusa/dist/types/pricing';
+import { PricedVariant } from '@medusajs/medusa/dist/types/pricing';
 import { Region } from '@medusajs/medusa';
 import { addToCart } from '@modules/cart/actions';
 import { IconButton } from '@medusajs/ui';
+import { Plus } from '@medusajs/icons';
 
 interface Props {
-  buttonProps: React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >;
-  product: PricedProduct;
+  variant: PricedVariant;
   region: Region;
   countryCode: string;
+  inStock: boolean | undefined;
 }
 
-function AddToCartButton({ buttonProps, product, region, countryCode }: Props) {
+function AddToCartButton({ variant, region, countryCode, inStock }: Props) {
   const [isAdding, setIsAdding] = React.useState(false);
-
-  const variant = product.variants[0];
 
   const handleAddToCart = async (event: any) => {
     event.preventDefault();
 
-    if (!variant.id) return;
+    if (!variant?.id) return;
+
     setIsAdding(true);
     await addToCart({
       variantId: variant.id,
@@ -39,14 +35,13 @@ function AddToCartButton({ buttonProps, product, region, countryCode }: Props) {
     <>
       <IconButton
         onClick={handleAddToCart}
-        disabled={!variant}
-        variant="transparent"
+        disabled={!inStock || !variant || isAdding}
+        variant="primary"
         isLoading={isAdding}
-        {...buttonProps}
-        asChild={true}
+        className="absolute top-2 right-2 rounded-full bg-primary-default hover:bg-primary-700 p-0 text-white"
         size={'xlarge'}
       >
-        <PlusCircle />
+        <Plus />
       </IconButton>
     </>
   );
