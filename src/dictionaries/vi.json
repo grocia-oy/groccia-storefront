@@ -52,5 +52,9 @@
   },
   "productRail": {
     "viewAll": "Xem tất cả"
+  },
+  "product": {
+    "addToCart": "Thêm vào giỏ hàng",
+    "outOfStock": "Hết hàng"
   }
 }

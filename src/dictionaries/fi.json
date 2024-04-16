@@ -52,5 +52,9 @@
   },
   "productRail": {
     "viewAll": "View all"
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock"
   }
 }
