@@ -105,7 +105,7 @@ export default async function Home({
             <ProductRail
               collection={collection}
               region={region}
-              countryCode={locale}
+              locale={locale}
               lang={lang}
             />
           </li>

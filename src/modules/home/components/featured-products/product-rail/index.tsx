@@ -8,13 +8,13 @@ import { ProductCollectionWithPreviews } from 'types/global';
 export default function ProductRail({
   collection,
   region,
-  countryCode,
   lang,
+  locale,
 }: {
   collection: ProductCollectionWithPreviews;
   region: Region;
-  countryCode: string;
   lang: string;
+  locale: string;
 }) {
   if (!collection) {
     return null;
@@ -48,8 +48,7 @@ export default function ProductRail({
                 productPreview={product}
                 region={region}
                 isFeatured
-                countryCode={countryCode}
-                lang={lang}
+                locale={locale}
               />
             </div>
           ))}
