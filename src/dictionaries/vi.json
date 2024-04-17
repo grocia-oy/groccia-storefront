@@ -106,7 +106,10 @@
   },
   "checkout": {
     "backToCart": "Quay lại giỏ hàng",
-    "continueToDelivery": "Giao hàng",
-    "sameBillingAndShippingAddress": "Địa chỉ thanh toán trùng với địa chỉ giao hàng"
+    "continueToDelivery": "Tới giao hàng",
+    "sameBillingAndShippingAddress": "Địa chỉ thanh toán trùng với địa chỉ giao hàng",
+    "delivery": "Giao hàng",
+    "deliveryMethod": "Phương thức",
+    "continueToPayment": "Tới thanh toán"
   }
 }
