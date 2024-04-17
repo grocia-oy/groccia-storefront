@@ -117,6 +117,9 @@
   "checkout": {
     "backToCart": "Back to shopping cart",
     "continueToDelivery": "Continue to delivery",
-    "sameBillingAndShippingAddress": "Billing and shipping address are the same"
+    "sameBillingAndShippingAddress": "Billing and shipping address are the same",
+    "delivery": "Delivery",
+    "deliveryMethod": "Method",
+    "continueToPayment": "Continue to payment"
   }
 }
