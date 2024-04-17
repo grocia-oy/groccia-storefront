@@ -57,5 +57,39 @@
     "addToCart": "Add to cart",
     "outOfStock": "Out of stock",
     "viewAll": "View all"
+  },
+  "cartPage": {
+    "itemsTemplate": {
+      "heading": "Cart",
+      "item": "Item",
+      "quantity": "Quantity",
+      "total": "Total",
+      "price": "Price",
+      "selectQuantity": "Select..."
+    },
+    "summary": {
+      "heading": "Summary",
+      "goToCheckout": "Go to checkout",
+      "discountCode": {
+        "giftCardApply": "Gift card(s) applied",
+        "removeGiftCard": "Remove gift card from order",
+        "discountCodeApply": "Discount applied",
+        "removeDiscountCode": "Remove discount code from order",
+        "code": "Code",
+        "giftCardOrDiscountCode": "Add gift card or discount code",
+        "toolTip": "You can add multiple gift cards, but only one discount code.",
+        "inputLabel": "Please enter code",
+        "apply": "Apply"
+      }
+    },
+    "cartTotals": {
+      "subTotal": "Subtotal",
+      "toolTip": "Cart total excluding shipping and taxtes.",
+      "discount": "Discount",
+      "giftCard": "Gift card",
+      "shipping": "Shipping",
+      "taxes": "Taxes",
+      "total": "Total"
+    }
   }
 }
