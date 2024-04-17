@@ -57,5 +57,39 @@
     "addToCart": "Thêm vào giỏ hàng",
     "outOfStock": "Hết hàng",
     "viewAll": "Xem thêm"
+  },
+  "cartPage": {
+    "itemsTemplate": {
+      "heading": "Giỏ hàng",
+      "item": "Sản phẩm",
+      "quantity": "Số lượng",
+      "total": "Tổng cộng",
+      "price": "Giá",
+      "selectQuantity": "Chọn..."
+    },
+    "summary": {
+      "heading": "Tóm tắt",
+      "goToCheckout": "Thanh toán",
+      "discountCode": {
+        "giftCardApply": "Mã quà tặng đã áp dụng",
+        "removeGiftCard": "Xóa mã quà tặng khỏi đơn hàng",
+        "discountCodeApply": "Mã giảm giá đã áp dụng",
+        "removeDiscountCode": "Xóa mã giảm giá khỏi đơn hàng",
+        "code": "Mã",
+        "giftCardOrDiscountCode": "Thêm thẻ quà tặng hoặc mã giảm giá",
+        "toolTip": "Bạn có thể thêm nhiều thẻ quà tặng nhưng chỉ có thể sử dụng một mã giảm giá",
+        "inputLabel": "Nhập mã giảm giá",
+        "apply": "Áp dụng"
+      }
+    },
+    "cartTotals": {
+      "subTotal": "Tổng tiền hàng",
+      "toolTip": "Tổng tiền giỏ hàng không bao gồm phí vận chuyển và thuế.",
+      "discount": "Giảm giá",
+      "giftCard": "Thẻ quà tặng",
+      "shipping": "Phí vận chuyển",
+      "taxes": "Thuế",
+      "total": "Tổng cộng"
+    }
   }
 }
