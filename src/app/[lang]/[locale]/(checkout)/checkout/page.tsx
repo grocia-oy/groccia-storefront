@@ -1,39 +1,45 @@
-import { Metadata } from "next"
-import { cookies } from "next/headers"
-import { notFound } from "next/navigation"
-import { LineItem } from "@medusajs/medusa"
+import { Metadata } from 'next';
+import { cookies } from 'next/headers';
+import { notFound } from 'next/navigation';
+import { LineItem } from '@medusajs/medusa';
 
-import { enrichLineItems, retrieveCart } from "@modules/cart/actions"
-import Wrapper from "@modules/checkout/components/payment-wrapper"
-import CheckoutForm from "@modules/checkout/templates/checkout-form"
-import CheckoutSummary from "@modules/checkout/templates/checkout-summary"
+import { enrichLineItems, retrieveCart } from '@modules/cart/actions';
+import Wrapper from '@modules/checkout/components/payment-wrapper';
+import CheckoutForm from '@modules/checkout/templates/checkout-form';
+import CheckoutSummary from '@modules/checkout/templates/checkout-summary';
 
 export const metadata: Metadata = {
-  title: "Checkout",
-}
+  title: 'Checkout',
+};
 
 const fetchCart = async () => {
-  const cart = await retrieveCart()
+  const cart = await retrieveCart();
 
   if (cart?.items.length) {
-    const enrichedItems = await enrichLineItems(cart?.items, cart?.region_id)
-    cart.items = enrichedItems as LineItem[]
+    const enrichedItems = await enrichLineItems(cart?.items, cart?.region_id);
+    cart.items = enrichedItems as LineItem[];
   }
 
-  return cart
+  return cart;
+};
+
+interface CheckoutProps {
+  params: { lang: string; locale: string };
 }
 
-export default async function Checkout() {
-  const cartId = cookies().get("_medusa_cart_id")?.value
+export default async function Checkout({
+  params: { lang, locale },
+}: CheckoutProps) {
+  const cartId = cookies().get('_medusa_cart_id')?.value;
 
   if (!cartId) {
-    return notFound()
+    return notFound();
   }
 
-  const cart = await fetchCart()
+  const cart = await fetchCart();
 
   if (!cart) {
-    return notFound()
+    return notFound();
   }
 
   return (
@@ -41,7 +47,7 @@ export default async function Checkout() {
       <Wrapper cart={cart}>
         <CheckoutForm />
       </Wrapper>
-      <CheckoutSummary />
+      <CheckoutSummary lang={lang} />
     </div>
-  )
+  );
 }
