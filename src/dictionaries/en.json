@@ -125,6 +125,9 @@
     "enterCardDetails": "Enter card details",
     "continueToReview": "Continue to review",
     "paymentMethod": "Payment method",
-    "paymentDetails": "Payment details"
+    "paymentDetails": "Payment details",
+    "review": "Review",
+    "selectPaymentMethod": "Select a payment method",
+    "placeOrder": "Place order"
   }
 }
