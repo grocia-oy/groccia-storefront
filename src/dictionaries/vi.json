@@ -115,6 +115,9 @@
     "enterCardDetails": "Nhập thông tin thẻ",
     "continueToReview": "Tới xem lại",
     "paymentMethod": "Phương thức thanh toán",
-    "paymentDetails": "Thông tin thanh toán"
+    "paymentDetails": "Thông tin thanh toán",
+    "review": "Xem lại",
+    "selectPaymentMethod": "Chọn một phương thức thanh toán",
+    "placeOrder": "Đặt hàng"
   }
 }
