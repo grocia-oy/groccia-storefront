@@ -110,6 +110,11 @@
     "sameBillingAndShippingAddress": "Địa chỉ thanh toán trùng với địa chỉ giao hàng",
     "delivery": "Giao hàng",
     "deliveryMethod": "Phương thức",
-    "continueToPayment": "Tới thanh toán"
+    "continueToPayment": "Tới thanh toán",
+    "payment": "Thanh toán",
+    "enterCardDetails": "Nhập thông tin thẻ",
+    "continueToReview": "Tới xem lại",
+    "paymentMethod": "Phương thức thanh toán",
+    "paymentDetails": "Thông tin thanh toán"
   }
 }

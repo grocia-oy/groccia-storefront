@@ -110,6 +110,11 @@
     "sameBillingAndShippingAddress": "Billing and shipping address are the same",
     "delivery": "Delivery",
     "deliveryMethod": "Method",
-    "continueToPayment": "Continue to payment"
+    "continueToPayment": "Continue to payment",
+    "payment": "Payment",
+    "enterCardDetails": "Enter card details",
+    "continueToReview": "Continue to review",
+    "paymentMethod": "Payment method",
+    "paymentDetails": "Payment details"
   }
 }
