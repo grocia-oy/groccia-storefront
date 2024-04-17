@@ -8,6 +8,7 @@ import { enrichLineItems } from '@modules/cart/actions';
 import { getCheckoutStep } from '@lib/util/get-checkout-step';
 import { CartWithCheckoutStep } from 'types/global';
 import { getCart, getCustomer } from '@lib/data/ecommerce';
+import { getDictionary } from 'app/[lang]/dictionaries';
 
 export const metadata: Metadata = {
   title: 'Cart',
@@ -39,9 +40,18 @@ const fetchCart = async () => {
   return cart;
 };
 
-export default async function Cart() {
+interface CartProps {
+  params: {
+    lang: string;
+  };
+}
+
+export default async function Cart({ params: { lang } }: CartProps) {
   const cart = await fetchCart();
   const customer = await getCustomer();
+  const dictionary = await getDictionary(lang).catch(() => ({}));
 
-  return <CartTemplate cart={cart} customer={customer} />;
+  return (
+    <CartTemplate cart={cart} customer={customer} dictionary={dictionary} />
+  );
 }

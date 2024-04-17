@@ -1,58 +1,62 @@
-"use client"
+'use client';
 
-import { LineItem, Region } from "@medusajs/medusa"
-import { Table, Text, clx } from "@medusajs/ui"
+import { LineItem, Region } from '@medusajs/medusa';
+import { Table, Text, clx } from '@medusajs/ui';
 
-import CartItemSelect from "@modules/cart/components/cart-item-select"
-import DeleteButton from "@modules/common/components/delete-button"
-import LineItemOptions from "@modules/common/components/line-item-options"
-import LineItemPrice from "@modules/common/components/line-item-price"
-import LineItemUnitPrice from "@modules/common/components/line-item-unit-price"
-import Thumbnail from "@modules/products/components/thumbnail"
-import { updateLineItem } from "@modules/cart/actions"
-import Spinner from "@modules/common/icons/spinner"
-import { useState } from "react"
-import ErrorMessage from "@modules/checkout/components/error-message"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import CartItemSelect from '@modules/cart/components/cart-item-select';
+import DeleteButton from '@modules/common/components/delete-button';
+import LineItemOptions from '@modules/common/components/line-item-options';
+import LineItemPrice from '@modules/common/components/line-item-price';
+import LineItemUnitPrice from '@modules/common/components/line-item-unit-price';
+import Thumbnail from '@modules/products/components/thumbnail';
+import { updateLineItem } from '@modules/cart/actions';
+import Spinner from '@modules/common/icons/spinner';
+import { useState } from 'react';
+import ErrorMessage from '@modules/checkout/components/error-message';
+import LocalizedClientLink from '@modules/common/components/localized-client-link';
+import { useDictionary } from '@lib/context/dictionary-context';
 
 type ItemProps = {
-  item: Omit<LineItem, "beforeInsert">
-  region: Region
-  type?: "full" | "preview"
-}
+  item: Omit<LineItem, 'beforeInsert'>;
+  region: Region;
+  type?: 'full' | 'preview';
+};
 
-const Item = ({ item, region, type = "full" }: ItemProps) => {
-  const [updating, setUpdating] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+const Item = ({ item, region, type = 'full' }: ItemProps) => {
+  const dictionary = useDictionary();
+  const dictionaryItemsTemplate = dictionary.cartPage.itemsTemplate;
 
-  const { handle } = item.variant.product
+  const [updating, setUpdating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const { handle } = item.variant.product;
 
   const changeQuantity = async (quantity: number) => {
-    setError(null)
-    setUpdating(true)
+    setError(null);
+    setUpdating(true);
 
     const message = await updateLineItem({
       lineId: item.id,
       quantity,
     })
       .catch((err) => {
-        return err.message
+        return err.message;
       })
       .finally(() => {
-        setUpdating(false)
-      })
+        setUpdating(false);
+      });
 
-    message && setError(message)
-  }
+    message && setError(message);
+  };
 
   return (
     <Table.Row className="w-full">
       <Table.Cell className="!pl-0 p-4 w-24">
         <LocalizedClientLink
           href={`/products/${handle}`}
-          className={clx("flex", {
-            "w-16": type === "preview",
-            "small:w-24 w-12": type === "full",
+          className={clx('flex', {
+            'w-16': type === 'preview',
+            'lg:w-24 w-12': type === 'full',
           })}
         >
           <Thumbnail thumbnail={item.thumbnail} size="square" />
@@ -61,14 +65,14 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
 
       <Table.Cell className="text-left">
         <Text className="txt-medium-plus text-ui-fg-base">{item.title}</Text>
-        <LineItemOptions variant={item.variant} />
       </Table.Cell>
 
-      {type === "full" && (
+      {type === 'full' && (
         <Table.Cell>
           <div className="flex gap-2 items-center w-28">
             <DeleteButton id={item.id} />
             <CartItemSelect
+              placeholder={dictionaryItemsTemplate.selectQuantity}
               value={item.quantity}
               onChange={(value) => changeQuantity(parseInt(value.target.value))}
               className="w-14 h-10 p-4"
@@ -95,19 +99,19 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
         </Table.Cell>
       )}
 
-      {type === "full" && (
-        <Table.Cell className="hidden small:table-cell">
+      {type === 'full' && (
+        <Table.Cell className="hidden lg:table-cell">
           <LineItemUnitPrice item={item} region={region} style="tight" />
         </Table.Cell>
       )}
 
       <Table.Cell className="!pr-0">
         <span
-          className={clx("!pr-0", {
-            "flex flex-col items-end h-full justify-center": type === "preview",
+          className={clx('!pr-0', {
+            'flex flex-col items-end h-full justify-center': type === 'preview',
           })}
         >
-          {type === "preview" && (
+          {type === 'preview' && (
             <span className="flex gap-x-1 ">
               <Text className="text-ui-fg-muted">{item.quantity}x </Text>
               <LineItemUnitPrice item={item} region={region} style="tight" />
@@ -117,7 +121,7 @@ const Item = ({ item, region, type = "full" }: ItemProps) => {
         </span>
       </Table.Cell>
     </Table.Row>
-  )
-}
+  );
+};
 
-export default Item
+export default Item;
