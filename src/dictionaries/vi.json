@@ -118,6 +118,7 @@
     "paymentDetails": "Thông tin thanh toán",
     "review": "Xem lại",
     "selectPaymentMethod": "Chọn một phương thức thanh toán",
-    "placeOrder": "Đặt hàng"
+    "placeOrder": "Đặt hàng",
+    "orderSummary": "Tóm tắt đơn hàng"
   }
 }
