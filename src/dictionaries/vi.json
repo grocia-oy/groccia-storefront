@@ -8,7 +8,19 @@
     "register": "Đăng kí",
     "privacyPolicy": "Chính sách bảo mật",
     "termsOfUse": "Điều khoản sử dụng",
-    "and": "Và"
+    "and": "Và",
+    "back": "Quay lại",
+    "address": "Địa chỉ",
+    "edit": "Sửa",
+    "billingAddress": "Địa chỉ thanh toán",
+    "shippingAddress": "Địa chỉ giao hàng",
+    "contact": "Liên hệ",
+    "company": "Công ty",
+    "postalCode": "Mã bưu chính",
+    "city": "Thành phố",
+    "country": "Quốc gia",
+    "stateOrProvince": "Tiểu bang / Tỉnh",
+    "phone": "Số điện thoại"
   },
   "layout": {
     "nav": {
@@ -101,5 +113,10 @@
       "description": "Giỏ hàng hiện tại đang trống. Nhấn vào đường dẫn phía dưới để xem các sản phẩm.",
       "exploreProducts": "Khám phá các sản phẩm"
     }
+  },
+  "checkout": {
+    "backToCart": "Quay lại giỏ hàng",
+    "continueToDelivery": "Giao hàng",
+    "sameBillingAndShippingAddress": "Địa chỉ thanh toán trùng với địa chỉ giao hàng"
   }
 }

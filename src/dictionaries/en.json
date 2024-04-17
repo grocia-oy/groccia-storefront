@@ -8,7 +8,19 @@
     "register": "Register",
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
-    "and": "And"
+    "and": "And",
+    "back": "Back",
+    "address": "Address",
+    "edit": "Edit",
+    "billingAddress": "Billing address",
+    "shippingAddress": "Shipping address",
+    "contact": "Contact",
+    "company": "Company",
+    "postalCode": "Postal code",
+    "city": "City",
+    "country": "Country",
+    "stateOrProvince": "State / Province",
+    "phone": "Phone"
   },
   "layout": {
     "nav": {
@@ -101,5 +113,10 @@
       "description": "You don't have anything in your cart. Let's change that, use the link below to start browsing our products.",
       "exploreProducts": "Explore products"
     }
+  },
+  "checkout": {
+    "backToCart": "Back to shopping cart",
+    "continueToDelivery": "Continue to delivery",
+    "sameBillingAndShippingAddress": "Billing and shipping address are the same"
   }
 }
