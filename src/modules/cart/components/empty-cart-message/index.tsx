@@ -1,6 +1,6 @@
-import { Heading, Text } from "@medusajs/ui"
+import { Heading, Text } from '@medusajs/ui';
 
-import InteractiveLink from "@modules/common/components/interactive-link"
+import InteractiveLink from '@modules/common/components/interactive-link';
 
 const EmptyCartMessage = () => {
   return (
@@ -16,10 +16,10 @@ const EmptyCartMessage = () => {
         the link below to start browsing our products.
       </Text>
       <div>
-        <InteractiveLink href="/store">Explore products</InteractiveLink>
+        <InteractiveLink href="/">Explore products</InteractiveLink>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EmptyCartMessage
+export default EmptyCartMessage;
