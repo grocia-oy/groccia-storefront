@@ -101,5 +101,40 @@
       "description": "Giỏ hàng hiện tại đang trống. Nhấn vào đường dẫn phía dưới để xem các sản phẩm.",
       "exploreProducts": "Khám phá các sản phẩm"
     }
+  },
+  "checkout": {
+    "backToCart": "Quay lại giỏ hàng",
+    "continueToDelivery": "Tới giao hàng",
+    "sameBillingAndShippingAddress": "Địa chỉ thanh toán trùng với địa chỉ giao hàng",
+    "delivery": "Giao hàng",
+    "deliveryMethod": "Phương thức giao hàng",
+    "continueToPayment": "Tới thanh toán",
+    "payment": "Thanh toán",
+    "enterCardDetails": "Nhập thông tin thẻ",
+    "continueToReview": "Tới xem lại",
+    "paymentMethod": "Phương thức thanh toán",
+    "paymentDetails": "Thông tin thanh toán",
+    "review": "Xem lại",
+    "selectPaymentMethod": "Chọn một phương thức thanh toán",
+    "placeOrder": "Đặt hàng",
+    "orderSummary": "Tóm tắt đơn hàng"
+  },
+  "orderPage": {
+    "thankYou": "Xin cảm ơn!",
+    "orderDescription": "Đơn hàng của bạn đã được đặt thành công",
+    "summary": "Tóm tắt",
+    "shippingDetails": "Thông tin giao hàng",
+    "paidAt": "thanh toán lúc",
+    "orderDetails": {
+      "sentOrderConfirmationDetails": "Chúng tôi đã gửi thông tin xác nhận tới",
+      "orderDate": "Ngày đặt hàng",
+      "orderNumber": "Số thứ tự đơn hàng",
+      "orderStatus": "Trạng thái đơn hàng",
+      "paymentStatus": "Trạng thái thanh toán"
+    }
+  },
+  "help": {
+    "needHelp": "Cần hỗ trợ?",
+    "returnAndExchanges": "Hoàn trả và đổi trả"
   }
 }
