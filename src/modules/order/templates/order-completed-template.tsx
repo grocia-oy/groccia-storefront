@@ -9,14 +9,20 @@ import OnboardingCta from '@modules/order/components/onboarding-cta';
 import OrderDetails from '@modules/order/components/order-details';
 import ShippingDetails from '@modules/order/components/shipping-details';
 import PaymentDetails from '@modules/order/components/payment-details';
+import { getDictionary } from 'app/[lang]/dictionaries';
 
 type OrderCompletedTemplateProps = {
   order: Order;
+  lang: string;
 };
 
-export default function OrderCompletedTemplate({
+export default async function OrderCompletedTemplate({
   order,
+  lang,
 }: OrderCompletedTemplateProps) {
+  const dictionary = await getDictionary(lang);
+  const dictionaryOrderPage = dictionary.orderPage;
+
   const isOnboarding = cookies().get('_medusa_onboarding')?.value === 'true';
 
   return (
@@ -28,18 +34,18 @@ export default function OrderCompletedTemplate({
             level="h1"
             className="flex flex-col gap-y-3 text-ui-fg-base text-3xl mb-4"
           >
-            <span>Thank you!</span>
-            <span>Your order was placed successfully.</span>
+            <span>{dictionaryOrderPage.thankYou}</span>
+            <span>{dictionaryOrderPage.orderDescription}.</span>
           </Heading>
-          <OrderDetails order={order} />
+          <OrderDetails order={order} dictionary={dictionary} />
           <Heading level="h2" className="flex flex-row text-3xl-regular">
-            Summary
+            {dictionaryOrderPage.summary}
           </Heading>
           <Items items={order.items} region={order.region} />
           <CartTotals data={order} />
-          <ShippingDetails order={order} />
-          <PaymentDetails order={order} />
-          <Help />
+          <ShippingDetails order={order} dictionary={dictionary} />
+          <PaymentDetails order={order} dictionary={dictionary} />
+          <Help dictionary={dictionary} />
         </div>
       </div>
     </div>

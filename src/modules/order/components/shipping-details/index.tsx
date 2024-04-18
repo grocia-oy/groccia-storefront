@@ -1,30 +1,31 @@
-import { Order } from "@medusajs/medusa"
-import { Heading, Text } from "@medusajs/ui"
-import { formatAmount } from "@lib/util/prices"
+import { Order } from '@medusajs/medusa';
+import { Heading, Text } from '@medusajs/ui';
+import { formatAmount } from '@lib/util/prices';
 
-import Divider from "@modules/common/components/divider"
+import Divider from '@modules/common/components/divider';
 
 type ShippingDetailsProps = {
-  order: Order
-}
+  order: Order;
+  dictionary: any;
+};
 
-const ShippingDetails = ({ order }: ShippingDetailsProps) => {
+const ShippingDetails = ({ order, dictionary }: ShippingDetailsProps) => {
   return (
     <div>
       <Heading level="h2" className="flex flex-row text-3xl-regular my-6">
-        Delivery
+        {dictionary.orderPage.shippingDetails}
       </Heading>
       <div className="flex items-start gap-x-8">
         <div className="flex flex-col w-1/3">
           <Text className="txt-medium-plus text-ui-fg-base mb-1">
-            Shipping Address
+            {dictionary.common.shippingAddress}
           </Text>
           <Text className="txt-medium text-ui-fg-subtle">
-            {order.shipping_address.first_name}{" "}
+            {order.shipping_address.first_name}{' '}
             {order.shipping_address.last_name}
           </Text>
           <Text className="txt-medium text-ui-fg-subtle">
-            {order.shipping_address.address_1}{" "}
+            {order.shipping_address.address_1}{' '}
             {order.shipping_address.address_2}
           </Text>
           <Text className="txt-medium text-ui-fg-subtle">
@@ -36,7 +37,9 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
         </div>
 
         <div className="flex flex-col w-1/3 ">
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Contact</Text>
+          <Text className="txt-medium-plus text-ui-fg-base mb-1">
+            {dictionary.common.contact}
+          </Text>
           <Text className="txt-medium text-ui-fg-subtle">
             {order.shipping_address.phone}
           </Text>
@@ -44,7 +47,9 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
         </div>
 
         <div className="flex flex-col w-1/3">
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Method</Text>
+          <Text className="txt-medium-plus text-ui-fg-base mb-1">
+            {dictionary.checkout.deliveryMethod}
+          </Text>
           <Text className="txt-medium text-ui-fg-subtle">
             {order.shipping_methods[0].shipping_option?.name} (
             {formatAmount({
@@ -52,15 +57,15 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
               region: order.region,
               includeTaxes: false,
             })
-              .replace(/,/g, "")
-              .replace(/\./g, ",")}
+              .replace(/,/g, '')
+              .replace(/\./g, ',')}
             )
           </Text>
         </div>
       </div>
       <Divider className="mt-8" />
     </div>
-  )
-}
+  );
+};
 
-export default ShippingDetails
+export default ShippingDetails;
