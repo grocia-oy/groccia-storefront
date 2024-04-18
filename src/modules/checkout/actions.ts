@@ -1,6 +1,6 @@
 "use server"
 
-import { cookies } from "next/headers"
+import { cookies, headers } from 'next/headers';
 
 import {
   addShippingMethod,
@@ -105,7 +105,15 @@ export async function submitDiscountForm(
 }
 
 export async function setAddresses(currentState: unknown, formData: FormData) {
-  if (!formData) return "No form data received"
+  const headersList = headers();
+  const referer = headersList.get('referer');
+
+  if (!referer) return;
+
+  const url = new URL(referer);
+  const [lang, locale] = url.pathname.split('/').slice(1, 3);
+
+  if (!formData) return 'No form data received';
 
   const cartId = cookies().get("_medusa_cart_id")?.value
 
@@ -152,9 +160,7 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
     return error.toString()
   }
 
-  redirect(
-    `/${formData.get("shipping_address.country_code")}/checkout?step=delivery`
-  )
+  redirect(`/${lang}/${locale}/checkout?step=delivery`);
 }
 
 export async function setShippingMethod(shippingMethodId: string) {
