@@ -1,15 +1,15 @@
-import { LineItem, Region } from "@medusajs/medusa"
-import { Table, Text } from "@medusajs/ui"
+import { LineItem, Region } from '@medusajs/medusa';
+import { Table, Text } from '@medusajs/ui';
 
-import LineItemOptions from "@modules/common/components/line-item-options"
-import LineItemPrice from "@modules/common/components/line-item-price"
-import LineItemUnitPrice from "@modules/common/components/line-item-unit-price"
-import Thumbnail from "@modules/products/components/thumbnail"
+import LineItemOptions from '@modules/common/components/line-item-options';
+import LineItemPrice from '@modules/common/components/line-item-price';
+import LineItemUnitPrice from '@modules/common/components/line-item-unit-price';
+import Thumbnail from '@modules/products/components/thumbnail';
 
 type ItemProps = {
-  item: Omit<LineItem, "beforeInsert">
-  region: Region
-}
+  item: Omit<LineItem, 'beforeInsert'>;
+  region: Region;
+};
 
 const Item = ({ item, region }: ItemProps) => {
   return (
@@ -22,7 +22,6 @@ const Item = ({ item, region }: ItemProps) => {
 
       <Table.Cell className="text-left">
         <Text className="txt-medium-plus text-ui-fg-base">{item.title}</Text>
-        <LineItemOptions variant={item.variant} />
       </Table.Cell>
 
       <Table.Cell className="!pr-0">
@@ -36,7 +35,7 @@ const Item = ({ item, region }: ItemProps) => {
         </span>
       </Table.Cell>
     </Table.Row>
-  )
-}
+  );
+};
 
-export default Item
+export default Item;
