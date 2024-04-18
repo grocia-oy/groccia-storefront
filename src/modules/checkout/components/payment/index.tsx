@@ -6,7 +6,7 @@ import { RadioGroup } from '@headlessui/react';
 import ErrorMessage from '@modules/checkout/components/error-message';
 import { Cart } from '@medusajs/medusa';
 import { CheckCircleSolid, CreditCard } from '@medusajs/icons';
-import { Button, Container, Heading, Text, Tooltip, clx } from '@medusajs/ui';
+import { Container, Heading, Text, Tooltip, clx } from '@medusajs/ui';
 import { CardElement } from '@stripe/react-stripe-js';
 import { StripeCardElementOptions } from '@stripe/stripe-js';
 
@@ -16,6 +16,7 @@ import PaymentContainer from '@modules/checkout/components/payment-container';
 import { setPaymentMethod } from '@modules/checkout/actions';
 import { paymentInfoMap } from '@lib/constants';
 import { useDictionary } from '@lib/context/dictionary-context';
+import Button from '@modules/common/components/button';
 
 const Payment = ({
   cart,
@@ -173,13 +174,11 @@ const Payment = ({
             )}
 
             <ErrorMessage error={error} />
-
             <Button
-              size="large"
-              className="mt-6 bg-primary-500 hover:bg-primary-600"
+              className="mt-6"
               onClick={handleSubmit}
-              isLoading={isLoading}
               disabled={(isStripe && !cardComplete) || !cart.payment_session}
+              isLoading={isLoading}
             >
               {dictionary.checkout.continueToReview}
             </Button>
