@@ -23,7 +23,7 @@ const CartTemplate = ({
             <div className="flex flex-col bg-white py-6 gap-y-6">
               {!customer && (
                 <>
-                  <SignInPrompt />
+                  <SignInPrompt dictionary={dictionary} />
                   <Divider />
                 </>
               )}
@@ -38,7 +38,7 @@ const CartTemplate = ({
                 {cart && cart.region && (
                   <>
                     <div className="bg-white py-6">
-                      <Summary cart={cart} dictionary={dictionary} />
+                      <Summary cart={cart} />
                     </div>
                   </>
                 )}
@@ -47,7 +47,7 @@ const CartTemplate = ({
           </div>
         ) : (
           <div>
-            <EmptyCartMessage />
+            <EmptyCartMessage dictionary={dictionary} />
           </div>
         )}
       </div>
