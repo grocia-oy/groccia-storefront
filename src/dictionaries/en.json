@@ -90,6 +90,16 @@
       "shipping": "Shipping",
       "taxes": "Taxes",
       "total": "Total"
+    },
+    "signInPrompt": {
+      "title": "Already have an account?",
+      "description": "Sign in for a better experience",
+      "signIn": "Sign in"
+    },
+    "emptyCartMessage": {
+      "title": "Cart",
+      "description": "You don't have anything in your cart. Let's change that, use the link below to start browsing our products.",
+      "exploreProducts": "Explore products"
     }
   }
 }
