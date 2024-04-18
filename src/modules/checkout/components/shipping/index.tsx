@@ -4,9 +4,10 @@ import { RadioGroup } from '@headlessui/react';
 import { CheckCircleSolid } from '@medusajs/icons';
 import { Cart } from '@medusajs/medusa';
 import { PricedShippingOption } from '@medusajs/medusa/dist/types/pricing';
-import { Button, Heading, Text, clx, useToggleState } from '@medusajs/ui';
+import { Heading, Text, clx } from '@medusajs/ui';
 import { formatAmount } from '@lib/util/prices';
 
+import Button from '@modules/common/components/button';
 import Divider from '@modules/common/components/divider';
 import Radio from '@modules/common/components/radio';
 import Spinner from '@modules/common/icons/spinner';
@@ -15,7 +16,6 @@ import { setShippingMethod } from '@modules/checkout/actions';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDictionary } from '@lib/context/dictionary-context';
-import { SubmitButton } from '@modules/common/components/submit-button';
 
 type ShippingProps = {
   cart: Omit<Cart, 'refundable_amount' | 'refunded_total'>;
@@ -147,13 +147,10 @@ const Shipping: React.FC<ShippingProps> = ({
           </div>
 
           <ErrorMessage error={error} />
-
           <Button
-            size="large"
-            className="mt-6"
             onClick={handleSubmit}
-            isLoading={isLoading}
             disabled={!cart.shipping_methods[0]}
+            isLoading={isLoading}
           >
             {dictionary.checkout.continueToPayment}
           </Button>
