@@ -19,11 +19,11 @@ const CartTemplate = ({
     <div className="py-12">
       <div className="content-container">
         {cart?.items.length ? (
-          <div className="grid grid-cols-1 small:grid-cols-[1fr_360px] gap-x-40">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-x-40">
             <div className="flex flex-col bg-white py-6 gap-y-6">
               {!customer && (
                 <>
-                  <SignInPrompt />
+                  <SignInPrompt dictionary={dictionary} />
                   <Divider />
                 </>
               )}
@@ -38,7 +38,7 @@ const CartTemplate = ({
                 {cart && cart.region && (
                   <>
                     <div className="bg-white py-6">
-                      <Summary cart={cart} dictionary={dictionary} />
+                      <Summary cart={cart} />
                     </div>
                   </>
                 )}
@@ -47,7 +47,7 @@ const CartTemplate = ({
           </div>
         ) : (
           <div>
-            <EmptyCartMessage />
+            <EmptyCartMessage dictionary={dictionary} />
           </div>
         )}
       </div>

@@ -102,6 +102,16 @@
       "shipping": "Phí vận chuyển",
       "taxes": "Thuế",
       "total": "Tổng cộng"
+    },
+    "signInPrompt": {
+      "title": "Đã có tài khoản?",
+      "description": "Đăng nhập để có một trải nghiệm tốt hơn",
+      "signIn": "Đăng nhập"
+    },
+    "emptyCartMessage": {
+      "title": "Giỏ hàng",
+      "description": "Giỏ hàng hiện tại đang trống. Nhấn vào đường dẫn phía dưới để xem các sản phẩm.",
+      "exploreProducts": "Khám phá các sản phẩm"
     }
   },
   "checkout": {
