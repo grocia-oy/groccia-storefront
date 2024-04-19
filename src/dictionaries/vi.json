@@ -119,7 +119,7 @@
     "continueToDelivery": "Tới giao hàng",
     "sameBillingAndShippingAddress": "Địa chỉ thanh toán trùng với địa chỉ giao hàng",
     "delivery": "Giao hàng",
-    "deliveryMethod": "Phương thức",
+    "deliveryMethod": "Phương thức giao hàng",
     "continueToPayment": "Tới thanh toán",
     "payment": "Thanh toán",
     "enterCardDetails": "Nhập thông tin thẻ",
@@ -130,5 +130,23 @@
     "selectPaymentMethod": "Chọn một phương thức thanh toán",
     "placeOrder": "Đặt hàng",
     "orderSummary": "Tóm tắt đơn hàng"
+  },
+  "orderPage": {
+    "thankYou": "Xin cảm ơn!",
+    "orderDescription": "Đơn hàng của bạn đã được đặt thành công",
+    "summary": "Tóm tắt",
+    "shippingDetails": "Thông tin giao hàng",
+    "paidAt": "thanh toán lúc",
+    "orderDetails": {
+      "sentOrderConfirmationDetails": "Chúng tôi đã gửi thông tin xác nhận tới",
+      "orderDate": "Ngày đặt hàng",
+      "orderNumber": "Số thứ tự đơn hàng",
+      "orderStatus": "Trạng thái đơn hàng",
+      "paymentStatus": "Trạng thái thanh toán"
+    }
+  },
+  "help": {
+    "needHelp": "Cần hỗ trợ?",
+    "returnAndExchanges": "Hoàn trả và đổi trả"
   }
 }

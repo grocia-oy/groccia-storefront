@@ -119,7 +119,7 @@
     "continueToDelivery": "Continue to delivery",
     "sameBillingAndShippingAddress": "Billing and shipping address are the same",
     "delivery": "Delivery",
-    "deliveryMethod": "Method",
+    "deliveryMethod": "Delivery method",
     "continueToPayment": "Continue to payment",
     "payment": "Payment",
     "enterCardDetails": "Enter card details",
@@ -130,5 +130,23 @@
     "selectPaymentMethod": "Select a payment method",
     "placeOrder": "Place order",
     "orderSummary": "Order summary"
+  },
+  "orderPage": {
+    "thankYou": "Thank you!",
+    "orderDescription": "Your order was placed successfully",
+    "summary": "Summary",
+    "shippingDetails": "Shipping details",
+    "paidAt": "paid at",
+    "orderDetails": {
+      "sentOrderConfirmationDetails": "We have sent the order confirmation details to",
+      "orderDate": "Order date",
+      "orderNumber": "Order number",
+      "orderStatus": "Order status",
+      "paymentStatus": "Payment status"
+    }
+  },
+  "help": {
+    "needHelp": "Need help?",
+    "returnAndExchanges": "Return & Exchanges"
   }
 }
