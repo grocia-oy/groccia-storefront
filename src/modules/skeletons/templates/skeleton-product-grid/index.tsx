@@ -1,5 +1,5 @@
-import repeat from "@lib/util/repeat"
-import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
+import repeat from '@lib/util/repeat';
+import SkeletonProductPreview from '@modules/skeletons/components/skeleton-product-preview';
 
 const SkeletonProductGrid = () => {
   return (
@@ -10,7 +10,7 @@ const SkeletonProductGrid = () => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default SkeletonProductGrid
+export default SkeletonProductGrid;
