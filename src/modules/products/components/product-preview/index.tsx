@@ -43,17 +43,19 @@ export default async function ProductPreview({
 
   return (
     <>
-      <div className="rounded-lg relative z-10">
-        <LocalizedClientLink
-          href={`/products/${productPreview.handle}`}
-          className="group"
-        >
-          <Thumbnail
-            thumbnail={productPreview.thumbnail}
-            size="square"
-            isFeatured={isFeatured}
-          />
-        </LocalizedClientLink>
+      <div className="relative">
+        <div>
+          <LocalizedClientLink
+            href={`/products/${productPreview.handle}`}
+            className="group"
+          >
+            <Thumbnail
+              thumbnail={productPreview.thumbnail}
+              size="square"
+              isFeatured={isFeatured}
+            />
+          </LocalizedClientLink>
+        </div>
         <div className="mt-4 flex flex-col justify-between">
           <h3 className="text-base font-raleway">{productPreview.title}</h3>
           <div className="flex items-center gap-x-3 mt-1">
