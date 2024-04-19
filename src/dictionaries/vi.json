@@ -148,5 +148,11 @@
   "help": {
     "needHelp": "Cần hỗ trợ?",
     "returnAndExchanges": "Hoàn trả và đổi trả"
+  },
+  "sort": {
+    "sortBy": "Sắp xếp theo",
+    "latestArrivals": "Mới nhất",
+    "priceLowToHigh": "Giá: Thấp -> Cao",
+    "priceHighToLow": "Giá: Cao -> Thấp"
   }
 }
