@@ -1,41 +1,43 @@
-import React, { useState, useEffect } from "react"
-import Input from "@modules/common/components/input"
-import CountrySelect from "../country-select"
-import { Cart } from "@medusajs/medusa"
+import React, { useState, useEffect } from 'react';
+import Input from '@modules/common/components/input';
+import CountrySelect from '../country-select';
+import { Cart } from '@medusajs/medusa';
 
 const BillingAddress = ({
   cart,
   countryCode,
+  dictionary,
 }: {
-  cart: Omit<Cart, "refundable_amount" | "refunded_total"> | null
-  countryCode: string
+  cart: Omit<Cart, 'refundable_amount' | 'refunded_total'> | null;
+  countryCode: string;
+  dictionary: any;
 }) => {
   const [formData, setFormData] = useState({
-    "billing_address.first_name": cart?.billing_address?.first_name || "",
-    "billing_address.last_name": cart?.billing_address?.last_name || "",
-    "billing_address.address_1": cart?.billing_address?.address_1 || "",
-    "billing_address.company": cart?.billing_address?.company || "",
-    "billing_address.postal_code": cart?.billing_address?.postal_code || "",
-    "billing_address.city": cart?.billing_address?.city || "",
-    "billing_address.country_code":
-      cart?.billing_address?.country_code || countryCode || "",
-    "billing_address.province": cart?.billing_address?.province || "",
-    "billing_address.phone": cart?.billing_address?.phone || "",
-  })
+    'billing_address.first_name': cart?.billing_address?.first_name || '',
+    'billing_address.last_name': cart?.billing_address?.last_name || '',
+    'billing_address.address_1': cart?.billing_address?.address_1 || '',
+    'billing_address.company': cart?.billing_address?.company || '',
+    'billing_address.postal_code': cart?.billing_address?.postal_code || '',
+    'billing_address.city': cart?.billing_address?.city || '',
+    'billing_address.country_code':
+      cart?.billing_address?.country_code || countryCode || '',
+    'billing_address.province': cart?.billing_address?.province || '',
+    'billing_address.phone': cart?.billing_address?.phone || '',
+  });
 
   useEffect(() => {
     setFormData({
-      "billing_address.first_name": cart?.billing_address?.first_name || "",
-      "billing_address.last_name": cart?.billing_address?.last_name || "",
-      "billing_address.address_1": cart?.billing_address?.address_1 || "",
-      "billing_address.company": cart?.billing_address?.company || "",
-      "billing_address.postal_code": cart?.billing_address?.postal_code || "",
-      "billing_address.city": cart?.billing_address?.city || "",
-      "billing_address.country_code": cart?.billing_address?.country_code || "",
-      "billing_address.province": cart?.billing_address?.province || "",
-      "billing_address.phone": cart?.billing_address?.phone || "",
-    })
-  }, [cart?.billing_address])
+      'billing_address.first_name': cart?.billing_address?.first_name || '',
+      'billing_address.last_name': cart?.billing_address?.last_name || '',
+      'billing_address.address_1': cart?.billing_address?.address_1 || '',
+      'billing_address.company': cart?.billing_address?.company || '',
+      'billing_address.postal_code': cart?.billing_address?.postal_code || '',
+      'billing_address.city': cart?.billing_address?.city || '',
+      'billing_address.country_code': cart?.billing_address?.country_code || '',
+      'billing_address.province': cart?.billing_address?.province || '',
+      'billing_address.phone': cart?.billing_address?.phone || '',
+    });
+  }, [cart?.billing_address]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -45,84 +47,85 @@ const BillingAddress = ({
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <>
       <div className="grid grid-cols-2 gap-4">
         <Input
-          label="First name"
+          label={dictionary.common.firstName}
           name="billing_address.first_name"
           autoComplete="given-name"
-          value={formData["billing_address.first_name"]}
+          value={formData['billing_address.first_name']}
           onChange={handleChange}
           required
         />
         <Input
-          label="Last name"
+          label={dictionary.common.lastName}
           name="billing_address.last_name"
           autoComplete="family-name"
-          value={formData["billing_address.last_name"]}
+          value={formData['billing_address.last_name']}
           onChange={handleChange}
           required
         />
         <Input
-          label="Address"
+          label={dictionary.common.address}
           name="billing_address.address_1"
           autoComplete="address-line1"
-          value={formData["billing_address.address_1"]}
+          value={formData['billing_address.address_1']}
           onChange={handleChange}
           required
         />
         <Input
-          label="Company"
+          label={dictionary.common.company}
           name="billing_address.company"
-          value={formData["billing_address.company"]}
+          value={formData['billing_address.company']}
           onChange={handleChange}
           autoComplete="organization"
         />
         <Input
-          label="Postal code"
+          label={dictionary.common.postalCode}
           name="billing_address.postal_code"
           autoComplete="postal-code"
-          value={formData["billing_address.postal_code"]}
+          value={formData['billing_address.postal_code']}
           onChange={handleChange}
           required
         />
         <Input
-          label="City"
+          label={dictionary.common.city}
           name="billing_address.city"
           autoComplete="address-level2"
-          value={formData["billing_address.city"]}
+          value={formData['billing_address.city']}
           onChange={handleChange}
           required
         />
         <CountrySelect
+          placeholder={dictionary.common.country}
           name="billing_address.country_code"
           autoComplete="country"
           region={cart?.region}
-          value={formData["billing_address.country_code"]}
+          value={formData['billing_address.country_code']}
           onChange={handleChange}
           required
         />
         <Input
-          label="State / Province"
+          label={dictionary.common.stateOrProvince}
           name="billing_address.province"
           autoComplete="address-level1"
-          value={formData["billing_address.province"]}
+          value={formData['billing_address.province']}
           onChange={handleChange}
         />
         <Input
-          label="Phone"
+          label={dictionary.common.phone}
           name="billing_address.phone"
           autoComplete="tel"
-          value={formData["billing_address.phone"]}
+          value={formData['billing_address.phone']}
           onChange={handleChange}
         />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default BillingAddress
+export default BillingAddress;

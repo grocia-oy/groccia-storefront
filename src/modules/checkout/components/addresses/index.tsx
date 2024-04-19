@@ -1,53 +1,58 @@
-"use client"
+'use client';
 
 import {
   useSearchParams,
   useRouter,
   usePathname,
   useParams,
-} from "next/navigation"
-import { Cart, Customer } from "@medusajs/medusa"
-import { CheckCircleSolid } from "@medusajs/icons"
-import { Heading, Text, useToggleState } from "@medusajs/ui"
+} from 'next/navigation';
+import { Cart, Customer } from '@medusajs/medusa';
+import { CheckCircleSolid } from '@medusajs/icons';
+import { Heading, Text, useToggleState } from '@medusajs/ui';
 
-import Divider from "@modules/common/components/divider"
-import Spinner from "@modules/common/icons/spinner"
+import Divider from '@modules/common/components/divider';
+import Spinner from '@modules/common/icons/spinner';
 
-import BillingAddress from "../billing_address"
-import ShippingAddress from "../shipping-address"
-import { setAddresses } from "../../actions"
-import { SubmitButton } from "../../../common/components/submit-button"
-import { useFormState } from "react-dom"
-import ErrorMessage from "../error-message"
-import compareAddresses from "@lib/util/compare-addresses"
+import BillingAddress from '../billing_address';
+import ShippingAddress from '../shipping-address';
+import { setAddresses } from '../../actions';
+import { SubmitButton } from '../../../common/components/submit-button';
+import { useFormState } from 'react-dom';
+import ErrorMessage from '../error-message';
+import compareAddresses from '@lib/util/compare-addresses';
+import { useDictionary } from '@lib/context/dictionary-context';
 
 const Addresses = ({
   cart,
   customer,
 }: {
-  cart: Omit<Cart, "refundable_amount" | "refunded_total"> | null
-  customer: Omit<Customer, "password_hash"> | null
+  cart: Omit<Cart, 'refundable_amount' | 'refunded_total'> | null;
+  customer: Omit<Customer, 'password_hash'> | null;
 }) => {
-  const searchParams = useSearchParams()
-  const router = useRouter()
-  const pathname = usePathname()
-  const params = useParams()
+  const dictionary = useDictionary();
+  const dictionaryCommon = dictionary.common;
+  const dictionaryCheckout = dictionary.checkout;
 
-  const countryCode = params.countryCode as string
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useParams();
 
-  const isOpen = searchParams.get("step") === "address"
+  const countryCode = params.countryCode as string;
+
+  const isOpen = searchParams.get('step') === 'address';
 
   const { state: sameAsSBilling, toggle: toggleSameAsBilling } = useToggleState(
     cart?.shipping_address && cart?.billing_address
       ? compareAddresses(cart?.shipping_address, cart?.billing_address)
       : true
-  )
+  );
 
   const handleEdit = () => {
-    router.push(pathname + "?step=address")
-  }
+    router.push(pathname + '?step=address');
+  };
 
-  const [message, formAction] = useFormState(setAddresses, null)
+  const [message, formAction] = useFormState(setAddresses, null);
 
   return (
     <div className="bg-white">
@@ -56,7 +61,7 @@ const Addresses = ({
           level="h2"
           className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
         >
-          Address
+          {dictionaryCommon.shippingAddress}
           {!isOpen && <CheckCircleSolid />}
         </Heading>
         {!isOpen && cart?.shipping_address && (
@@ -65,7 +70,7 @@ const Addresses = ({
               onClick={handleEdit}
               className="text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
             >
-              Edit
+              {dictionaryCommon.edit}
             </button>
           </Text>
         )}
@@ -79,6 +84,7 @@ const Addresses = ({
               checked={sameAsSBilling}
               onChange={toggleSameAsBilling}
               cart={cart}
+              dictionary={dictionary}
             />
 
             {!sameAsSBilling && (
@@ -87,13 +93,19 @@ const Addresses = ({
                   level="h2"
                   className="text-3xl-regular gap-x-4 pb-6 pt-8"
                 >
-                  Billing address
+                  {dictionaryCommon.billingAddress}
                 </Heading>
 
-                <BillingAddress cart={cart} countryCode={countryCode} />
+                <BillingAddress
+                  cart={cart}
+                  countryCode={countryCode}
+                  dictionary={dictionary}
+                />
               </div>
             )}
-            <SubmitButton className="mt-6">Continue to delivery</SubmitButton>
+            <SubmitButton className="mt-6 font-semibold font-raleway bg-primary-500 hover:bg-primary-600">
+              {dictionaryCheckout.continueToDelivery}
+            </SubmitButton>
             <ErrorMessage error={message} />
           </div>
         </form>
@@ -102,21 +114,21 @@ const Addresses = ({
           <div className="text-small-regular">
             {cart && cart.shipping_address ? (
               <div className="flex items-start gap-x-8">
-                <div className="flex items-start gap-x-1 w-full">
+                <div className="flex items-start gap-x-3 w-full">
                   <div className="flex flex-col w-1/3">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Shipping Address
+                      {dictionaryCommon.shippingAddress}
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
-                      {cart.shipping_address.first_name}{" "}
+                      {cart.shipping_address.first_name}{' '}
                       {cart.shipping_address.last_name}
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
-                      {cart.shipping_address.address_1}{" "}
+                      {cart.shipping_address.address_1}{' '}
                       {cart.shipping_address.address_2}
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
-                      {cart.shipping_address.postal_code},{" "}
+                      {cart.shipping_address.postal_code},{' '}
                       {cart.shipping_address.city}
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
@@ -124,39 +136,39 @@ const Addresses = ({
                     </Text>
                   </div>
 
-                  <div className="flex flex-col w-1/3 ">
+                  <div className="flex flex-col w-1/3">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Contact
+                      {dictionaryCommon.contact}
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
                       {cart.shipping_address.phone}
                     </Text>
-                    <Text className="txt-medium text-ui-fg-subtle">
+                    <Text className="txt-medium text-ui-fg-subtle break-words">
                       {cart.email}
                     </Text>
                   </div>
 
                   <div className="flex flex-col w-1/3">
                     <Text className="txt-medium-plus text-ui-fg-base mb-1">
-                      Billing Address
+                      {dictionaryCommon.billingAddress}
                     </Text>
 
                     {sameAsSBilling ? (
                       <Text className="txt-medium text-ui-fg-subtle">
-                        Billing- and delivery address are the same.
+                        {dictionaryCheckout.sameBillingAndShippingAddress}
                       </Text>
                     ) : (
                       <>
                         <Text className="txt-medium text-ui-fg-subtle">
-                          {cart.billing_address.first_name}{" "}
+                          {cart.billing_address.first_name}{' '}
                           {cart.billing_address.last_name}
                         </Text>
                         <Text className="txt-medium text-ui-fg-subtle">
-                          {cart.billing_address.address_1}{" "}
+                          {cart.billing_address.address_1}{' '}
                           {cart.billing_address.address_2}
                         </Text>
                         <Text className="txt-medium text-ui-fg-subtle">
-                          {cart.billing_address.postal_code},{" "}
+                          {cart.billing_address.postal_code},{' '}
                           {cart.billing_address.city}
                         </Text>
                         <Text className="txt-medium text-ui-fg-subtle">
@@ -177,7 +189,7 @@ const Addresses = ({
       )}
       <Divider className="mt-8" />
     </div>
-  )
-}
+  );
+};
 
-export default Addresses
+export default Addresses;

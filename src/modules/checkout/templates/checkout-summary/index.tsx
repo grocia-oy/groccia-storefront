@@ -1,27 +1,30 @@
-import { Heading } from "@medusajs/ui"
+import { Heading } from '@medusajs/ui';
 
-import ItemsPreviewTemplate from "@modules/cart/templates/preview"
-import DiscountCode from "@modules/checkout/components/discount-code"
-import CartTotals from "@modules/common/components/cart-totals"
-import Divider from "@modules/common/components/divider"
-import { retrieveCart } from "@modules/cart/actions"
+import ItemsPreviewTemplate from '@modules/cart/templates/preview';
+import DiscountCode from '@modules/checkout/components/discount-code';
+import CartTotals from '@modules/common/components/cart-totals';
+import Divider from '@modules/common/components/divider';
+import { retrieveCart } from '@modules/cart/actions';
+import { getDictionary } from 'app/[lang]/dictionaries';
 
-const CheckoutSummary = async () => {
-  const cart = await retrieveCart().then((cart) => cart)
+const CheckoutSummary = async ({ lang }: { lang: string }) => {
+  const dictionary = await getDictionary(lang);
+
+  const cart = await retrieveCart().then((cart) => cart);
 
   if (!cart) {
-    return null
+    return null;
   }
 
   return (
-    <div className="sticky top-0 flex flex-col-reverse small:flex-col gap-y-8 py-8 small:py-0 ">
+    <div className="sticky top-0 flex flex-col-reverse lg:flex-col gap-y-8 py-8 lg:py-0 ">
       <div className="w-full bg-white flex flex-col">
-        <Divider className="my-6 small:hidden" />
+        <Divider className="my-6 lg:hidden" />
         <Heading
           level="h2"
           className="flex flex-row text-3xl-regular items-baseline"
         >
-          In your Cart
+          {dictionary.checkout.orderSummary}
         </Heading>
         <Divider className="my-6" />
         <CartTotals data={cart} />
@@ -31,7 +34,7 @@ const CheckoutSummary = async () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CheckoutSummary
+export default CheckoutSummary;

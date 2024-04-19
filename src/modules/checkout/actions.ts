@@ -151,10 +151,8 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
   } catch (error: any) {
     return error.toString();
   }
-
-  redirect(
-    `/${formData.get('shipping_address.country_code')}/checkout?step=delivery`
-  );
+  
+  redirect("checkout?step=delivery");
 }
 
 export async function setShippingMethod(shippingMethodId: string) {
