@@ -1,17 +1,17 @@
-import { getProductsListWithSort } from "@lib/data/ecommerce"
-import ProductPreview from "@modules/products/components/product-preview"
-import { Pagination } from "@modules/store/components/pagination"
-import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
-import { getRegion } from "app/actions"
+import { getProductsListWithSort } from '@lib/data/ecommerce';
+import ProductPreview from '@modules/products/components/product-preview';
+import { Pagination } from '@modules/store/components/pagination';
+import { SortOptions } from '@modules/store/components/refinement-list/sort-products';
+import { getRegion } from 'app/actions';
 
-const PRODUCT_LIMIT = 12
+const PRODUCT_LIMIT = 12;
 
 type PaginatedProductsParams = {
-  limit: number
-  collection_id?: string[]
-  category_id?: string[]
-  id?: string[]
-}
+  limit: number;
+  collection_id?: string[];
+  category_id?: string[];
+  id?: string[];
+};
 
 export default async function PaginatedProducts({
   sortBy,
@@ -19,35 +19,37 @@ export default async function PaginatedProducts({
   collectionId,
   categoryId,
   productsIds,
-  countryCode,
+  lang,
+  locale,
 }: {
-  sortBy?: SortOptions
-  page: number
-  collectionId?: string
-  categoryId?: string
-  productsIds?: string[]
-  countryCode: string
+  sortBy?: SortOptions;
+  page: number;
+  collectionId?: string;
+  categoryId?: string;
+  productsIds?: string[];
+  lang: string;
+  locale: string;
 }) {
-  const region = await getRegion(countryCode)
+  const region = await getRegion(locale);
 
   if (!region) {
-    return null
+    return null;
   }
 
   const queryParams: PaginatedProductsParams = {
     limit: PRODUCT_LIMIT,
-  }
+  };
 
   if (collectionId) {
-    queryParams["collection_id"] = [collectionId]
+    queryParams['collection_id'] = [collectionId];
   }
 
   if (categoryId) {
-    queryParams["category_id"] = [categoryId]
+    queryParams['category_id'] = [categoryId];
   }
 
   if (productsIds) {
-    queryParams["id"] = productsIds
+    queryParams['id'] = productsIds;
   }
 
   const {
@@ -56,23 +58,28 @@ export default async function PaginatedProducts({
     page,
     queryParams,
     sortBy,
-    countryCode,
-  })
+    locale,
+  });
 
-  const totalPages = Math.ceil(count / PRODUCT_LIMIT)
+  const totalPages = Math.ceil(count / PRODUCT_LIMIT);
 
   return (
     <>
-      <ul className="grid grid-cols-2 w-full small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
+      <ul className="grid grid-cols-2 w-full lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-6 gap-y-8">
         {products.map((p) => {
           return (
             <li key={p.id}>
-              <ProductPreview productPreview={p} region={region} />
+              <ProductPreview
+                productPreview={p}
+                region={region}
+                lang={lang}
+                locale={locale}
+              />
             </li>
-          )
+          );
         })}
       </ul>
       {totalPages > 1 && <Pagination page={page} totalPages={totalPages} />}
     </>
-  )
+  );
 }

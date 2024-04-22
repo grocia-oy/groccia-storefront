@@ -148,5 +148,11 @@
   "help": {
     "needHelp": "Need help?",
     "returnAndExchanges": "Return & Exchanges"
+  },
+  "sort": {
+    "sortBy": "Sort by",
+    "latestArrivals": "Latest Arrivals",
+    "priceLowToHigh": "Price: Low -> High",
+    "priceHighToLow": "Price: High -> Low"
   }
 }
