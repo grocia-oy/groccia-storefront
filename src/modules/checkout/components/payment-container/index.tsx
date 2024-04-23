@@ -1,12 +1,9 @@
 import { RadioGroup } from '@headlessui/react';
-import { InformationCircleSolid } from '@medusajs/icons';
 import { PaymentSession } from '@medusajs/medusa';
-import { Text, Tooltip, clx } from '@medusajs/ui';
+import { Text, clx } from '@medusajs/ui';
 import React from 'react';
 
 import Radio from '@modules/common/components/radio';
-
-import PaymentTest from '../payment-test';
 
 type PaymentContainerProps = {
   paymentSession: PaymentSession;
@@ -21,8 +18,6 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
   paymentInfoMap,
   disabled = false,
 }) => {
-  const isDevelopment = process.env.NODE_ENV === 'development';
-
   return (
     <>
       <RadioGroup.Option
@@ -46,27 +41,11 @@ const PaymentContainer: React.FC<PaymentContainerProps> = ({
               {paymentInfoMap[paymentSession.provider_id]?.title ||
                 paymentSession.provider_id}
             </Text>
-            {process.env.NODE_ENV === 'development' &&
-              !Object.hasOwn(paymentInfoMap, paymentSession.provider_id) && (
-                <Tooltip
-                  content="You can add a user-friendly name and icon for this payment provider in 'src/modules/checkout/components/payment/index.tsx'"
-                  className="min-w-fit"
-                >
-                  <InformationCircleSolid color="var(--fg-muted)" />
-                </Tooltip>
-              )}
-
-            {paymentSession.provider_id === 'manual' && isDevelopment && (
-              <PaymentTest className="hidden small:block" />
-            )}
           </div>
           <span className="justify-self-end text-ui-fg-base">
             {paymentInfoMap[paymentSession.provider_id]?.icon}
           </span>
         </div>
-        {paymentSession.provider_id === 'manual' && isDevelopment && (
-          <PaymentTest className="small:hidden text-[10px]" />
-        )}
       </RadioGroup.Option>
     </>
   );

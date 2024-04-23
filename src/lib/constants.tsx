@@ -1,9 +1,4 @@
 import React from 'react';
-import { CreditCard } from '@medusajs/icons';
-
-import Ideal from '@modules/common/icons/ideal';
-import Bancontact from '@modules/common/icons/bancontact';
-import PayPal from '@modules/common/icons/paypal';
 import { CreditCardIcon } from '@heroicons/react/24/outline';
 
 /* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
@@ -14,22 +9,6 @@ export const paymentInfoMap: Record<
   stripe: {
     title: 'Credit card',
     icon: <CreditCardIcon className="w-5 h-5" />,
-  },
-  'stripe-ideal': {
-    title: 'iDeal',
-    icon: <Ideal />,
-  },
-  'stripe-bancontact': {
-    title: 'Bancontact',
-    icon: <Bancontact />,
-  },
-  paypal: {
-    title: 'PayPal',
-    icon: <PayPal />,
-  },
-  manual: {
-    title: 'Test payment',
-    icon: <CreditCard />,
   },
   // Add more payment providers here
 };

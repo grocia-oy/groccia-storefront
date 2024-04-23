@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { RadioGroup } from '@headlessui/react';
 import ErrorMessage from '@modules/checkout/components/error-message';
 import { Cart } from '@medusajs/medusa';
-import { Container, Heading, Text, Tooltip, clx } from '@medusajs/ui';
+import { Container, Heading, Text, clx } from '@medusajs/ui';
 import { CardElement } from '@stripe/react-stripe-js';
 import { StripeCardElementOptions } from '@stripe/stripe-js';
 
@@ -202,13 +202,6 @@ const Payment = ({
                   {paymentInfoMap[cart.payment_session.provider_id]?.title ||
                     cart.payment_session.provider_id}
                 </Text>
-                {process.env.NODE_ENV === 'development' &&
-                  !Object.hasOwn(
-                    paymentInfoMap,
-                    cart.payment_session.provider_id
-                  ) && (
-                    <Tooltip content="You can add a user-friendly name and icon for this payment provider in 'src/modules/checkout/components/payment/index.tsx'" />
-                  )}
               </div>
               <div className="flex flex-col w-1/3">
                 <Text className="txt-medium-plus text-ui-fg-base mb-1">
