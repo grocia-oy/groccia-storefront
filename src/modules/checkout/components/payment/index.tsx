@@ -5,7 +5,6 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { RadioGroup } from '@headlessui/react';
 import ErrorMessage from '@modules/checkout/components/error-message';
 import { Cart } from '@medusajs/medusa';
-import { CheckCircleSolid, CreditCard } from '@medusajs/icons';
 import { Container, Heading, Text, Tooltip, clx } from '@medusajs/ui';
 import { CardElement } from '@stripe/react-stripe-js';
 import { StripeCardElementOptions } from '@stripe/stripe-js';
@@ -18,6 +17,7 @@ import { paymentInfoMap } from '@lib/constants';
 import { StripeContext } from '@modules/checkout/components/payment-wrapper';
 import { useDictionary } from '@lib/context/dictionary-context';
 import Button from '@modules/common/components/button';
+import { CheckCircleIcon, CreditCardIcon } from '@heroicons/react/24/outline';
 
 const Payment = ({
   cart,
@@ -109,7 +109,7 @@ const Payment = ({
         <Heading
           level="h2"
           className={clx(
-            'flex flex-row text-3xl-regular gap-x-2 items-baseline',
+            'flex flex-row text-3xl-regular gap-x-2 items-center',
             {
               'opacity-50 pointer-events-none select-none':
                 !isOpen && !paymentReady,
@@ -117,7 +117,7 @@ const Payment = ({
           )}
         >
           {dictionary.checkout.payment}
-          {!isOpen && paymentReady && <CheckCircleSolid />}
+          {!isOpen && paymentReady && <CheckCircleIcon className="w-5 h-5" />}
         </Heading>
         {!isOpen && paymentReady && (
           <Text>
@@ -217,7 +217,7 @@ const Payment = ({
                 <div className="flex gap-2 txt-medium text-ui-fg-subtle items-center">
                   <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
                     {paymentInfoMap[cart.payment_session.provider_id]?.icon || (
-                      <CreditCard />
+                      <CreditCardIcon />
                     )}
                   </Container>
                   <Text>

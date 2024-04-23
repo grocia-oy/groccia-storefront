@@ -4,6 +4,7 @@ import { CreditCard } from '@medusajs/icons';
 import Ideal from '@modules/common/icons/ideal';
 import Bancontact from '@modules/common/icons/bancontact';
 import PayPal from '@modules/common/icons/paypal';
+import { CreditCardIcon } from '@heroicons/react/24/outline';
 
 /* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
 export const paymentInfoMap: Record<
@@ -12,7 +13,7 @@ export const paymentInfoMap: Record<
 > = {
   stripe: {
     title: 'Credit card',
-    icon: <CreditCard />,
+    icon: <CreditCardIcon className="w-5 h-5" />,
   },
   'stripe-ideal': {
     title: 'iDeal',
@@ -59,4 +60,3 @@ export const noDivisionCurrencies = [
   'xdr',
   'xau',
 ];
-
