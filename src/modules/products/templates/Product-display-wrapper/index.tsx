@@ -15,25 +15,22 @@ const ProductDisplayWrapper = ({ product }: ProductDisplayWrapperProps) => {
 
   return (
     <>
-      <div className="relative mb-2 flex h-52 w-full lg:mb-0 lg:h-96 lg:w-3/5">
-        <ImageGallery
-          images={product?.images || []}
-          setDisplayedImageIndex={setDisplayedImageIndex}
-        />
-        <Container className="relative overflow-hidden">
-          {product?.images && (
-            <Image
-              src={
-                product.images[displayedImageIndex]?.url ||
-                '/images/fallback.png'
-              }
-              className="relative bg-ui-bg-subtle object-contain"
-              fill
-              alt="Fallback image"
-            />
-          )}
-        </Container>
-      </div>
+      <ImageGallery
+        images={product?.images || []}
+        setDisplayedImageIndex={setDisplayedImageIndex}
+      />
+      <Container className="relative overflow-hidden">
+        {product?.images && (
+          <Image
+            src={
+              product.images[displayedImageIndex]?.url || '/images/fallback.png'
+            }
+            className="relative bg-ui-bg-subtle object-contain"
+            fill
+            alt="Fallback image"
+          />
+        )}
+      </Container>
     </>
   );
 };
