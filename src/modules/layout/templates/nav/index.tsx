@@ -6,12 +6,15 @@ import PostcodeButtonModal from '@modules/layout/components/postcode-button-moda
 import CartButton from '@modules/layout/components/cart-button';
 import LoginButtonModal from '@modules/layout/components/login-button-modal';
 import Sidebar from '../sidebar';
+import { Customer } from '@medusajs/medusa';
+import AccountButton from '@modules/layout/components/account-button';
 
 type Props = {
   lang: string;
+  customer: Omit<Customer, 'password_hash'> | null;
 };
 
-export default function Nav({ lang }: Props) {
+export default function Nav({ lang, customer }: Props) {
   return (
     <div className="sticky top-0 inset-x-0 z-50">
       <header className="relative h-20 bg-white border-b">
@@ -33,7 +36,7 @@ export default function Nav({ lang }: Props) {
           <div className="flex flex-1 basis-0 justify-end">
             <div className="flex items-center space-x-10 font-raleway">
               <PostcodeButtonModal />
-              <LoginButtonModal />
+              {customer ? <AccountButton /> : <LoginButtonModal />}
               <Suspense
                 fallback={
                   <LocalizedClientLink
