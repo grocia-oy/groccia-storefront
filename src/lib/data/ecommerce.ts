@@ -339,7 +339,7 @@ export async function listCustomerOrders(
 
   return medusaClient.customers
     .listOrders({ limit, offset }, headers)
-    .then(({ orders }) => orders)
+    .then(({ orders, count }) => ({ orders, count }))
     .catch((err) => medusaError(err));
 }
 
