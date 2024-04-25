@@ -86,7 +86,7 @@ const AccountNav = ({
               onClick={() => router.push(item.href)}
               className={conditionalClassNames(
                 'relative text-left font-semibold hover:text-primary-default hover:bg-neutral px-4',
-                splittedPath[4] === item.href ? 'bg-neutral' : ''
+                splittedPath[4] === item.href.split('?')[0] ? 'bg-neutral' : ''
               )}
             >
               <span>{item.title}</span>
