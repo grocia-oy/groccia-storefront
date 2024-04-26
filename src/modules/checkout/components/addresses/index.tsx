@@ -7,7 +7,6 @@ import {
   useParams,
 } from 'next/navigation';
 import { Cart, Customer } from '@medusajs/medusa';
-import { CheckCircleSolid } from '@medusajs/icons';
 import { Heading, Text, useToggleState } from '@medusajs/ui';
 
 import Divider from '@modules/common/components/divider';
@@ -21,6 +20,7 @@ import { useFormState } from 'react-dom';
 import ErrorMessage from '../error-message';
 import compareAddresses from '@lib/util/compare-addresses';
 import { useDictionary } from '@lib/context/dictionary-context';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 const Addresses = ({
   cart,
@@ -59,10 +59,10 @@ const Addresses = ({
       <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
-          className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
+          className="flex flex-row text-3xl-regular gap-x-2 items-center"
         >
           {dictionaryCommon.shippingAddress}
-          {!isOpen && <CheckCircleSolid />}
+          {!isOpen && <CheckCircleIcon className="w-5 h-5" />}
         </Heading>
         {!isOpen && cart?.shipping_address && (
           <Text>

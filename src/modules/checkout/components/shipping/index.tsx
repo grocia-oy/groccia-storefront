@@ -16,6 +16,7 @@ import { setShippingMethod } from '@modules/checkout/actions';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDictionary } from '@lib/context/dictionary-context';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 type ShippingProps = {
   cart: Omit<Cart, 'refundable_amount' | 'refunded_total'>;
@@ -73,7 +74,7 @@ const Shipping: React.FC<ShippingProps> = ({
         <Heading
           level="h2"
           className={clx(
-            'flex flex-row text-3xl-regular gap-x-2 items-baseline',
+            'flex flex-row text-3xl-regular gap-x-2 items-center',
             {
               'opacity-50 pointer-events-none select-none':
                 !isOpen && cart.shipping_methods.length === 0,
@@ -81,7 +82,9 @@ const Shipping: React.FC<ShippingProps> = ({
           )}
         >
           {dictionary.checkout.delivery}
-          {!isOpen && cart.shipping_methods.length > 0 && <CheckCircleSolid />}
+          {!isOpen && cart.shipping_methods.length > 0 && (
+            <CheckCircleIcon className="w-5 h-5" />
+          )}
         </Heading>
         {!isOpen &&
           cart?.shipping_address &&
