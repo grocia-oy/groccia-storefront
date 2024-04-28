@@ -28,10 +28,10 @@ Groccia Storefront is an e-commerce web application built with Next.js and Medus
 - [x] Localized page content (English, Finnish, Vietnamese)
 - [x] Payment with Stripe
 - [x] Responsive design
-- [] Search feature
-- [] User account management
-- [] Sidebar navigation
-- [] Product filtering
+- [ ] Search feature
+- [ ] User account management
+- [ ] Sidebar navigation
+- [ ] Product filtering
 - ... and more
 
 # Build With
