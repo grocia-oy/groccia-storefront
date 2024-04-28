@@ -14,7 +14,7 @@ type Props = {
 export default function Nav({ lang }: Props) {
   return (
     <div className="sticky top-0 inset-x-0 z-50">
-      <header className="relative h-20 bg-white border-b">
+      <header className="relative h-20 bg-white">
         <nav className="content-container flex items-center justify-between h-full space-x-6">
           <div className="flex-1 lg:hidden">
             <Sidebar />
