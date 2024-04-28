@@ -22,7 +22,7 @@ export default function Nav({ lang }: Props) {
           <div className="lg:flex-1 basis-0 h-full flex items-center">
             <LocalizedClientLink
               href="/"
-              className="uppercase text-3xl font-gotag font-semibold text-primary-default"
+              className="uppercase text-3xl font-gotag font-semibold text-primary"
             >
               Groccia
             </LocalizedClientLink>

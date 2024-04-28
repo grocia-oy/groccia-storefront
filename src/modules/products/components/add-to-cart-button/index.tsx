@@ -36,7 +36,7 @@ function AddToCartButton({ variant, countryCode, inStock }: Props) {
         disabled={!inStock || !variant || isAdding}
         variant="primary"
         isLoading={isAdding}
-        className="absolute top-2 right-2 rounded-full bg-primary-default hover:bg-primary-700 p-0 text-white"
+        className="absolute top-2 right-2 rounded-full bg-primary hover:bg-primary p-0 text-white"
         size={'xlarge'}
       >
         <Plus />

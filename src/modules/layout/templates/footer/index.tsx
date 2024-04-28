@@ -8,15 +8,18 @@ interface Props {
   locale: string;
 }
 
+const headingClasses = 'mb-2 font-bold uppercase text-primary-foreground';
+const linkClasses = 'text-primary-foreground';
+
 export default async function Footer({ lang, locale }: Props) {
   const footerContent = await getFooter(lang);
   const dict = await getDictionary(lang).catch(() => {});
 
   return (
     <>
-      <footer className="mt-5 w-full footer p-10 bg-footer">
+      <footer className="mt-5 w-full footer p-10 bg-primary">
         <nav>
-          <h6 className="mb-2 font-bold uppercase text-primary-default">
+          <h6 className={headingClasses}>
             {dict?.layout.footer.headings.aboutCompany}
           </h6>
           {footerContent &&
@@ -28,6 +31,7 @@ export default async function Footer({ lang, locale }: Props) {
                   linkProps={{
                     href: element.url,
                     target: element.target || '_self',
+                    className: linkClasses,
                   }}
                 >
                   {element.title}
@@ -36,7 +40,7 @@ export default async function Footer({ lang, locale }: Props) {
             )}
         </nav>
         <nav>
-          <h6 className="mb-2 font-bold uppercase text-primary-default">
+          <h6 className={headingClasses}>
             {dict?.layout.footer.headings.storeList}
           </h6>
           {footerContent &&
@@ -48,6 +52,7 @@ export default async function Footer({ lang, locale }: Props) {
                   linkProps={{
                     href: element.url,
                     target: element.target || '_self',
+                    className: linkClasses,
                   }}
                 >
                   {element.title}
@@ -56,7 +61,7 @@ export default async function Footer({ lang, locale }: Props) {
             )}
         </nav>
         <nav>
-          <h6 className="mb-2 font-bold uppercase text-primary-default">
+          <h6 className={headingClasses}>
             {dict?.layout.footer.headings.policyLinks}
           </h6>
           {footerContent &&
@@ -68,6 +73,7 @@ export default async function Footer({ lang, locale }: Props) {
                   linkProps={{
                     href: element.url,
                     target: element.target || '_self',
+                    className: linkClasses,
                   }}
                 >
                   {element.title}
@@ -76,12 +82,10 @@ export default async function Footer({ lang, locale }: Props) {
             )}
         </nav>
       </footer>
-      <footer className="footer px-10 py-4 border-t-2 border-primary-600 bg-footer">
+      <footer className="footer px-10 py-4 border-t-2 border-secondary-foreground bg-primary">
         <aside className="items-center grid-flow-col">
-          <p>
-            <span className="font-gotag text-2xl text-primary-default">
-              Groccia
-            </span>
+          <p className='text-primary-foreground'>
+            <span className="font-gotag text-2xl">Groccia</span>
             <br />
             Fastest, convenient online Asian grocery market
             <br />

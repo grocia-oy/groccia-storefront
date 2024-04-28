@@ -97,7 +97,7 @@ const CartDropdown = ({
             className="block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] rounded-xl font-poppins shadow-xl"
           >
             <div className="p-4 flex items-center justify-center">
-              <h3 className="text-lg font-bold text-primary-500">
+              <h3 className="text-lg font-bold text-primary">
                 {dict?.layout.nav.cart.title}
               </h3>
             </div>
@@ -115,7 +115,7 @@ const CartDropdown = ({
                       >
                         <div className="grid grid-cols-[72px_1fr] rounded-md">
                           <Thumbnail thumbnail={item.thumbnail} size="square" />
-                          <div className="flex flex-row whitespace-nowrap items-center text-md mx-2 justify-between text-primary-500 hover:text-primary-700">
+                          <div className="flex flex-row whitespace-nowrap items-center text-md mx-2 justify-between text-primary hover:text-primary">
                             <div className="max-w-[240px] overflow-hidden text-ellipsis">
                               {item.title}
                             </div>
@@ -130,7 +130,7 @@ const CartDropdown = ({
                 <div className="p-4 flex flex-col gap-y-4 text-small-regular">
                   <LocalizedClientLink href="/cart" passHref>
                     <Button
-                      className="w-full bg-primary-500 hover:bg-primary-600"
+                      className="w-full bg-primary hover:bg-primary"
                       size="large"
                     >
                       {dict?.layout.nav.cart.goToCart}
@@ -141,21 +141,21 @@ const CartDropdown = ({
             ) : (
               <div>
                 <div className="flex py-16 flex-col gap-y-4 items-center justify-center">
-                  <div className="bg-primary-500 text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
+                  <div className="bg-primary text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
                     <span>0</span>
                   </div>
-                  <span className="text-primary-500">
+                  <span className="text-primary">
                     {dict?.layout.nav.cart.cartEmpty}
                   </span>
                   <div>
                     <LocalizedClientLink href="/">
                       <>
-                        <span className="sr-only text-primary-500">
+                        <span className="sr-only text-primary">
                           {dict?.layout.nav.cart.goToProductPage}
                         </span>
                         <Button
                           onClick={close}
-                          className="bg-primary-500 hover:bg-primary-600"
+                          className="bg-primary hover:bg-primary"
                         >
                           {dict?.layout.nav.cart.exploreMore}
                         </Button>

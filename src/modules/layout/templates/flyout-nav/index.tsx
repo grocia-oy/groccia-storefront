@@ -14,7 +14,7 @@ async function FlyoutNav({ lang, locale }: Props) {
 
   return (
     <header className="hidden md:block">
-      <nav className="content-container bg-white border-b-2 border-primary-default">
+      <nav className="content-container bg-white border-b-2 border-primary">
         <div className="">
           <ul className="flex items-center font-raleway space-x-4">
             {content &&

@@ -103,7 +103,7 @@ const Addresses = ({
                 />
               </div>
             )}
-            <SubmitButton className="mt-6 font-semibold font-raleway bg-primary-500 hover:bg-primary-600">
+            <SubmitButton className="mt-6 font-semibold font-raleway bg-primary hover:bg-primary">
               {dictionaryCheckout.continueToDelivery}
             </SubmitButton>
             <ErrorMessage error={message} />

@@ -16,7 +16,7 @@ export function SubmitButton({
   return (
     <button
       className={clx(
-        'bg-primary-500 text-white px-3 rounded-lg h-12 font-bold',
+        'bg-primary text-white px-3 rounded-lg h-12 font-bold',
         className
       )}
       type="submit"

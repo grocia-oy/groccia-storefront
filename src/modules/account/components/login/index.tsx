@@ -61,7 +61,7 @@ const Login = ({ setCurrentView }: Props) => {
             {dictionary.account.loginModal.troubleLoggingIn}
           </button>
         </div>
-        <SubmitButton className="w-full mt-6 font-semibold font-raleway bg-primary-default hover:bg-primary-600">
+        <SubmitButton className="w-full mt-6 font-semibold font-raleway bg-primary hover:bg-primary">
           {dictionary.account.loginModal.loginButton}
         </SubmitButton>
       </form>
