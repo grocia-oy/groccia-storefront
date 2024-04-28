@@ -6,6 +6,7 @@ import { Region } from '@medusajs/medusa';
 import ProductTemplate from '@modules/products/templates';
 import { getRegion } from 'app/actions';
 import { notFound } from 'next/navigation';
+import { ExpandedPricedProduct } from 'types/medusa';
 
 async function getPricedProductByHandle(handle: string, region: Region) {
   const { product } = await getProductByHandle(handle).then(
@@ -21,7 +22,7 @@ async function getPricedProductByHandle(handle: string, region: Region) {
     regionId: region.id,
   });
 
-  return pricedProduct;
+  return pricedProduct as ExpandedPricedProduct;
 }
 
 export default async function ProductPage({

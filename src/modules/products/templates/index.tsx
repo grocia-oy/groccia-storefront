@@ -1,5 +1,4 @@
 import { Region } from '@medusajs/medusa';
-import { PricedProduct } from '@medusajs/medusa/dist/types/pricing';
 import React, { Suspense } from 'react';
 
 import ProductActions from '@modules/products/components/product-actions';
@@ -9,9 +8,10 @@ import ProductActionsWrapper from './product-actions-wrapper';
 import ProductTags from '../components/product-tags';
 import ProductDisplayWrapper from './product-display-wrapper';
 import Breadcrumbs from '../components/breadcrumbs';
+import { ExpandedPricedProduct } from 'types/medusa';
 
 type ProductTemplateProps = {
-  product: PricedProduct;
+  product: ExpandedPricedProduct;
   region: Region;
   countryCode: string;
 };
