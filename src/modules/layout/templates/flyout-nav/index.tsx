@@ -13,9 +13,9 @@ async function FlyoutNav({ lang, locale }: Props) {
   const content = (await getFlyoutNav(lang))?.data?.flyout_nav;
 
   return (
-    <header className="hidden md:block shadow-md">
-      <nav className="content-container bg-white">
-        <div className='py-1'>
+    <header className="hidden md:block shadow-md bg-background">
+      <nav className="content-container">
+        <div className="py-1">
           <ul className="flex items-center font-raleway space-x-8">
             {content &&
               content.map((menu: StrapiNestedLinkComponent) => (
