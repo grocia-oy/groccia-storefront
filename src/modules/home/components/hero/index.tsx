@@ -27,7 +27,7 @@ const Hero = ({ carousel }: HeroProps) => {
           carousel?.map((item, index) => (
             <div
               key={index}
-              className="relative w-full h-[250px] bg-white flex-carousel"
+              className="relative w-full h-[250px] bg-white flex-carousel-full"
             >
               <div className="absolute z-10 space-y-8 bottom-20 left-16 md:left-20 font-josefin">
                 <div className="space-y-2 pr-10">

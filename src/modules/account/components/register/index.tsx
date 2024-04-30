@@ -20,12 +20,12 @@ const Register = ({ setCurrentView }: Props) => {
   const dictionary = useDictionary();
 
   return (
-    <div className="">
+    <div className="mt-10">
       <div className="mb-8 flex w-full justify-between">
         <h2 className="font-raleway font-bold text-xl">
           {dictionary.account.loginModal.registerHeading}
         </h2>
-        <p>
+        <p className="font-raleway">
           {dictionary.account.loginModal.switchToLoginDescription}{' '}
           <button
             className="underline"

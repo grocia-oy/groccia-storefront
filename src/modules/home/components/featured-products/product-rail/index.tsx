@@ -33,7 +33,7 @@ export default async function ProductRail({
   return (
     <div className="content-container mt-6">
       <div className="flex justify-between mb-4 ">
-        <h2 className="font-raleway font-bold text-xl text-primary-default">
+        <h2 className="font-raleway font-bold text-xl text-primary">
           {title}
         </h2>
         <InteractiveLink href={`/collections/${collection.handle}`}>
@@ -46,7 +46,7 @@ export default async function ProductRail({
           products.map((product) => (
             <div
               key={product.id}
-              className="flex-carousel-slide sm:flex-carousel-slide-sm lg:flex-carousel-slide-lg xl:flex-carousel-slide-xl min-w-0"
+              className="flex-carousel-half sm:flex-carousel-sm lg:flex-carousel-lg xl:flex-carousel-xl min-w-0"
             >
               <ProductPreview
                 productPreview={product}

@@ -17,7 +17,7 @@ export default function Button({
   return (
     <button
       className={clx(
-        'text-white px-3 rounded-lg h-12 font-semibold font-raleway bg-primary-500 hover:bg-primary-600',
+        'text-white px-3 rounded-lg h-12 font-semibold font-raleway bg-primary hover:bg-primary',
         className
       )}
       onClick={onClick}

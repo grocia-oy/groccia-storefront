@@ -13,8 +13,8 @@ export default async function CheckoutLayout({
   const dictionaryCheckout = dictionary.checkout;
 
   return (
-    <div className="w-full bg-white relative lg:min-h-screen">
-      <div className="h-16 bg-white border-b ">
+    <div className="w-full relative lg:min-h-screen">
+      <div className="h-16 border-b ">
         <nav className="flex h-full items-center content-container justify-between">
           <LocalizedClientLink
             href="/cart"

@@ -39,7 +39,7 @@ export default function CarouselSlide({
       {chevronNavigation && (
         <>
           {carouselApi?.canScrollPrev() ? (
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 bg-primary-500 w-10 h-10 text-white rounded-full flex items-center justify-center cursor-pointer hover:shadow-md hover:w-11 hover:h-11 transition-all">
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 bg-primary w-10 h-10 text-white rounded-full flex items-center justify-center cursor-pointer hover:shadow-md hover:w-11 hover:h-11 transition-all">
               <PrevButton
                 onClick={onPrevButtonClick}
                 disabled={prevBtnDisabled}
@@ -49,7 +49,7 @@ export default function CarouselSlide({
             <div />
           )}
           {carouselApi?.canScrollNext() && (
-            <div className="absolute top-1/2 -translate-y-1/2 right-0 bg-primary-500 w-10 h-10 text-white rounded-full flex items-center justify-center cursor-pointer hover:shadow-md hover:w-11 hover:h-11 transition-all">
+            <div className="absolute top-1/2 -translate-y-1/2 right-0 bg-primary w-10 h-10 text-white rounded-full flex items-center justify-center cursor-pointer hover:shadow-md hover:w-11 hover:h-11 transition-all">
               <NextButton
                 onClick={onNextButtonClick}
                 disabled={nextBtnDisabled}
