@@ -13,7 +13,7 @@ async function FlyoutNav({ lang, locale }: Props) {
   const content = (await getFlyoutNav(lang))?.data?.flyout_nav;
 
   return (
-    <header className="hidden md:block shadow-md bg-background">
+    <header className="hidden md:block bg-background">
       <nav className="content-container">
         <div className="py-1">
           <ul className="flex items-center font-raleway space-x-8">

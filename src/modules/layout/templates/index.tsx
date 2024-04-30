@@ -16,8 +16,10 @@ const Layout: React.FC<{
     <div lang={props.lang}>
       <div className="sticky top-0 inset-x-0 z-10">
         <AnnouncementBar />
-        <Nav lang={props.lang} customer={customer} />
-        <FlyoutNav lang={props.lang} locale={props.locale} />
+        <div className="shadow-md">
+          <Nav lang={props.lang} customer={customer} />
+          <FlyoutNav lang={props.lang} locale={props.locale} />
+        </div>
       </div>
       <div className="relative">{props.children}</div>
       <Footer lang={props.lang} locale={props.locale} />
