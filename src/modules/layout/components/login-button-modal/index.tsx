@@ -1,16 +1,16 @@
 'use client';
 import { useDictionary } from '@lib/context/dictionary-context';
 import LoginModal from '@modules/account/components/login-modal';
-import { MouseEventHandler, useRef } from 'react';
+import { MouseEventHandler, useState } from 'react';
 
 export default function LoginButtonModal() {
-  const loginModalRef = useRef<HTMLDialogElement>(null);
+  const [open, setOpen] = useState(false);
   const dictionary = useDictionary();
 
   const onLoginButtonClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
 
-    loginModalRef.current?.showModal();
+    setOpen(true);
   };
 
   return (
@@ -21,7 +21,7 @@ export default function LoginButtonModal() {
       >
         <div className="">{dictionary.layout.nav.loginButtonTitle}</div>
       </button>
-      <LoginModal modalRef={loginModalRef} />
+      <LoginModal open={open} setOpen={setOpen} />
     </div>
   );
 }

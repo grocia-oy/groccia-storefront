@@ -4,6 +4,7 @@ const plugin = require('tailwindcss/plugin');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   presets: [require('@medusajs/ui-preset')],
+  darkMode: ['class'],
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/pages/**/*.{js,ts,jsx,tsx}',
@@ -12,6 +13,13 @@ module.exports = {
     './node_modules/@medusajs/ui/dist/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       transitionProperty: {
         width: 'width margin',
@@ -28,23 +36,51 @@ module.exports = {
         poppins: ['var(--font-poppins)', ...defaultTheme.fontFamily.serif],
       },
       colors: {
-        primary: {
-          default: '#00524B',
-          500: '#00524B',
-          600: '#003D36',
-          700: '#002924',
+        border: 'var(--border)',
+        input: {
+          DEFAULT: 'var(--input)',
+          placeholder: 'var(--input-placeholder)',
+          foreground: 'var(--input-foreground)',
         },
-        secondary: '#C5C2AA',
-        footer: '#e0decc',
-        accent: '#785469',
-        neutral: '#F1F1F1',
-        'input-placeholder': '#555555',
-        info: '',
-        success: '',
-        warning: '',
-        error: '',
-        'price-default': '#21221F',
-        'price-sale': '#EE4266',
+        ring: 'var(--ring)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
+        },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)',
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)',
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)',
+        },
+        popover: {
+          DEFAULT: 'var(--popover)',
+          foreground: 'var(--popover-foreground)',
+        },
+        card: {
+          DEFAULT: 'var(--card)',
+          foreground: 'var(--card-foreground)',
+        },
+        neutral: {
+          DEFAULT: 'var(--neutral)',
+          foreground: 'var(--neutral-foreground)',
+        },
+        price: {
+          DEFAULT: 'var(--price-default)',
+          sale: 'var(--price-sale)',
+        },
       },
       borderRadius: {
         none: '0px',
@@ -61,29 +97,23 @@ module.exports = {
         '3xl': '2rem',
       },
       flex: {
-        carousel: '0 0 100%',
-        'carousel-slide': '0 0 50%',
-        'carousel-slide-sm': '0 0 calc(100%/3)',
-        'carousel-slide-lg': '0 0 calc(100%/5)',
-        'carousel-slide-xl': '0 0 calc(100%/6)',
+        'carousel-full': 'var(--flex-carousel-full)',
+        'carousel-half': 'var(--flex-carousel-half)',
+        'carousel-sm': 'var(--flex-carousel-sm)',
+        'carousel-lg': 'var(--flex-carousel-lg)',
+        'carousel-xl': 'var(--flex-carousel-xl)',
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
     },
-  },
-  daisyui: {
-    themes: [
-      {
-        grocciaLight: {
-          primary: '#00524B',
-          secondary: '#C5C2AA',
-          accent: '#785469',
-          neutral: '#F1F1F1',
-        },
-      },
-    ],
   },
   plugins: [
     require('tailwindcss-radix')(),
     require('daisyui'),
+    require('tailwindcss-animate'),
     plugin(({ addUtilities }) => {
       addUtilities({
         '.backface-visible': {

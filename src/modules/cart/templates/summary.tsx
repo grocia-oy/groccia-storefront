@@ -27,7 +27,7 @@ const Summary = ({ cart }: SummaryProps) => {
       <Divider />
       <CartTotals data={cart} />
       <LocalizedClientLink href={'/checkout?step=' + cart.checkout_step}>
-        <Button className="w-full h-10 bg-primary-500 hover:bg-primary-600">
+        <Button className="w-full h-10 bg-primary hover:bg-primary">
           {dictionarySummary.goToCheckout}
         </Button>
       </LocalizedClientLink>
