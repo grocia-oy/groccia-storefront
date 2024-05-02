@@ -20,7 +20,8 @@
     "city": "City",
     "country": "Country",
     "stateOrProvince": "State / Province",
-    "phone": "Phone"
+    "phone": "Phone",
+    "account": "Account"
   },
   "layout": {
     "nav": {
@@ -60,6 +61,22 @@
       "socialLoginDivider": "Or continue with",
       "socialLoginWithStatement": "Continue with",
       "registerConsentStarts": "By creating an account, you agree to Groccia's"
+    },
+    "sideBar": {
+      "order": "My Orders",
+      "delivery": "Delivery Information",
+      "profile": "My Profile",
+      "payment": "Payment",
+      "logout": "Logout"
+    },
+    "order": {
+      "statusTabs": {
+        "all": "All",
+        "pending": "Pending",
+        "completed": "Completed",
+        "canceled": "Canceled",
+        "archived": "Past Orders"
+      }
     }
   },
   "productRail": {

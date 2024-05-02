@@ -49,7 +49,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             placeholder=" "
             required={required}
             className={twMerge(
-              'pt-6 pb-1 block w-full h-12 px-4 mt-0 placeholder:text-input-placeholder bg-neutral rounded-md appearance-none focus:outline-none focus:border-none focus:ring-0',
+              'pt-6 pb-1 block w-full h-12 px-4 mt-0 placeholder:text-input-placeholder bg-input text-input-foreground rounded-md appearance-none focus:outline-none focus:border-none focus:ring-0',
               className
             )}
             {...props}
@@ -58,7 +58,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <label
             htmlFor={name}
             onClick={() => inputRef.current?.focus()}
-            className="flex items-center justify-center mx-3 px-1 transition-all absolute duration-200 top-3 -z-1 origin-0 text-primary-600"
+            className="flex items-center justify-center mx-3 px-1 transition-all absolute duration-200 top-3 -z-1 origin-0 text-primary"
           >
             {label}
             {required && <span className="text-rose-700">*</span>}

@@ -15,12 +15,15 @@ const SearchBar: React.FC = () => {
         data-ms-editor
         spellCheck={false}
         placeholder="Search products..."
-        className="w-full pl-3 pr-20 py-3 rounded-2xl text-sm bg-neutral placeholder:text-input-placeholder focus:outline-none focus:border-none focus:ring-0 appearance-none"
+        className="w-full pl-3 pr-20 py-3 rounded-2xl text-sm bg-input placeholder:text-input-placeholder text-input-foreground focus:outline-none focus:border-none focus:ring-0 appearance-none"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <div className="absolute right-0 h-full">
-        <button type='submit' className="h-full px-5 bg-primary-600 text-sm font-bold text-white rounded-2xl">
+        <button
+          type="submit"
+          className="h-full px-5 bg-primary text-sm font-bold text-primary-foreground rounded-2xl"
+        >
           Search
         </button>
       </div>

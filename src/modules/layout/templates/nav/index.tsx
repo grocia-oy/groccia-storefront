@@ -6,15 +6,18 @@ import PostcodeButtonModal from '@modules/layout/components/postcode-button-moda
 import CartButton from '@modules/layout/components/cart-button';
 import LoginButtonModal from '@modules/layout/components/login-button-modal';
 import Sidebar from '../sidebar';
+import { Customer } from '@medusajs/medusa';
+import AccountButton from '@modules/layout/components/account-button';
 
 type Props = {
   lang: string;
+  customer: Omit<Customer, 'password_hash'> | null;
 };
 
-export default function Nav({ lang }: Props) {
+export default function Nav({ lang, customer }: Props) {
   return (
     <div className="sticky top-0 inset-x-0 z-50">
-      <header className="relative h-20 bg-white border-b">
+      <header className="relative h-20 bg-background">
         <nav className="content-container flex items-center justify-between h-full space-x-6">
           <div className="flex-1 lg:hidden">
             <Sidebar />
@@ -22,7 +25,7 @@ export default function Nav({ lang }: Props) {
           <div className="lg:flex-1 basis-0 h-full flex items-center">
             <LocalizedClientLink
               href="/"
-              className="uppercase text-3xl font-gotag font-semibold text-primary-default"
+              className="uppercase text-3xl font-gotag font-semibold text-primary"
             >
               Groccia
             </LocalizedClientLink>
@@ -33,7 +36,7 @@ export default function Nav({ lang }: Props) {
           <div className="flex flex-1 basis-0 justify-end">
             <div className="flex items-center space-x-10 font-raleway">
               <PostcodeButtonModal />
-              <LoginButtonModal />
+              {customer ? <AccountButton /> : <LoginButtonModal />}
               <Suspense
                 fallback={
                   <LocalizedClientLink

@@ -18,7 +18,7 @@ const ImageGallery = ({
         return (
           <Container
             key={image.id}
-            className="relative overflow-hidden border-2 border-transparent p-6 hover:border-2 hover:border-primary-500 lg:p-8"
+            className="relative overflow-hidden border-2 border-transparent p-6 hover:border-2 hover:border-primary lg:p-8"
             id={image.id}
             onMouseEnter={() => setDisplayedImageIndex(index)}
           >

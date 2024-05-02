@@ -1,12 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { RadioGroup } from '@headlessui/react';
 import ErrorMessage from '@modules/checkout/components/error-message';
 import { Cart } from '@medusajs/medusa';
-import { CheckCircleSolid, CreditCard } from '@medusajs/icons';
-import { Container, Heading, Text, Tooltip, clx } from '@medusajs/ui';
+import { Container, Heading, Text, clx } from '@medusajs/ui';
 import { CardElement } from '@stripe/react-stripe-js';
 import { StripeCardElementOptions } from '@stripe/stripe-js';
 
@@ -15,8 +14,10 @@ import Spinner from '@modules/common/icons/spinner';
 import PaymentContainer from '@modules/checkout/components/payment-container';
 import { setPaymentMethod } from '@modules/checkout/actions';
 import { paymentInfoMap } from '@lib/constants';
+import { StripeContext } from '@modules/checkout/components/payment-wrapper';
 import { useDictionary } from '@lib/context/dictionary-context';
 import Button from '@modules/common/components/button';
+import { CheckCircleIcon, CreditCardIcon } from '@heroicons/react/24/outline';
 
 const Payment = ({
   cart,
@@ -37,6 +38,7 @@ const Payment = ({
   const isOpen = searchParams.get('step') === 'payment';
 
   const isStripe = cart?.payment_session?.provider_id === 'stripe';
+  const stripeReady = useContext(StripeContext);
 
   const paymentReady =
     cart?.payment_session && cart?.shipping_methods.length !== 0;
@@ -107,7 +109,7 @@ const Payment = ({
         <Heading
           level="h2"
           className={clx(
-            'flex flex-row text-3xl-regular gap-x-2 items-baseline',
+            'flex flex-row text-3xl-regular gap-x-2 items-center',
             {
               'opacity-50 pointer-events-none select-none':
                 !isOpen && !paymentReady,
@@ -115,7 +117,7 @@ const Payment = ({
           )}
         >
           {dictionary.checkout.payment}
-          {!isOpen && paymentReady && <CheckCircleSolid />}
+          {!isOpen && paymentReady && <CheckCircleIcon className="w-5 h-5" />}
         </Heading>
         {!isOpen && paymentReady && (
           <Text>
@@ -153,7 +155,7 @@ const Payment = ({
                 })}
             </RadioGroup>
 
-            {isStripe && (
+            {isStripe && stripeReady && (
               <div className="mt-5 transition-all duration-150 ease-in-out">
                 <Text className="txt-medium-plus text-ui-fg-base mb-1">
                   {dictionary.checkout.enterCardDetails}:
@@ -200,13 +202,6 @@ const Payment = ({
                   {paymentInfoMap[cart.payment_session.provider_id]?.title ||
                     cart.payment_session.provider_id}
                 </Text>
-                {process.env.NODE_ENV === 'development' &&
-                  !Object.hasOwn(
-                    paymentInfoMap,
-                    cart.payment_session.provider_id
-                  ) && (
-                    <Tooltip content="You can add a user-friendly name and icon for this payment provider in 'src/modules/checkout/components/payment/index.tsx'" />
-                  )}
               </div>
               <div className="flex flex-col w-1/3">
                 <Text className="txt-medium-plus text-ui-fg-base mb-1">
@@ -215,7 +210,7 @@ const Payment = ({
                 <div className="flex gap-2 txt-medium text-ui-fg-subtle items-center">
                   <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
                     {paymentInfoMap[cart.payment_session.provider_id]?.icon || (
-                      <CreditCard />
+                      <CreditCardIcon />
                     )}
                   </Container>
                   <Text>

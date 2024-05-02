@@ -20,7 +20,8 @@
     "city": "Thành phố",
     "country": "Quốc gia",
     "stateOrProvince": "Tiểu bang / Tỉnh",
-    "phone": "Số điện thoại"
+    "phone": "Số điện thoại",
+    "account": "Tài khoản"
   },
   "layout": {
     "nav": {
@@ -60,6 +61,22 @@
       "socialLoginDivider": "Hoặc tiếp tục với",
       "socialLoginWithStatement": "Tiếp tục với",
       "registerConsentStarts": "Bằng cách tạo tài khoản, bạn đồng ý với"
+    },
+    "sideBar": {
+      "order": "Đơn hàng",
+      "delivery": "Thông tin giao hàng",
+      "profile": "Hồ sơ",
+      "payment": "Thông tin thanh toán",
+      "logout": "Đăng xuất"
+    },
+    "order": {
+      "statusTabs": {
+        "all": "Tất cả",
+        "pending": "Chờ xử lý",
+        "completed": "Hoàn thành",
+        "canceled": "Đã huỷ",
+        "archived": "Khác"
+      }
     }
   },
   "productRail": {

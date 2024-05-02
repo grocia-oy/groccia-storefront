@@ -21,7 +21,7 @@ export default function AnnouncementBar({}: Props) {
   }
 
   return (
-    <div className="flex items-center justify-center w-full bg-primary-default h-9">
+    <div className="flex items-center justify-center w-full bg-primary h-9">
       <div className="container inline-flex justify-center">
         <Link href={announcementBar.url || '/'} target={announcementBar.target}>
           <h3 className="font-medium text-white font-poppins">

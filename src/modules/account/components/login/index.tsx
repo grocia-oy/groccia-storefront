@@ -17,12 +17,12 @@ const Login = ({ setCurrentView }: Props) => {
   const dictionary = useDictionary();
 
   return (
-    <div className="">
-      <div className="mb-8 flex w-full justify-between">
-        <h2 className="font-raleway font-bold text-xl">
+    <div className="mt-10">
+      <div className="mb-8 flex w-full justify-between items-center">
+        <h2 className="font-raleway font-bold text-2xl">
           {dictionary.account.loginModal.loginHeading}
         </h2>
-        <p>
+        <p className='font-raleway'>
           {dictionary.account.loginModal.switchToRegisterDescription}{' '}
           <button
             className="underline"
@@ -61,7 +61,7 @@ const Login = ({ setCurrentView }: Props) => {
             {dictionary.account.loginModal.troubleLoggingIn}
           </button>
         </div>
-        <SubmitButton className="w-full mt-6 font-semibold font-raleway bg-primary-default hover:bg-primary-600">
+        <SubmitButton className="w-full mt-6 font-semibold font-raleway bg-primary hover:bg-primary">
           {dictionary.account.loginModal.loginButton}
         </SubmitButton>
       </form>
