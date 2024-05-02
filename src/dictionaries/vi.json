@@ -85,7 +85,11 @@
   "product": {
     "addToCart": "Thêm vào giỏ hàng",
     "outOfStock": "Hết hàng",
-    "viewAll": "Xem thêm"
+    "viewAll": "Xem thêm",
+    "info": {
+      "description": "Mô tả",
+      "allergyInfo": "Thông tin dị ứng"
+    }
   },
   "cartPage": {
     "itemsTemplate": {
