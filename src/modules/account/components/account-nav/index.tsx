@@ -1,167 +1,114 @@
-"use client"
+'use client';
 
-import { Customer } from "@medusajs/medusa"
-import { clx } from "@medusajs/ui"
-import { ArrowRightOnRectangle } from "@medusajs/icons"
-import { useParams, usePathname } from "next/navigation"
+import {
+  CubeIcon,
+  UserCircleIcon,
+  TruckIcon,
+  CreditCardIcon,
+  ArrowUpTrayIcon,
+} from '@heroicons/react/24/outline';
+import { useDictionary } from '@lib/context/dictionary-context';
+import { conditionalClassNames } from '@lib/util/conditional-classname';
+import { Customer } from '@medusajs/medusa';
+import { signOut } from '@modules/account/actions';
+import IconButton from '@modules/common/components/icon-button';
+import { usePathname, useRouter } from 'next/navigation';
+import { useMemo } from 'react';
+import AccountAvatar from '../account-avatar';
 
-import ChevronDown from "@modules/common/icons/chevron-down"
-import { signOut } from "@modules/account/actions"
-import User from "@modules/common/icons/user"
-import MapPin from "@modules/common/icons/map-pin"
-import Package from "@modules/common/icons/package"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
+const getSidebarItems = (
+  dictionary: Record<string, any>,
+  options: { orderCount: number }
+) => {
+  const sideBar = dictionary.account.sideBar;
+
+  return [
+    {
+      title: sideBar.order,
+      href: 'order?status=all',
+      icon: <CubeIcon className="w-6 h-6" />,
+      count: options.orderCount,
+    },
+    {
+      title: sideBar.profile,
+      href: 'profile',
+      icon: <UserCircleIcon className="w-6 h-6" />,
+    },
+    {
+      title: sideBar.delivery,
+      href: 'delivery',
+      icon: <TruckIcon className="w-6 h-6" />,
+    },
+    {
+      title: sideBar.payment,
+      href: 'payment',
+      icon: <CreditCardIcon className="w-6 h-6" />,
+    },
+  ];
+};
 
 const AccountNav = ({
   customer,
+  orderCount,
 }: {
-  customer: Omit<Customer, "password_hash"> | null
+  customer: Omit<Customer, 'password_hash'> | null;
+  orderCount?: number;
 }) => {
-  const route = usePathname()
-  const { countryCode } = useParams()
+  const pathName = usePathname();
+  const router = useRouter();
+  const dictionary = useDictionary();
+  const sideBarItems = getSidebarItems(dictionary, { orderCount });
+
+  const splittedPath = useMemo(() => pathName.split('/'), [pathName]);
 
   const handleLogout = async () => {
-    await signOut()
-  }
+    await signOut();
+  };
 
   return (
-    <div>
-      <div className="small:hidden">
-        {route !== `/${countryCode}/account` ? (
-          <LocalizedClientLink
-            href="/account"
-            className="flex items-center gap-x-2 text-small-regular py-2"
-          >
-            <>
-              <ChevronDown className="transform rotate-90" />
-              <span>Account</span>
-            </>
-          </LocalizedClientLink>
-        ) : (
-          <>
-            <div className="text-xl-semi mb-4 px-8">
-              Hello {customer?.first_name}
-            </div>
-            <div className="text-base-regular">
-              <ul>
-                <li>
-                  <LocalizedClientLink
-                    href="/account/profile"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
-                  >
-                    <>
-                      <div className="flex items-center gap-x-2">
-                        <User size={20} />
-                        <span>Profile</span>
-                      </div>
-                      <ChevronDown className="transform -rotate-90" />
-                    </>
-                  </LocalizedClientLink>
-                </li>
-                <li>
-                  <LocalizedClientLink
-                    href="/account/addresses"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
-                  >
-                    <>
-                      <div className="flex items-center gap-x-2">
-                        <MapPin size={20} />
-                        <span>Addresses</span>
-                      </div>
-                      <ChevronDown className="transform -rotate-90" />
-                    </>
-                  </LocalizedClientLink>
-                </li>
-                <li>
-                  <LocalizedClientLink
-                    href="/account/orders"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
-                  >
-                    <div className="flex items-center gap-x-2">
-                      <Package size={20} />
-                      <span>Orders</span>
-                    </div>
-                    <ChevronDown className="transform -rotate-90" />
-                  </LocalizedClientLink>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8 w-full"
-                    onClick={handleLogout}
-                  >
-                    <div className="flex items-center gap-x-2">
-                      <ArrowRightOnRectangle />
-                      <span>Log out</span>
-                    </div>
-                    <ChevronDown className="transform -rotate-90" />
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </>
-        )}
-      </div>
-      <div className="hidden small:block">
+    <div className="">
+      <div className="flex space-x-4">
+        <div className="relative w-24 h-24">
+          <AccountAvatar name={customer?.first_name} />
+        </div>
         <div>
-          <div className="pb-4">
-            <h3 className="text-base-semi">Account</h3>
-          </div>
-          <div className="text-base-regular">
-            <ul className="flex mb-0 justify-start items-start flex-col gap-y-4">
-              <li>
-                <AccountNavLink href="/account" route={route!}>
-                  Overview
-                </AccountNavLink>
-              </li>
-              <li>
-                <AccountNavLink href="/account/profile" route={route!}>
-                  Profile
-                </AccountNavLink>
-              </li>
-              <li>
-                <AccountNavLink href="/account/addresses" route={route!}>
-                  Addresses
-                </AccountNavLink>
-              </li>
-              <li>
-                <AccountNavLink href="/account/orders" route={route!}>
-                  Orders
-                </AccountNavLink>
-              </li>
-              <li className="text-grey-700">
-                <button type="button" onClick={handleLogout}>
-                  Log out
-                </button>
-              </li>
-            </ul>
-          </div>
+          <span className="text-2xl font-raleway font-bold">
+            {customer?.first_name} {customer?.last_name}
+          </span>
         </div>
       </div>
+      <div>
+        <ul className="space-y-2 flex flex-col mt-8 pr-10">
+          {sideBarItems.map((item) => (
+            <IconButton
+              icon={item.icon}
+              key={item.href}
+              onClick={() => router.push(item.href)}
+              className={conditionalClassNames(
+                'relative text-left font-semibold hover:text-primary-default hover:bg-neutral px-4',
+                splittedPath[4] === item.href.split('?')[0] ? 'bg-neutral' : ''
+              )}
+            >
+              <span>{item.title}</span>
+              {item.count && (
+                <span className="absolute bg-primary-500 w-6 h-6 text-center rounded-full text-white right-4">
+                  {item.count}
+                </span>
+              )}
+            </IconButton>
+          ))}
+          <IconButton
+            icon={<ArrowUpTrayIcon className="w-6 h-6" />}
+            onClick={handleLogout}
+            className="text-left font-semibold hover:text-red-600 hover:bg-neutral"
+          >
+            {dictionary.account.sideBar.logout}
+          </IconButton>
+        </ul>
+      </div>
+      <div></div>
     </div>
-  )
-}
+  );
+};
 
-type AccountNavLinkProps = {
-  href: string
-  route: string
-  children: React.ReactNode
-}
-
-const AccountNavLink = ({ href, route, children }: AccountNavLinkProps) => {
-  const { countryCode }: { countryCode: string } = useParams()
-
-  const active = route.split(countryCode)[1] === href
-  return (
-    <LocalizedClientLink
-      href={href}
-      className={clx("text-ui-fg-subtle hover:text-ui-fg-base", {
-        "text-ui-fg-base font-semibold": active,
-      })}
-    >
-      {children}
-    </LocalizedClientLink>
-  )
-}
-
-export default AccountNav
+export default AccountNav;
