@@ -30,7 +30,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
 
   return (
     <div className="content-container py-6 flex flex-col">
-      <Breadcrumbs product={product} />
+      <Breadcrumbs product={product} dictionary={dictionary} />
       <div className="flex flex-col py-6 lg:flex-row">
         <div className="mb-2 flex h-52 w-full lg:mb-0 lg:h-96 lg:w-3/5">
           <ProductDisplayWrapper product={product} />

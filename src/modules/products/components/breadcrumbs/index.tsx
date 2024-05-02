@@ -4,14 +4,17 @@ import React from 'react';
 
 interface BreadcrumbsProps {
   product: PricedProduct;
+  dictionary: any;
 }
 
-function Breadcrumbs({ product }: BreadcrumbsProps) {
+function Breadcrumbs({ product, dictionary }: BreadcrumbsProps) {
   return (
     <div className="breadcrumbs text-sm">
       <ul>
         <li>
-          <LocalizedClientLink href="/">Home</LocalizedClientLink>
+          <LocalizedClientLink href="/">
+            {dictionary.common.home}
+          </LocalizedClientLink>
         </li>
         <li>
           <LocalizedClientLink
