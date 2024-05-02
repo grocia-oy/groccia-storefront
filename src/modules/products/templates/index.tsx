@@ -6,10 +6,10 @@ import ProductInfo from '@modules/products/templates/product-info';
 import { notFound } from 'next/navigation';
 import ProductActionsWrapper from './product-actions-wrapper';
 import ProductTags from '../components/product-tags';
-import ProductDisplayWrapper from './product-display-wrapper';
 import Breadcrumbs from '../components/breadcrumbs';
 import { ExpandedPricedProduct } from 'types/medusa';
 import { getDictionary } from 'app/[lang]/dictionaries';
+import ProductDisplay from './product-display';
 
 type ProductTemplateProps = {
   product: ExpandedPricedProduct;
@@ -33,7 +33,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
       <Breadcrumbs product={product} dictionary={dictionary} />
       <div className="flex flex-col py-6 lg:flex-row">
         <div className="mb-2 flex h-52 w-full lg:mb-0 lg:h-96 lg:w-3/5">
-          <ProductDisplayWrapper product={product} />
+          <ProductDisplay product={product} />
         </div>
         <div className="flex flex-col lg:mx-4 lg:w-2/5">
           <div className="flex flex-col">

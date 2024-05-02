@@ -6,11 +6,11 @@ import ImageGallery from '@modules/products/components/image-gallery';
 import Image from 'next/image';
 import { useState } from 'react';
 
-type ProductDisplayWrapperProps = {
+type ProductDisplayProps = {
   product: PricedProduct;
 };
 
-const ProductDisplayWrapper = ({ product }: ProductDisplayWrapperProps) => {
+const ProductDisplay = ({ product }: ProductDisplayProps) => {
   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
 
   return (
@@ -35,4 +35,4 @@ const ProductDisplayWrapper = ({ product }: ProductDisplayWrapperProps) => {
   );
 };
 
-export default ProductDisplayWrapper;
+export default ProductDisplay;
