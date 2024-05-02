@@ -2,7 +2,6 @@
 
 import { Region } from '@medusajs/medusa';
 import { PricedProduct } from '@medusajs/medusa/dist/types/pricing';
-import { Button } from '@medusajs/ui';
 import { isEqual } from 'lodash';
 import { useParams } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -14,8 +13,8 @@ import OptionSelect from '@modules/products/components/option-select';
 
 import MobileActions from '../mobile-actions';
 import ProductPrice from '../product-price';
-import { getDictionary } from 'app/[lang]/dictionaries';
 import { useDictionary } from '@lib/context/dictionary-context';
+import Button from '@modules/common/components/button';
 
 type ProductActionsProps = {
   product: PricedProduct;
@@ -152,8 +151,7 @@ export default function ProductActions({
         <Button
           onClick={handleAddToCart}
           disabled={!inStock || !variant}
-          variant="primary"
-          className="w-full h-10 bg-primary hover:bg-primary"
+          className="w-full h-10 bg-primary"
           isLoading={isAdding}
         >
           {!variant || !inStock

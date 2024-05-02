@@ -11,7 +11,6 @@ import {
   StorePostCustomersCustomerReq,
   StorePostCustomersReq,
 } from '@medusajs/medusa';
-import { PricedProduct } from '@medusajs/medusa/dist/types/pricing';
 
 import sortProducts from '@lib/util/sort-products';
 import transformProductPreview from '@lib/util/transform-product-preview';
@@ -22,6 +21,7 @@ import { ProductCategoryWithChildren, ProductPreviewType } from 'types/global';
 import { medusaClient } from '../config';
 import medusaError from '@lib/util/medusa-error';
 import { cookies } from 'next/headers';
+import { ExpandedPricedProduct } from 'types/medusa';
 
 const emptyResponse = {
   response: { products: [], count: 0 },
@@ -402,7 +402,7 @@ export async function retrievePricedProductById({
 
 export async function getProductByHandle(
   handle: string
-): Promise<{ product: PricedProduct }> {
+): Promise<{ product: ExpandedPricedProduct }> {
   const headers = getMedusaHeaders(['products']);
 
   const product = await medusaClient.products
@@ -412,7 +412,7 @@ export async function getProductByHandle(
       throw err;
     });
 
-  return { product };
+  return { product: product as ExpandedPricedProduct };
 }
 
 export async function getProductsList({

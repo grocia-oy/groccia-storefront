@@ -21,7 +21,8 @@
     "country": "Quốc gia",
     "stateOrProvince": "Tiểu bang / Tỉnh",
     "phone": "Số điện thoại",
-    "account": "Tài khoản"
+    "account": "Tài khoản",
+    "home": "Trang chủ"
   },
   "layout": {
     "nav": {
@@ -85,7 +86,11 @@
   "product": {
     "addToCart": "Thêm vào giỏ hàng",
     "outOfStock": "Hết hàng",
-    "viewAll": "Xem thêm"
+    "viewAll": "Xem thêm",
+    "info": {
+      "description": "Mô tả",
+      "allergyInfo": "Thông tin dị ứng"
+    }
   },
   "cartPage": {
     "itemsTemplate": {

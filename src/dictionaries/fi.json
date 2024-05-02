@@ -21,7 +21,8 @@
     "country": "Country",
     "stateOrProvince": "State / Province",
     "phone": "Phone",
-    "account": "Account"
+    "account": "Account",
+    "home": "Home"
   },
   "layout": {
     "nav": {
@@ -85,7 +86,11 @@
   "product": {
     "addToCart": "Add to cart",
     "outOfStock": "Out of stock",
-    "viewAll": "View all"
+    "viewAll": "View all",
+    "info": {
+      "description": "Description",
+      "allergyInfo": "Allergy information"
+    }
   },
   "cartPage": {
     "itemsTemplate": {

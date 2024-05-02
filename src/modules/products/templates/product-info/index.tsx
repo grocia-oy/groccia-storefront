@@ -1,12 +1,13 @@
-import { PricedProduct } from '@medusajs/medusa/dist/types/pricing';
 import { Heading, Text } from '@medusajs/ui';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
+import { ExpandedPricedProduct } from 'types/medusa';
 
 type ProductInfoProps = {
-  product: PricedProduct;
+  product: ExpandedPricedProduct;
+  dictionary: any;
 };
 
-const ProductInfo = ({ product }: ProductInfoProps) => {
+const ProductInfo = ({ product, dictionary }: ProductInfoProps) => {
   return (
     <div id="product-info">
       <div className="flex flex-col gap-y-1">
@@ -21,8 +22,24 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         <Heading level="h2" className="text-poppins text-3xl leading-10">
           {product.title}
         </Heading>
-
-        <Text className="text-medium text-poppins">{product.description}</Text>
+        <div className="flex flex-col text-poppins gap-2">
+          {product.description && (
+            <div>
+              <Text className="font-bold">
+                {dictionary.product.info.description}
+              </Text>
+              <Text>{product.description}</Text>
+            </div>
+          )}
+          {product.metadata?.allergy && (
+            <div>
+              <Text className="font-bold">
+                {dictionary.product.info.allergyInfo}
+              </Text>
+              <Text>{product.metadata.allergy}</Text>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
