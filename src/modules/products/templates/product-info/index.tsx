@@ -4,9 +4,10 @@ import { ExpandedPricedProduct } from 'types/medusa';
 
 type ProductInfoProps = {
   product: ExpandedPricedProduct;
+  dictionary: any;
 };
 
-const ProductInfo = ({ product }: ProductInfoProps) => {
+const ProductInfo = ({ product, dictionary }: ProductInfoProps) => {
   return (
     <div id="product-info">
       <div className="flex flex-col gap-y-1">
@@ -24,13 +25,17 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         <div className="flex flex-col text-poppins gap-2">
           {product.description && (
             <div>
-              <Text className="font-bold">Description</Text>
+              <Text className="font-bold">
+                {dictionary.product.info.description}
+              </Text>
               <Text>{product.description}</Text>
             </div>
           )}
           {product.metadata?.allergy && (
             <div>
-              <Text className="font-bold">Allergy information</Text>
+              <Text className="font-bold">
+                {dictionary.product.info.allergyInfo}
+              </Text>
               <Text>{product.metadata.allergy}</Text>
             </div>
           )}

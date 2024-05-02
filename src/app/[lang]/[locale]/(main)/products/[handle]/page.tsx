@@ -43,10 +43,6 @@ export default async function ProductPage({
   }
 
   return (
-    <ProductTemplate
-      product={pricedProduct}
-      region={region}
-      countryCode={locale}
-    />
+    <ProductTemplate product={pricedProduct} region={region} lang={lang} />
   );
 }

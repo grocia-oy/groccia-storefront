@@ -9,18 +9,21 @@ import ProductTags from '../components/product-tags';
 import ProductDisplayWrapper from './product-display-wrapper';
 import Breadcrumbs from '../components/breadcrumbs';
 import { ExpandedPricedProduct } from 'types/medusa';
+import { getDictionary } from 'app/[lang]/dictionaries';
 
 type ProductTemplateProps = {
   product: ExpandedPricedProduct;
   region: Region;
-  countryCode: string;
+  lang: string;
 };
 
-const ProductTemplate: React.FC<ProductTemplateProps> = ({
+const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   product,
   region,
-  countryCode,
+  lang,
 }) => {
+  const dictionary = await getDictionary(lang);
+
   if (!product || !product.id) {
     return notFound();
   }
@@ -34,7 +37,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         </div>
         <div className="flex flex-col lg:mx-4 lg:w-2/5">
           <div className="flex flex-col">
-            <ProductInfo product={product} />
+            <ProductInfo product={product} dictionary={dictionary} />
           </div>
           <div className="flex flex-col">
             <Suspense
