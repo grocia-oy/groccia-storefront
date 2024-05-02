@@ -21,7 +21,8 @@
     "country": "Country",
     "stateOrProvince": "State / Province",
     "phone": "Phone",
-    "account": "Account"
+    "account": "Account",
+    "home": "Home"
   },
   "layout": {
     "nav": {
