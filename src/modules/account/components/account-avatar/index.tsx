@@ -22,7 +22,7 @@ const AccountAvatar = ({ src, alt, name = '' }: Props) => {
           className="object-cover rounded-full"
         />
       ) : (
-        <div className="h-full w-full bg-primary-500 rounded-full">
+        <div className="h-full w-full bg-primary rounded-full">
           <span className="absolute w-full h-full flex justify-center items-center font-raleway font-bold text-4xl text-white">
             {initial}
           </span>
