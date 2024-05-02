@@ -22,7 +22,9 @@
     "stateOrProvince": "Tiểu bang / Tỉnh",
     "phone": "Số điện thoại",
     "account": "Tài khoản",
-    "home": "Trang chủ"
+    "home": "Trang chủ",
+    "order": "Đơn hàng",
+    "total": "Tổng cộng"
   },
   "layout": {
     "nav": {
@@ -165,6 +167,23 @@
       "orderNumber": "Số thứ tự đơn hàng",
       "orderStatus": "Trạng thái đơn hàng",
       "paymentStatus": "Trạng thái thanh toán"
+    },
+    "fulfillmentStatus": {
+      "not_fulfilled": "Chưa hoàn thành",
+      "partially_fulfilled": "Hoàn thành một phần",
+      "fulfilled": "Hoàn thành",
+      "partially_shipped": "Giao hàng một phần",
+      "shipped": "Đã giao hàng",
+      "partially_returned": "Trả hàng một phần",
+      "returned": "Đã trả hàng",
+      "canceled": "Đã hủy",
+      "requires_action": "Yêu cầu hành động"
+    },
+    "generalStatus": {
+      "pending": "Chờ xử lý",
+      "completed": "Hoàn thành",
+      "canceled": "Đã huỷ",
+      "archived": "Khác"
     }
   },
   "help": {

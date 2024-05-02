@@ -22,7 +22,9 @@
     "stateOrProvince": "State / Province",
     "phone": "Phone",
     "account": "Account",
-    "home": "Home"
+    "home": "Home",
+    "order": "Order",
+    "total": "Total"
   },
   "layout": {
     "nav": {
@@ -77,7 +79,8 @@
         "completed": "Completed",
         "canceled": "Canceled",
         "archived": "Past Orders"
-      }
+      },
+      "orderCard": {}
     }
   },
   "productRail": {
@@ -165,6 +168,23 @@
       "orderNumber": "Order number",
       "orderStatus": "Order status",
       "paymentStatus": "Payment status"
+    },
+    "fulfillmentStatus": {
+      "not_fulfilled": "Not fulfilled",
+      "partially_fulfilled": "Partially fulfilled",
+      "fulfilled": "Fulfilled",
+      "partially_shipped": "Partially shipped",
+      "shipped": "Shipped",
+      "partially_returned": "Partially returned",
+      "returned": "Returned",
+      "canceled": "Canceled",
+      "requires_action": "Requires action"
+    },
+    "generalStatus": {
+      "pending": "Pending",
+      "completed": "Completed",
+      "canceled": "Canceled",
+      "archived": "Archived"
     }
   },
   "help": {
