@@ -81,6 +81,13 @@ module.exports = {
           DEFAULT: 'var(--price-default)',
           sale: 'var(--price-sale)',
         },
+        status: {
+          success: 'var(--success-status)',
+          warning: 'var(--warning-status)',
+          error: 'var(--error-status)',
+          info: 'var(--info-status)',
+          pending: 'var(--pending-status)',
+        },
       },
       borderRadius: {
         none: '0px',
