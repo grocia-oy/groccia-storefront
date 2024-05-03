@@ -1,12 +1,17 @@
 'use client';
 
 import { useDictionary } from '@lib/context/dictionary-context';
-import { conditionalClassNames } from '@lib/util/conditional-classname';
 import { Order } from '@medusajs/medusa';
-import { OrderStatusType } from '@modules/account/types';
+import { OrderStatus, OrderStatusType } from '@modules/account/types';
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+} from '@modules/common/components/ui/tabs';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
+import OrderTabContent from '../order-tab-content';
 
 type Props = {
   orders: Order[];
@@ -16,11 +21,11 @@ const getOrderTabs = (dictionary: Record<string, any>) => {
   const tabs = dictionary.account.order.statusTabs;
 
   return [
-    { title: tabs.all, status: OrderStatusType.ALL },
-    { title: tabs.pending, status: OrderStatusType.PENDING },
-    { title: tabs.completed, status: OrderStatusType.COMPLETED },
-    { title: tabs.canceled, status: OrderStatusType.CANCELED },
-    { title: tabs.archived, status: OrderStatusType.ARCHIVED },
+    { title: tabs.all, status: OrderStatus.ALL },
+    { title: tabs.pending, status: OrderStatus.PENDING },
+    { title: tabs.completed, status: OrderStatus.COMPLETED },
+    { title: tabs.canceled, status: OrderStatus.CANCELED },
+    { title: tabs.archived, status: OrderStatus.ARCHIVED },
   ];
 };
 
@@ -29,8 +34,7 @@ export default function OrderStatusTabs({ orders }: Props) {
   const pathName = usePathname();
   const router = useRouter();
 
-  const status = searchParams.get('status') as OrderStatusType;
-
+  const intendedStatus = searchParams.get('status') as OrderStatusType;
   const dictionary = useDictionary();
   const statusTabs = getOrderTabs(dictionary);
 
@@ -49,25 +53,41 @@ export default function OrderStatusTabs({ orders }: Props) {
   };
 
   return (
-    <div className="my-2 w-full">
-      <div
-        role="tablist"
-        className="tabs tabs-boxed w-[450px] sm:w-[650px] md:w-full overflow-x-auto space-x-4"
-      >
+    <Tabs value={intendedStatus} onValueChange={onTabClick} className="mt-4">
+      <TabsList className="rounded-lg bg-accent space-x-4">
         {statusTabs.map((tab) => (
-          <button
+          <TabsTrigger
             key={tab.status}
-            role="tab"
-            className={conditionalClassNames(
-              'tab w-32',
-              status === tab.status ? 'text-white bg-primary-500' : 'bg-neutral'
-            )}
-            onClick={() => onTabClick(tab.status)}
+            value={tab.status}
+            className="rounded-lg w-[100px] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
           >
             {tab.title}
-          </button>
+          </TabsTrigger>
         ))}
+      </TabsList>
+      <div className="mt-5">
+        <OrderTabContent orders={orders} status={OrderStatus.ALL} showStatus />
+        <OrderTabContent
+          orders={orders}
+          status={OrderStatus.PENDING}
+          showFulfillmentStatus
+        />
+        <OrderTabContent
+          orders={orders}
+          status={OrderStatus.COMPLETED}
+          showFulfillmentStatus
+        />
+        <OrderTabContent
+          orders={orders}
+          status={OrderStatus.CANCELED}
+          showFulfillmentStatus
+        />
+        <OrderTabContent
+          orders={orders}
+          status={OrderStatus.ARCHIVED}
+          showFulfillmentStatus
+        />
       </div>
-    </div>
+    </Tabs>
   );
 }

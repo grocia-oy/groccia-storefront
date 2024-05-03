@@ -16,13 +16,11 @@ export default async function OrderPage({ params }: Props) {
   if (!orderResponse) return notFound();
 
   return (
-    <section className='w-full'>
+    <section className="w-full">
       <div>
         <h2 className="font-raleway font-bold text-2xl">Order</h2>
       </div>
-      <div>
-        <OrderStatusTabs orders={orderResponse.orders} />
-      </div>
+      <OrderStatusTabs orders={orderResponse.orders} />
     </section>
   );
 }

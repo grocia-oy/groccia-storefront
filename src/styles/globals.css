@@ -19,8 +19,8 @@
     --primary: hsl(174.88, 100%, 16.08%);
     --primary-foreground: hsl(55, 28%, 92%);
 
-    --secondary: hsl(0, 0%, 0%);
-    --secondary-foreground: hsl(54, 20%, 80%);
+    --secondary: hsl(0, 0%, 97%);
+    --secondary-foreground: hsl(0, 0%, 20%);
 
     --muted: hsl(210, 40%, 96.1%);
     --muted-foreground: hsl(0, 0%, 66%);
@@ -49,6 +49,12 @@
 
     --price-default: hsl(80, 4.62%, 12.75%);
     --price-sale: hsl(347, 62%, 53%);
+
+    --success-status: hsl(120, 48%, 50%);
+    --warning-status: hsl(40, 100%, 50%);
+    --error-status: hsl(0, 100%, 50%);
+    --info-status: hsl(200, 100%, 50%);
+    --pending-status: hsl(40, 100%, 50%);
   }
 
   .dark {
