@@ -176,5 +176,10 @@
     "latestArrivals": "Mới nhất",
     "priceLowToHigh": "Giá: Thấp -> Cao",
     "priceHighToLow": "Giá: Cao -> Thấp"
+  },
+  "searchTool": {
+    "search": "Tìm kiếm",
+    "searchPlaceholder": "Tìm kiếm sản phẩm...",
+    "searchNoResults": "Không tìm thấy kết quả"
   }
 }
