@@ -6,12 +6,14 @@ import { ProductPreviewType } from 'types/global';
 import { getProductsList } from '@lib/data/ecommerce';
 import SearchResult from '../search-result';
 import { Transition } from '@headlessui/react';
+import { useDebounce } from '@lib/hooks/use-debounce';
 
 const SearchBar = () => {
   const dictionary = useDictionary();
   const [searchDropdownOpen, setSearchDropdownOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResults, setSearchResults] = useState<ProductPreviewType[]>([]);
+  const debouncedSearch = useDebounce(searchTerm, 400);
 
   const open = () => setSearchDropdownOpen(true);
   const close = () => setSearchDropdownOpen(false);
@@ -28,11 +30,11 @@ const SearchBar = () => {
           is_giftcard: false,
         },
       });
-      return response.products;
+      setSearchResults(response.products);
     };
 
-    search().then((results) => setSearchResults(results));
-  }, [searchTerm]);
+    search();
+  }, [debouncedSearch]);
 
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
