@@ -11,6 +11,7 @@ import { useDebounce } from '@lib/hooks/use-debounce';
 const SearchBar = () => {
   const dictionary = useDictionary();
 
+  const MAX_SEARCH_RESULTS = 6;
   const DEBOUNCE_DELAY = 1000;
 
   const [searchDropdownOpen, setSearchDropdownOpen] = useState<boolean>(false);
@@ -21,22 +22,15 @@ const SearchBar = () => {
   const open = () => setSearchDropdownOpen(true);
   const close = () => setSearchDropdownOpen(false);
 
-  const MAX_SEARCH_RESULTS = 6;
-
   useEffect(() => {
-    const search = async () => {
-      const { response } = await getProductsList({
-        locale: 'fin',
-        queryParams: {
-          q: searchTerm,
-          limit: MAX_SEARCH_RESULTS,
-          is_giftcard: false,
-        },
-      });
-      setSearchResults(response.products);
-    };
-
-    search();
+    getProductsList({
+      locale: 'fin',
+      queryParams: {
+        q: searchTerm,
+        limit: MAX_SEARCH_RESULTS,
+        is_giftcard: false,
+      },
+    }).then(({ response }) => setSearchResults(response.products));
   }, [debouncedSearch]);
 
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
