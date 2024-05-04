@@ -3,6 +3,8 @@ import { SortOptions } from '@modules/store/components/refinement-list/sort-prod
 import PaginatedProducts from '@modules/store/templates/paginated-products';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
 import { getDictionary } from 'app/[lang]/dictionaries';
+import { Suspense } from 'react';
+import SkeletonProductGrid from '@modules/skeletons/templates/skeleton-product-grid';
 
 type SearchResultsTemplateProps = {
   query: string;
@@ -43,13 +45,15 @@ const SearchResultsTemplate = async ({
           <>
             <RefinementList sortBy={sortBy || 'created_at'} search />
             <div className="content-container">
-              <PaginatedProducts
-                productsIds={productIds}
-                sortBy={sortBy}
-                page={pageNumber}
-                lang={lang}
-                locale={locale}
-              />
+              <Suspense fallback={<SkeletonProductGrid />}>
+                <PaginatedProducts
+                  productsIds={productIds}
+                  sortBy={sortBy}
+                  page={pageNumber}
+                  lang={lang}
+                  locale={locale}
+                />
+              </Suspense>
             </div>
           </>
         ) : (
