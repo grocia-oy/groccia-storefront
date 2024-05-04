@@ -196,5 +196,10 @@
     "latestArrivals": "Latest Arrivals",
     "priceLowToHigh": "Price: Low -> High",
     "priceHighToLow": "Price: High -> Low"
+  },
+  "searchTool": {
+    "search": "Search",
+    "searchPlaceholder": "Search products...",
+    "searchNoResults": "No results found"
   }
 }
