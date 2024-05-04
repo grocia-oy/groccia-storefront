@@ -75,7 +75,9 @@ const SearchBar = () => {
       >
         <div className="absolute w-full rounded-2xl bg-neutral">
           {searchResults.length > 0 ? (
-            searchResults.map((product) => <SearchResult product={product} />)
+            searchResults.map((product) => (
+              <SearchResult key={product.id} product={product} />
+            ))
           ) : (
             <div className="px-4 py-2">
               {dictionary.searchTool.searchNoResults}
