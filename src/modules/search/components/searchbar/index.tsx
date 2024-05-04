@@ -10,10 +10,13 @@ import { useDebounce } from '@lib/hooks/use-debounce';
 
 const SearchBar = () => {
   const dictionary = useDictionary();
+
+  const DEBOUNCE_DELAY = 1000;
+
   const [searchDropdownOpen, setSearchDropdownOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResults, setSearchResults] = useState<ProductPreviewType[]>([]);
-  const debouncedSearch = useDebounce(searchTerm, 400);
+  const debouncedSearch = useDebounce(searchTerm, DEBOUNCE_DELAY);
 
   const open = () => setSearchDropdownOpen(true);
   const close = () => setSearchDropdownOpen(false);
