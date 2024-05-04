@@ -22,7 +22,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     const search = async () => {
-      const { response, nextPage, queryParams } = await getProductsList({
+      const { response } = await getProductsList({
         locale: 'fin',
         queryParams: {
           q: searchTerm,
