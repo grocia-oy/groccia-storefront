@@ -1,14 +1,15 @@
 import { Image as MedusaImage } from '@medusajs/medusa';
-import { Container, clx } from '@medusajs/ui';
+import { clx } from '@medusajs/ui';
 import Image from 'next/image';
 import React from 'react';
 
 import PlaceholderImage from '@modules/common/icons/placeholder-image';
+import { ThumbnailSize } from 'types/medusa';
 
 type ThumbnailProps = {
   thumbnail?: string | null;
   images?: MedusaImage[] | null;
-  size?: 'small' | 'medium' | 'large' | 'full' | 'square';
+  size?: ThumbnailSize;
   isFeatured?: boolean;
   className?: string;
 };
@@ -16,7 +17,7 @@ type ThumbnailProps = {
 const Thumbnail: React.FC<ThumbnailProps> = ({
   thumbnail,
   images,
-  size = 'small',
+  size = ThumbnailSize.SMALL,
   isFeatured,
   className,
 }) => {
@@ -24,19 +25,15 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 
   return (
     <div
-      className={clx(
-        'relative w-full overflow-hidden rounded-md',
-        className,
-        {
-          'aspect-[11/14]': isFeatured,
-          'aspect-[9/16]': !isFeatured && size !== 'square',
-          'aspect-[1/1]': size === 'square',
-          'w-[180px]': size === 'small',
-          'w-[290px]': size === 'medium',
-          'w-[440px]': size === 'large',
-          'w-full': size === 'full',
-        }
-      )}
+      className={clx('relative w-full overflow-hidden rounded-md', className, {
+        'aspect-[11/14]': isFeatured,
+        'aspect-[9/16]': !isFeatured && size !== ThumbnailSize.SQUARE,
+        'aspect-[1/1]': size === ThumbnailSize.SQUARE,
+        'w-[180px]': size === ThumbnailSize.SMALL,
+        'w-[290px]': size === ThumbnailSize.MEDIUM,
+        'w-[440px]': size === ThumbnailSize.LARGE,
+        'w-full': size === ThumbnailSize.FULL,
+      })}
     >
       <ImageOrPlaceholder image={initialImage} size={size} />
     </div>
@@ -58,7 +55,7 @@ const ImageOrPlaceholder = ({
     />
   ) : (
     <div className="w-full h-full absolute inset-0 flex items-center justify-center">
-      <PlaceholderImage size={size === 'small' ? 16 : 24} />
+      <PlaceholderImage size={size === ThumbnailSize.SMALL ? 16 : 24} />
     </div>
   );
 };
