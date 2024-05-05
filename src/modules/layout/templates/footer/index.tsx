@@ -1,4 +1,5 @@
 import FooterNav from '@modules/layout/components/footer-nav';
+import { getDictionary } from 'app/[lang]/dictionaries';
 
 interface FooterProps {
   lang: string;
@@ -6,6 +7,8 @@ interface FooterProps {
 }
 
 export default async function Footer({ lang, locale }: FooterProps) {
+  const dictionary = await getDictionary(lang).catch(() => {});
+
   const navElements = [
     { heading: 'aboutCompany', footerHandler: 'about_company' },
     { heading: 'socialMedia', footerHandler: 'social_links' },
@@ -30,7 +33,7 @@ export default async function Footer({ lang, locale }: FooterProps) {
           <p className="text-primary-foreground">
             <span className="font-gotag text-2xl">Groccia</span>
             <br />
-            Fastest, convenient online Asian grocery market
+            {dictionary?.layout.footer.slogan}
             <br />
           </p>
         </aside>
