@@ -26,7 +26,6 @@ export default async function SearchResultsPage({
   });
 
   const productIds = response.products.map((product) => product.id);
-  console.log(productIds.length);
 
   return (
     <SearchResultsTemplate
