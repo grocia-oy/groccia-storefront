@@ -20,7 +20,7 @@ export default async function SearchResultsPage({
 
   const MAX_SEARCH_RESULTS = 100;
 
-  const { response, nextPage, queryParams } = await getProductsList({
+  const { response } = await getProductsList({
     queryParams: { q: query, is_giftcard: false, limit: MAX_SEARCH_RESULTS },
     locale,
   });
