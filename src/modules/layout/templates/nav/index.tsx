@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
-import SearchBar from '@modules/search/components/searchbar';
+import SearchBar from '@modules/search/components/search-bar';
 import PostcodeButtonModal from '@modules/layout/components/postcode-button-modal';
 
 import CartButton from '@modules/layout/components/cart-button';
