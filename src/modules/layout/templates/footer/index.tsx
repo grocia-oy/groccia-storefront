@@ -1,5 +1,4 @@
 import FooterNav from '@modules/layout/components/footer-nav';
-import { getDictionary } from 'app/[lang]/dictionaries';
 
 interface FooterProps {
   lang: string;

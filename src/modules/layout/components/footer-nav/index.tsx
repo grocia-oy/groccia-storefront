@@ -1,4 +1,3 @@
-import React from 'react';
 import LocalizedServerLink from '@modules/common/components/localized-server-link';
 import { getFooter } from '@lib/data/content';
 import { getDictionary } from 'app/[lang]/dictionaries';
