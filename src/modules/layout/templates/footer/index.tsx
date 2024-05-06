@@ -1,3 +1,4 @@
+import { getFooter } from '@lib/data/content';
 import FooterNav from '@modules/layout/components/footer-nav';
 
 interface FooterProps {
@@ -6,7 +7,7 @@ interface FooterProps {
 }
 
 export default async function Footer({ lang, locale }: FooterProps) {
-  const dictionary = await getDictionary(lang).catch(() => {});
+  const footerContent = await getFooter(lang);
 
   const navElements = [
     { heading: 'aboutCompany', footerHandler: 'about_company' },
@@ -32,7 +33,7 @@ export default async function Footer({ lang, locale }: FooterProps) {
           <p className="text-primary-foreground">
             <span className="font-gotag text-2xl">Groccia</span>
             <br />
-            {dictionary?.layout.footer.slogan}
+            {footerContent && footerContent.data?.footer?.description}
             <br />
           </p>
         </aside>
