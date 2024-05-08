@@ -1,5 +1,6 @@
 import { getFooter } from '@lib/data/content';
 import LocalizedServerLink from '@modules/common/components/localized-server-link';
+import FeedbackModal from '@modules/layout/components/feedback-modal';
 import { getDictionary } from 'app/[lang]/dictionaries';
 import { StrapiLinkComponent } from 'types/strapi';
 
@@ -81,10 +82,16 @@ export default async function Footer({ lang, locale }: Props) {
               )
             )}
         </nav>
+        <nav>
+          <h6 className={headingClasses}>
+            {dict?.layout.footer.headings.support}
+          </h6>
+          <FeedbackModal lang={lang} />
+        </nav>
       </footer>
       <footer className="footer px-10 py-4 border-t-2 border-secondary-foreground bg-primary">
         <aside className="items-center grid-flow-col">
-          <p className='text-primary-foreground'>
+          <p className="text-primary-foreground">
             <span className="font-gotag text-2xl">Groccia</span>
             <br />
             Fastest, convenient online Asian grocery market
