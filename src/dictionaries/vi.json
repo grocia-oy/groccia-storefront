@@ -57,10 +57,12 @@
       "title": "Góp ý",
       "description": "Chúng tôi rất mong nhận được ý kiến, lo lắng hoặc vấn đề với bất cứ điều gì để chúng tôi có thể cải thiện!",
       "send": "Gửi",
+      "sending": "Đang gửi...",
       "emailPlaceholder": "Nhập email của bạn",
       "messagePlaceholder": "Nhập góp ý của bạn",
       "emailError": "Vui lòng nhập email hợp lệ",
-      "messageError": "Vui lòng nhập góp ý của bạn"
+      "messageError": "Vui lòng nhập góp ý của bạn",
+      "success": "Cảm ơn vì góp ý của bạn!"
     }
   },
   "account": {
