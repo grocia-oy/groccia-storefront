@@ -18,6 +18,7 @@ import { useDictionary } from '@lib/context/dictionary-context';
 import { Label } from '@modules/common/components/ui/label';
 import { feedbackSchema } from 'schemas';
 import { Feedback } from 'types/pluto';
+import { sendFeedback } from '@lib/data/pluto';
 
 function FeedbackForm() {
   const dictionary = useDictionary();
@@ -32,7 +33,7 @@ function FeedbackForm() {
   });
 
   const onSubmit = (feedback: Feedback) => {
-    console.log(feedback);
+    sendFeedback(feedback);
   };
 
   return (
