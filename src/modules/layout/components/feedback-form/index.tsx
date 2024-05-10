@@ -31,63 +31,73 @@ function FeedbackForm() {
     },
   });
 
-  const onSubmit = (feedback: Feedback) => {
-    sendFeedback(feedback);
+  const onSubmit = async (feedback: Feedback) => {
+    await sendFeedback(feedback);
   };
 
   return (
     <Form {...form}>
-      <Label className="text-lg">{dictionaryFeedback.title}</Label>
-      <FormDescription>{dictionaryFeedback.description}</FormDescription>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-black">
-                {dictionary.common.email}
-                <span className="text-rose-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input
-                  placeholder={dictionaryFeedback.emailPlaceholder}
-                  {...field}
-                />
-              </FormControl>
-              {form.formState.errors.email && (
-                <p className="font-medium text-sm text-destructive">
-                  {dictionaryFeedback.emailError}
-                </p>
+      <Label className="text-2xl">{dictionaryFeedback.title}</Label>
+      {form.formState.isSubmitSuccessful ? (
+        <Label className="text-base">{dictionaryFeedback.success}</Label>
+      ) : (
+        <>
+          <FormDescription>{dictionaryFeedback.description}</FormDescription>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-black">
+                    {dictionary.common.email}
+                    <span className="text-rose-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder={dictionaryFeedback.emailPlaceholder}
+                      {...field}
+                    />
+                  </FormControl>
+                  {form.formState.errors.email && (
+                    <p className="font-medium text-sm text-destructive">
+                      {dictionaryFeedback.emailError}
+                    </p>
+                  )}
+                </FormItem>
               )}
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-black">
-                {dictionaryFeedback.title}
-                <span className="text-rose-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder={dictionaryFeedback.messagePlaceholder}
-                  {...field}
-                />
-              </FormControl>
-              {form.formState.errors.message && (
-                <p className="font-medium text-sm text-destructive">
-                  {dictionaryFeedback.messageError}
-                </p>
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-black">
+                    {dictionaryFeedback.title}
+                    <span className="text-rose-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder={dictionaryFeedback.messagePlaceholder}
+                      {...field}
+                    />
+                  </FormControl>
+                  {form.formState.errors.message && (
+                    <p className="font-medium text-sm text-destructive">
+                      {dictionaryFeedback.messageError}
+                    </p>
+                  )}
+                </FormItem>
               )}
-            </FormItem>
-          )}
-        />
-        <Button type="submit">{dictionaryFeedback.send}</Button>
-      </form>
+            />
+            <Button disabled={form.formState.isSubmitting} type="submit">
+              {form.formState.isSubmitting
+                ? dictionaryFeedback.sending
+                : dictionaryFeedback.send}
+            </Button>
+          </form>
+        </>
+      )}
     </Form>
   );
 }
