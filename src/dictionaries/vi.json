@@ -199,6 +199,8 @@
   "searchTool": {
     "search": "Tìm kiếm",
     "searchPlaceholder": "Tìm kiếm sản phẩm...",
-    "searchNoResults": "Không tìm thấy kết quả"
+    "searchNoResults": "Không tìm thấy kết quả",
+    "searchResultsFor": "Kết quả tìm kiếm cho:",
+    "clear": "Xóa"
   }
 }

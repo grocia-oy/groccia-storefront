@@ -193,6 +193,8 @@
   "searchTool": {
     "search": "Search",
     "searchPlaceholder": "Search products...",
-    "searchNoResults": "No results found"
+    "searchNoResults": "No results found",
+    "searchResultsFor": "Search results for:",
+    "clear": "Clear"
   }
 }
