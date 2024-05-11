@@ -16,3 +16,11 @@ export type ExpandedPricedProduct = PricedProduct & {
     allergy?: string;
   };
 };
+
+export enum ThumbnailSize {
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large',
+  FULL = 'full',
+  SQUARE = 'square',
+}

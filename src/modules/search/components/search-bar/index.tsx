@@ -7,6 +7,7 @@ import { getProductsList } from '@lib/data/ecommerce';
 import SearchResult from '../search-result';
 import { Transition } from '@headlessui/react';
 import { useDebounce } from '@lib/hooks/use-debounce';
+import { useRouter } from 'next/navigation';
 
 type SearchBarProps = {
   locale: string;
@@ -22,6 +23,8 @@ const SearchBar = ({ locale }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResults, setSearchResults] = useState<ProductPreviewType[]>([]);
   const debouncedSearch = useDebounce(searchTerm, DEBOUNCE_DELAY);
+
+  const router = useRouter();
 
   const open = () => setSearchDropdownOpen(true);
   const close = () => setSearchDropdownOpen(false);
@@ -39,6 +42,9 @@ const SearchBar = ({ locale }: SearchBarProps) => {
 
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!searchTerm) return;
+    router.push(`/results/${searchTerm}`);
+    close();
   };
 
   return (

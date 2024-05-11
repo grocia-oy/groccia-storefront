@@ -1,15 +1,19 @@
-import { Container } from "@medusajs/ui"
+import { Skeleton } from '@modules/common/components/ui/skeleton';
+import SkeletonThumbnail from '../skeleton-thumbnail';
+import { ThumbnailSize } from 'types/medusa';
 
 const SkeletonProductPreview = () => {
   return (
-    <div className="animate-pulse">
-      <Container className="aspect-[9/16] w-full bg-gray-100 bg-ui-bg-subtle" />
-      <div className="flex justify-between text-base-regular mt-2">
-        <div className="w-2/5 h-6 bg-gray-100"></div>
-        <div className="w-1/5 h-6 bg-gray-100"></div>
+    <div className="relative">
+      <div>
+        <SkeletonThumbnail size={ThumbnailSize.SQUARE} />
+      </div>
+      <div className="mt-4 flex flex-col justify-between gap-1">
+        <Skeleton className="h-6 w-full" />
+        <Skeleton className="h-6 w-full" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SkeletonProductPreview
+export default SkeletonProductPreview;
