@@ -9,7 +9,11 @@ import { Transition } from '@headlessui/react';
 import { useDebounce } from '@lib/hooks/use-debounce';
 import { useRouter } from 'next/navigation';
 
-const SearchBar = () => {
+type SearchBarProps = {
+  locale: string;
+};
+
+const SearchBar = ({ locale }: SearchBarProps) => {
   const dictionary = useDictionary();
 
   const MAX_SEARCH_RESULTS = 6;
@@ -27,7 +31,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     getProductsList({
-      locale: 'fin',
+      locale: locale,
       queryParams: {
         q: searchTerm,
         limit: MAX_SEARCH_RESULTS,
