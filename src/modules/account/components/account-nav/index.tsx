@@ -34,16 +34,6 @@ const getSidebarItems = (
       href: 'profile',
       icon: <UserCircleIcon className="w-6 h-6" />,
     },
-    {
-      title: sideBar.delivery,
-      href: 'delivery',
-      icon: <TruckIcon className="w-6 h-6" />,
-    },
-    {
-      title: sideBar.payment,
-      href: 'payment',
-      icon: <CreditCardIcon className="w-6 h-6" />,
-    },
   ];
 };
 
