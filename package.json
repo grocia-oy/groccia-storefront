@@ -64,6 +64,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-radix": "^2.8.0",
     "theme-change": "^2.5.0",
+    "vaul": "^0.9.1",
     "webpack": "^5",
     "zod": "^3.23.7"
   },
