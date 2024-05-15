@@ -93,7 +93,9 @@
     "info": {
       "description": "Mô tả",
       "allergyInfo": "Thông tin dị ứng"
-    }
+    },
+    "relatedProductsTitle": "Sản phẩm liên quan",
+    "relatedProductsDescription": "Bạn cũng có thể thích các sản phẩm này"
   },
   "cartPage": {
     "itemsTemplate": {
