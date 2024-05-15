@@ -2,7 +2,7 @@
 
 import { Popover, Transition } from '@headlessui/react';
 import { Cart } from '@medusajs/medusa';
-import { Button } from '@medusajs/ui';
+import Button from '@modules/common/components/button';
 import { usePathname } from 'next/navigation';
 import { Fragment, useEffect, useRef, useState } from 'react';
 
@@ -95,7 +95,7 @@ const CartDropdown = ({
         >
           <Popover.Panel
             static
-            className="block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] rounded-xl font-poppins shadow-xl"
+            className="hidden lg:block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] rounded-xl font-poppins shadow-xl"
           >
             <div className="p-4 flex items-center justify-center">
               <h3 className="text-lg font-bold text-primary">
@@ -133,10 +133,7 @@ const CartDropdown = ({
                 </div>
                 <div className="p-4 flex flex-col gap-y-4 text-small-regular">
                   <LocalizedClientLink href="/cart" passHref>
-                    <Button
-                      className="w-full bg-primary hover:bg-primary"
-                      size="large"
-                    >
+                    <Button className="w-full bg-primary hover:bg-primary">
                       {dict?.layout.nav.cart.goToCart}
                     </Button>
                   </LocalizedClientLink>
