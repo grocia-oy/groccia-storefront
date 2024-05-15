@@ -10,8 +10,15 @@ import {
   DialogTrigger,
 } from '@modules/common/components/ui/dialog';
 import { FormEventHandler, useEffect, useState, useRef } from 'react';
+import { cn } from '@lib/util/ui-utils';
 
-export default function PostcodeButtonModal() {
+type PostcodeButtonModalProps = {
+  className?: string;
+};
+
+export default function PostcodeButtonModal({
+  className,
+}: PostcodeButtonModalProps) {
   const [open, setOpen] = useState(false);
   const [displayPostcode, setDisplayPostcode] = useState<string | null>();
   const [inputErrorMessage, setInputErrorMessage] = useState<string | null>(
@@ -42,7 +49,12 @@ export default function PostcodeButtonModal() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="hidden lg:flex cursor-pointer items-center">
+        <button
+          className={cn(
+            'hidden lg:flex cursor-pointer items-center',
+            className
+          )}
+        >
           <span className="mr-1">
             <MapPinIcon className="w-5 h-5" />
           </span>
@@ -75,6 +87,7 @@ export default function PostcodeButtonModal() {
                     }
                     type="text"
                     name="postcode"
+                    autoComplete="off"
                     required
                   />
                 </div>
