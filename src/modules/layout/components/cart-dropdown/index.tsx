@@ -2,7 +2,7 @@
 
 import { Popover, Transition } from '@headlessui/react';
 import { Cart } from '@medusajs/medusa';
-import { Button } from '@medusajs/ui';
+import Button from '@modules/common/components/button';
 import { usePathname } from 'next/navigation';
 import { Fragment, useEffect, useRef, useState } from 'react';
 
@@ -133,10 +133,7 @@ const CartDropdown = ({
                 </div>
                 <div className="p-4 flex flex-col gap-y-4 text-small-regular">
                   <LocalizedClientLink href="/cart" passHref>
-                    <Button
-                      className="w-full bg-primary hover:bg-primary"
-                      size="large"
-                    >
+                    <Button className="w-full bg-primary hover:bg-primary">
                       {dict?.layout.nav.cart.goToCart}
                     </Button>
                   </LocalizedClientLink>
