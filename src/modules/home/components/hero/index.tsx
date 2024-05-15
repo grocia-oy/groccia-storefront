@@ -47,6 +47,8 @@ const Hero = ({ carousel }: HeroProps) => {
                   cmsClient.getImageURL(item.image?.url) ||
                   'images/fallback.png'
                 }
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={true}
               />
             </div>
           ))

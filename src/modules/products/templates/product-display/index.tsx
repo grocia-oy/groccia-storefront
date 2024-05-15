@@ -28,6 +28,8 @@ const ProductDisplay = ({ product }: ProductDisplayProps) => {
             className="relative bg-ui-bg-subtle object-contain"
             fill
             alt="Fallback image"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={true}
           />
         )}
       </Container>
