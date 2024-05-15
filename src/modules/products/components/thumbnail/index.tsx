@@ -52,6 +52,7 @@ const ImageOrPlaceholder = ({
       draggable={false}
       quality={50}
       fill
+      sizes={size}
     />
   ) : (
     <div className="w-full h-full absolute inset-0 flex items-center justify-center">

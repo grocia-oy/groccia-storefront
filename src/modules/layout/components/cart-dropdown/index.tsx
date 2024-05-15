@@ -9,6 +9,7 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
 import Thumbnail from '@modules/products/components/thumbnail';
 import ShoppingCartIcon from '@heroicons/react/24/outline/ShoppingCartIcon';
+import { ThumbnailSize } from 'types/medusa';
 
 const CartDropdown = ({
   cart: cartState,
@@ -114,7 +115,10 @@ const CartDropdown = ({
                         href={`/products/${item.variant.product.handle}`}
                       >
                         <div className="grid grid-cols-[72px_1fr] rounded-md">
-                          <Thumbnail thumbnail={item.thumbnail} size="square" />
+                          <Thumbnail
+                            thumbnail={item.thumbnail}
+                            size={ThumbnailSize.SQUARE}
+                          />
                           <div className="flex flex-row whitespace-nowrap items-center text-md mx-2 justify-between text-primary hover:text-primary">
                             <div className="max-w-[240px] overflow-hidden text-ellipsis">
                               {item.title}
