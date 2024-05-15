@@ -50,6 +50,7 @@ export default async function RelatedProducts({
       params.tags = product.tags.map((t) => t.value);
     }
 
+    // Find products that are not gift cards
     params.is_giftcard = false;
 
     return params;
