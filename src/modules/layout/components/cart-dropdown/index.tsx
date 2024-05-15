@@ -95,7 +95,7 @@ const CartDropdown = ({
         >
           <Popover.Panel
             static
-            className="block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] rounded-xl font-poppins shadow-xl"
+            className="hidden lg:block absolute top-[calc(100%+1px)] bg-white right-0 w-[420px] rounded-xl font-poppins shadow-xl"
           >
             <div className="p-4 flex items-center justify-center">
               <h3 className="text-lg font-bold text-primary">
