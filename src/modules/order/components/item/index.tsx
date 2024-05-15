@@ -5,6 +5,7 @@ import LineItemOptions from '@modules/common/components/line-item-options';
 import LineItemPrice from '@modules/common/components/line-item-price';
 import LineItemUnitPrice from '@modules/common/components/line-item-unit-price';
 import Thumbnail from '@modules/products/components/thumbnail';
+import { ThumbnailSize } from 'types/medusa';
 
 type ItemProps = {
   item: Omit<LineItem, 'beforeInsert'>;
@@ -16,7 +17,7 @@ const Item = ({ item, region }: ItemProps) => {
     <Table.Row className="w-full">
       <Table.Cell className="!pl-0 p-4 w-24">
         <div className="flex w-16">
-          <Thumbnail thumbnail={item.thumbnail} size="square" />
+          <Thumbnail thumbnail={item.thumbnail} size={ThumbnailSize.SQUARE} />
         </div>
       </Table.Cell>
 

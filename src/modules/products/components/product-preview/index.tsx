@@ -8,6 +8,7 @@ import Thumbnail from '../thumbnail';
 import PreviewPrice from './price';
 import AddToCartButton from '../add-to-cart-button';
 import { getDictionary } from 'app/[lang]/dictionaries';
+import { ThumbnailSize } from 'types/medusa';
 
 export default async function ProductPreview({
   productPreview,
@@ -51,7 +52,7 @@ export default async function ProductPreview({
           >
             <Thumbnail
               thumbnail={productPreview.thumbnail}
-              size="square"
+              size={ThumbnailSize.SQUARE}
               isFeatured={isFeatured}
             />
           </LocalizedClientLink>

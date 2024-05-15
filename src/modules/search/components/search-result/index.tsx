@@ -3,6 +3,7 @@ import LocalizedClientLink from '@modules/common/components/localized-client-lin
 import Thumbnail from '@modules/products/components/thumbnail';
 import React from 'react';
 import { ProductPreviewType } from 'types/global';
+import { ThumbnailSize } from 'types/medusa';
 
 type SearchResultProps = {
   product: ProductPreviewType;
@@ -18,7 +19,10 @@ function SearchResult({ product }: SearchResultProps) {
         href={`/products/${product.handle}`}
       >
         <div className="grid grid-cols-[72px_1fr] rounded-md">
-          <Thumbnail thumbnail={product.thumbnail} size="square" />
+          <Thumbnail
+            thumbnail={product.thumbnail}
+            size={ThumbnailSize.SQUARE}
+          />
           <div className="flex flex-row whitespace-nowrap items-center text-md mx-4 justify-between">
             <div className="max-w-[240px] overflow-hidden">{product.title}</div>
             {!product.price ? (
