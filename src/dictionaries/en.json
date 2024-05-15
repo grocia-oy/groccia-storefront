@@ -94,7 +94,9 @@
     "info": {
       "description": "Description",
       "allergyInfo": "Allergy information"
-    }
+    },
+    "relatedProductsTitle": "Related products",
+    "relatedProductsDescription": "You might also want to check out these products"
   },
   "cartPage": {
     "itemsTemplate": {
