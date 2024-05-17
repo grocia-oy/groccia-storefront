@@ -13,15 +13,15 @@ const Layout: React.FC<{
   const customer = await getCustomer().catch(() => null);
 
   return (
-    <div lang={props.lang}>
+    <div lang={props.lang} className='flex flex-col min-h-screen'>
       <div className="sticky top-0 inset-x-0 z-10">
         <AnnouncementBar />
         <div className="shadow-md">
-          <Nav lang={props.lang} customer={customer} />
+          <Nav lang={props.lang} locale={props.locale} customer={customer} />
           <FlyoutNav lang={props.lang} locale={props.locale} />
         </div>
       </div>
-      <div className="relative">{props.children}</div>
+      <div className="relative flex-1">{props.children}</div>
       <Footer lang={props.lang} locale={props.locale} />
     </div>
   );

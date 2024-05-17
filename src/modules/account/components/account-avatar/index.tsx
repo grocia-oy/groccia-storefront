@@ -20,6 +20,7 @@ const AccountAvatar = ({ src, alt, name = '' }: Props) => {
           alt={alt || ''}
           fill
           className="object-cover rounded-full"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       ) : (
         <div className="h-full w-full bg-primary rounded-full">

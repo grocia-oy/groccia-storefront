@@ -47,6 +47,7 @@
     "footer": {
       "headings": {
         "aboutCompany": "About",
+        "socialMedia": "Social media",
         "storeList": "Shop by store",
         "policyLinks": "Policy",
         "support": "Support"
@@ -106,7 +107,9 @@
     "info": {
       "description": "Description",
       "allergyInfo": "Allergy information"
-    }
+    },
+    "relatedProductsTitle": "Related products",
+    "relatedProductsDescription": "You might also want to check out these products"
   },
   "cartPage": {
     "itemsTemplate": {
@@ -213,6 +216,8 @@
   "searchTool": {
     "search": "Search",
     "searchPlaceholder": "Search products...",
-    "searchNoResults": "No results found"
+    "searchNoResults": "No results found",
+    "searchResultsFor": "Search results for:",
+    "clear": "Clear"
   }
 }

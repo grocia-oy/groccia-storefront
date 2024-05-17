@@ -10,16 +10,19 @@ import Breadcrumbs from '../components/breadcrumbs';
 import { ExpandedPricedProduct } from 'types/medusa';
 import { getDictionary } from 'app/[lang]/dictionaries';
 import ProductDisplay from './product-display';
+import RelatedProducts from '../components/related-products';
 
 type ProductTemplateProps = {
   product: ExpandedPricedProduct;
   region: Region;
+  locale: string;
   lang: string;
 };
 
 const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   product,
   region,
+  locale,
   lang,
 }) => {
   const dictionary = await getDictionary(lang);
@@ -49,6 +52,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
           <ProductTags product={product} />
         </div>
       </div>
+      <RelatedProducts product={product} locale={locale} lang={lang} />
     </div>
   );
 };

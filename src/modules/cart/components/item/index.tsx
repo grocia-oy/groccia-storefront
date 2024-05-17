@@ -15,6 +15,7 @@ import { useState } from 'react';
 import ErrorMessage from '@modules/checkout/components/error-message';
 import LocalizedClientLink from '@modules/common/components/localized-client-link';
 import { useDictionary } from '@lib/context/dictionary-context';
+import { ThumbnailSize } from 'types/medusa';
 
 type ItemProps = {
   item: Omit<LineItem, 'beforeInsert'>;
@@ -59,7 +60,7 @@ const Item = ({ item, region, type = 'full' }: ItemProps) => {
             'lg:w-24 w-12': type === 'full',
           })}
         >
-          <Thumbnail thumbnail={item.thumbnail} size="square" />
+          <Thumbnail thumbnail={item.thumbnail} size={ThumbnailSize.SQUARE} />
         </LocalizedClientLink>
       </Table.Cell>
 

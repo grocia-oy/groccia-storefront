@@ -47,6 +47,7 @@
     "footer": {
       "headings": {
         "aboutCompany": "Về chúng tôi",
+        "socialMedia": "Mạng xã hội",
         "storeList": "Chọn cửa hàng cụ thể",
         "policyLinks": "Chính sách",
         "support": "Hỗ trợ"
@@ -105,7 +106,9 @@
     "info": {
       "description": "Mô tả",
       "allergyInfo": "Thông tin dị ứng"
-    }
+    },
+    "relatedProductsTitle": "Sản phẩm liên quan",
+    "relatedProductsDescription": "Bạn cũng có thể thích các sản phẩm này"
   },
   "cartPage": {
     "itemsTemplate": {
@@ -212,6 +215,8 @@
   "searchTool": {
     "search": "Tìm kiếm",
     "searchPlaceholder": "Tìm kiếm sản phẩm...",
-    "searchNoResults": "Không tìm thấy kết quả"
+    "searchNoResults": "Không tìm thấy kết quả",
+    "searchResultsFor": "Kết quả tìm kiếm cho:",
+    "clear": "Xóa"
   }
 }
