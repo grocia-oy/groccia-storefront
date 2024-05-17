@@ -31,7 +31,9 @@ export default async function Footer({ lang, locale }: FooterProps) {
           />
         ))}
         <nav>
-          <h6>{dict?.layout.footer.headings.support}</h6>
+          <h6 className="mb-2 font-bold uppercase text-primary-foreground">
+            {dict?.layout.footer.headings.support}
+          </h6>
           <FeedbackModal lang={lang} />
         </nav>
       </footer>
