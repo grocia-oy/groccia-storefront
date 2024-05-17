@@ -1,4 +1,6 @@
 import { getFooter } from '@lib/data/content';
+import FeedbackModal from '@modules/layout/components/feedback-modal';
+import { getDictionary } from 'app/[lang]/dictionaries';
 import FooterNav from '@modules/layout/components/footer-nav';
 
 interface FooterProps {
@@ -7,6 +9,7 @@ interface FooterProps {
 }
 
 export default async function Footer({ lang, locale }: FooterProps) {
+  const dict = await getDictionary(lang);
   const footerContent = await getFooter(lang);
 
   const navElements = [
@@ -27,6 +30,12 @@ export default async function Footer({ lang, locale }: FooterProps) {
             footerHandler={element.footerHandler}
           />
         ))}
+        <nav>
+          <h6 className="mb-2 font-bold uppercase text-primary-foreground">
+            {dict?.layout.footer.headings.support}
+          </h6>
+          <FeedbackModal lang={lang} />
+        </nav>
       </footer>
       <footer className="footer px-10 py-4 border-t-2 border-secondary-foreground bg-primary">
         <aside className="items-center grid-flow-col">

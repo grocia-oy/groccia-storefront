@@ -49,8 +49,21 @@
         "aboutCompany": "About",
         "socialMedia": "Social media",
         "storeList": "Shop by store",
-        "policyLinks": "Policy"
+        "policyLinks": "Policy",
+        "support": "Support"
       }
+    },
+    "feedback": {
+      "giveFeedback": "Give feedback",
+      "title": "Feedback",
+      "description": "We would love to hear your thoughts, concerns or problems with anything so we can improve!",
+      "send": "Send",
+      "sending": "Sending...",
+      "emailPlaceholder": "Your email",
+      "messagePlaceholder": "Your feedback",
+      "emailError": "Please enter a valid email address",
+      "messageError": "Please enter a message",
+      "success": "Thank you for your feedback!"
     }
   },
   "account": {
